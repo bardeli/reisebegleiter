@@ -1,0 +1,42 @@
+<html>
+
+<head>
+
+<title>Reisebegleiter Mathematik</title>
+
+<link rel="stylesheet" href="templates/visualiser.css">
+<link rel="stylesheet" href="templates/table_designs.css">
+<link rel="stylesheet" href="templates/book_style.css">
+<link rel="stylesheet" href="templates/drawings.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css">
+
+<script src="js/xml_helpers.js"></script>
+<script src="js/code_interaction.js"></script>
+<script src="js/data_tables.js"></script>
+<script src="js/drawing.js"></script>
+<script src="js/math_rationals.js"></script>
+<script src="js/math_polynomials.js"></script>
+<script src="js/math_combinatorics.js"></script>
+<script src="js/visualiser.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+<div id="toc" class="toc"></div>
+<div id='visualiser_window' class='visualiser_main_window'>
+</div>
+
+<script>
+populateFromContents("contents/reisebegleiter/titel.xml", "Reisebegleiter Mathematik", true, true);
+populateFromContents("contents/reisebegleiter/einleitung.xml", "Einleitung", false, true);
+populateFromContents("contents/reisebegleiter/zahlen.xml", "Zahlen", false, true);
+populateFromContents("contents/reisebegleiter/reste.xml", "Reste", false, true);
+addTOCPointer("Inhaltsverzeichnis");
+</script>
+</body>
+
+</html>

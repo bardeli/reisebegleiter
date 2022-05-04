@@ -1,0 +1,20 @@
+<document>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<css>position:relative;margin-left: auto;margin-right: auto;width:500px;</css>
+<content>
+  Rolf Bardeli
+  <h1>Reisebegleiter Mathematik</h1>
+  <img style="margin-top:100px;width:500px" src="contents/reisebegleiter/cover.png"/>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'><a onclick="deepLink('contents/reisebegleiter/einleitung.xml', 'Einleitung', '')">&#8680;</a></div>
+</content>
+</paragraph>
+
+</document>

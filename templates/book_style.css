@@ -1,0 +1,138 @@
+a {
+  text-decoration:none;
+  color: #35F;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: blue;
+}
+
+div .book_paragraph {
+  position:relative;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div .book_paragraph_center {
+  position:relative;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.book_paragraph_center p {
+  font-size:18;
+  text-align: center;
+}
+
+.book_paragraph p {
+  font-size:18;
+  text-align: justify;
+}
+
+div .book_margin_paragraph {
+  width:20%;
+  margin-right: 40px;
+  float:right;
+}
+
+.book_references li {
+  list-style: none;
+  padding: 0px;
+  text-align: left;
+}
+
+.book_references li:before
+{
+    content: '\01F4D6';
+    margin: 0 1em;    /* any design */
+}
+
+.book_margin_paragraph p {
+  margin-top:0px;
+  margin-bottom:0px;
+  font-size:18;
+  text-align: left;
+}
+
+.book_circle_marker {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
+  background: #CCF;
+}
+
+.book_circle_marker a {
+  text-decoration: none;
+  color: #35F;
+}
+
+.book_circle_marker a:visited {
+  text-decoration: none;
+  color: #35F;
+}
+
+
+div .book_formula_box {
+  margin-left: auto;
+  margin-right: auto;
+  background-color:#FEF4F4;
+  padding:5px;
+  margin-bottom:10px;
+  font-family:sans-serif;
+}
+
+div .book_js_box {
+  margin-left: auto;
+  margin-right: auto;
+  background-color:#FEF4F4;
+  padding:5px;
+  margin-bottom:10px;
+  font-family:sans-serif;
+  font-size:18;
+}
+
+.book_js_box input {
+  background-color: #FFFAFA;
+  border:none;
+  border-bottom: 2px solid #DDD;
+  font-size:18;
+}
+
+.book_js_box input:focus {
+  background-color: #FCF5F5;
+  outline: none;
+}
+
+.book_js_box code {
+  font-size:14;
+}
+
+div .book_chapter_heading {
+  text-align: justify;
+  position:relative;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  font-size: 18;
+}
+
+div .book_chapter_heading .par_heading {
+  font-size: 24;
+  color: #115;
+  background-color:#FFFAFA;
+}
+
+div .par_heading {
+  font-size: 20;
+  color: #115;
+  background-color:#FFFAFA;
+}

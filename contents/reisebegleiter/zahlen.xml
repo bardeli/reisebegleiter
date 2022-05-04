@@ -1,0 +1,1527 @@
+<document>
+
+<paragraph>
+<cssclass>book_chapter_heading</cssclass>
+<title>Zahlen</title>
+<content>
+Niemand muss überzeugt werden, dass Zahlen zur Mathematik gehören.
+Bevor wir uns in späteren Kapiteln bemühen werden zu verdeutlichen, dass zur Mathematik noch viel mehr gehört als Zahlen,
+wollen wir aber doch zunächst mit ihnen anfangen und sehen, dass schon sehr einfache Dinge, die man mit Zahlen anstellen
+kann, zu sehr schöner Mathematik führen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<toc>Summen</toc>
+<title>Summen</title>
+<content>
+Mit Zahlen kann man rechnen. So viel ist klar. Und das wollen wir auch gleich machen und legen los mit den natürlichen Zahlen:
+
+\[
+1, 2, 3, 4, 5, 6, 7, \ldots
+\]
+
+Zum Aufwärmen wollen wir diese Zahlen der Reihe nach addieren und uns die Summen \(1\), \(1+2\), \(1+2+3\) und so weiter anschauen.
+Wenn wir die Summe \(1 + 2 + \ldots + n\) berechnen wollen, können wir dann einfach eine Formel angeben, die nur von \(n\) abhängt?
+Schreiben wir die Zahlen geschickt untereinander.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+Die Summe der ersten fünf Zahlen graphisch.
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>150px</height>
+<code>
+box(0,0,20,20,#FDF283,#000);
+box(0,20,20,20,#D1D2FB,#000);
+box(0,40,20,20,#D1D2FB,#000);
+box(0,60,20,20,#D1D2FB,#000);
+box(0,80,20,20,#D1D2FB,#000);
+box(0,100,20,20,#D1D2FB,#000);
+box(20,0,20,20,#FDF283,#000);
+box(20,20,20,20,#FDF283,#000);
+box(20,40,20,20,#D1D2FB,#000);
+box(20,60,20,20,#D1D2FB,#000);
+box(20,80,20,20,#D1D2FB,#000);
+box(20,100,20,20,#D1D2FB,#000);
+box(40,0,20,20,#FDF283,#000);
+box(40,20,20,20,#FDF283,#000);
+box(40,40,20,20,#FDF283,#000);
+box(40,60,20,20,#D1D2FB,#000);
+box(40,80,20,20,#D1D2FB,#000);
+box(40,100,20,20,#D1D2FB,#000);
+box(60,0,20,20,#FDF283,#000);
+box(60,20,20,20,#FDF283,#000);
+box(60,40,20,20,#FDF283,#000);
+box(60,60,20,20,#FDF283,#000);
+box(60,80,20,20,#D1D2FB,#000);
+box(60,100,20,20,#D1D2FB,#000);
+box(80,0,20,20,#FDF283,#000);
+box(80,20,20,20,#FDF283,#000);
+box(80,40,20,20,#FDF283,#000);
+box(80,60,20,20,#FDF283,#000);
+box(80,80,20,20,#FDF283,#000);
+box(80,100,20,20,#D1D2FB,#000);
+text(105,55,n+1,#000,"");
+text(45,135,n,#000,"");
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_formula_box</cssclass>
+<css>width:50%;</css>
+<content>
+  Die Zahlen von \(1\) bis \(n\) geschickt untereinander geschrieben.
+</content>
+<specialcontent>
+<contenttype>datatable</contenttype>
+  <cssclass>table_design_math</cssclass>
+  <databody>
+    \(1\);\(2\);\(\ldots\);\(n-1\);\(n\)
+    \(+\);\(+\);\(\ldots\);\(+\);\(+\)
+    \(n\);\(n-1\);\(\ldots\);\(2\);\(1\)
+    ||;||;\(\ldots\);||;||
+    \(n+1\);\(n+1\);\(\ldots\);\(n+1\);\(n+1\)
+  </databody>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Die Tabelle hat \(n\) Spalten und in jeder Spalte der letzten Zeile steht die Zahl \(n+1\).
+Summieren wir die Tabelle spaltenweise, so erhalten wir in den ersten beiden Zeilen jeweils die Summe der ersten \(n\) Zahlen --- einmal vorwärts und einmal rückwärts.
+In der letzten Spalte erhalten wir \(n(n+1)\).
+Da die Summe der letzten Zeile gerade zweimal die gesuchte Summe ist erhalten wir insgesamt:
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'><a href='https://de.wikipedia.org/wiki/Summe#Notation_mit_dem_Summenzeichen'>?</a></div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+\[\sum_{i=1}^n i = \frac{n(n+1)}{2}\]
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_js_box</cssclass>
+<css>width:50%;</css>
+<content>
+</content>
+<specialcontent>
+<contenttype>code_interaction</contenttype>
+<code>
+function sum_of_n(n)
+{
+  return (n*(n+1))/2;
+}
+</code>
+<display>
+\(n\) = @input:0! \(\sum_{i=1}^n i = \) @output:!
+</display>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+  Jetzt schauen wir uns die Summe der ersten ungeraden Zahlen an. Zum Warmwerden sollten wir erst einmal einige Summen berechnen lassen:
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_js_box</cssclass>
+<css>width:50%;</css>
+<content>
+</content>
+<specialcontent>
+<contenttype>code_interaction</contenttype>
+<code>
+function sum_of_odd_n(n)
+{
+  var result = 0;
+
+  for (let i=1; i&lt;=n; ++i)
+    result += 2*i-1;
+
+  return result;
+}
+</code>
+<display>
+\(n\) = @input:0! \(\sum_{i=1}^n 2i-1 = \) @output:!
+</display>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+  Ist es Ihnen aufgefallen? Ja, tatsächlich, die Summen ergeben stets Quadratzahlen.
+  Wir wollen reflexhaft eine analoge Tabelle zum vorherigen Fall aufstellen.
+  Auch wenn sie noch nicht die aufschlussreichste Sichtweise ergibt, beweist sie doch, dass unsere Beobachtung auch im Allgemeinen stimmt.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+Die Summe der ersten fünf ungeraden Zahlen graphisch.
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>240px</height>
+<code>
+box(0,0,20,20,#FDF283,#000);
+
+box(20,0,20,20,#FDF283,#000);
+box(20,20,20,20,#FDF283,#000);
+box(20,40,20,20,#FDF283,#000);
+
+box(40,0,20,20,#FDF283,#000);
+box(40,20,20,20,#FDF283,#000);
+box(40,40,20,20,#FDF283,#000);
+box(40,60,20,20,#FDF283,#000);
+box(40,80,20,20,#FDF283,#000);
+
+box(60,0,20,20,#FDF283,#000);
+box(60,20,20,20,#FDF283,#000);
+box(60,40,20,20,#FDF283,#000);
+box(60,60,20,20,#FDF283,#000);
+box(60,80,20,20,#FDF283,#000);
+box(60,100,20,20,#FDF283,#000);
+box(60,120,20,20,#FDF283,#000);
+
+box(80,0,20,20,#FDF283,#000);
+box(80,20,20,20,#FDF283,#000);
+box(80,40,20,20,#FDF283,#000);
+box(80,60,20,20,#FDF283,#000);
+box(80,80,20,20,#FDF283,#000);
+box(80,100,20,20,#FDF283,#000);
+box(80,120,20,20,#FDF283,#000);
+box(80,140,20,20,#FDF283,#000);
+box(80,160,20,20,#FDF283,#000);
+
+box(80,180,20,20,#D1D2FB,#000);
+
+box(60,180,20,20,#D1D2FB,#000);
+box(60,160,20,20,#D1D2FB,#000);
+box(60,140,20,20,#D1D2FB,#000);
+
+box(40,180,20,20,#D1D2FB,#000);
+box(40,160,20,20,#D1D2FB,#000);
+box(40,140,20,20,#D1D2FB,#000);
+box(40,120,20,20,#D1D2FB,#000);
+box(40,100,20,20,#D1D2FB,#000);
+
+box(20,180,20,20,#D1D2FB,#000);
+box(20,160,20,20,#D1D2FB,#000);
+box(20,140,20,20,#D1D2FB,#000);
+box(20,120,20,20,#D1D2FB,#000);
+box(20,100,20,20,#D1D2FB,#000);
+box(20,80,20,20,#D1D2FB,#000);
+box(20,60,20,20,#D1D2FB,#000);
+
+box(0,180,20,20,#D1D2FB,#000);
+box(0,160,20,20,#D1D2FB,#000);
+box(0,140,20,20,#D1D2FB,#000);
+box(0,120,20,20,#D1D2FB,#000);
+box(0,100,20,20,#D1D2FB,#000);
+box(0,80,20,20,#D1D2FB,#000);
+box(0,60,20,20,#D1D2FB,#000);
+box(0,40,20,20,#D1D2FB,#000);
+box(0,20,20,20,#D1D2FB,#000);
+
+box(0,98,100,4,#000,#000);
+
+line(118,0,122,0,#000,1);
+line(120,0,120,40,#000,1);
+line(120,60,120,98,#000,1);
+text(116,53,n,#000,"");
+line(118,98,122,98,#000,1);
+
+line(118,102,122,102,#000,1);
+line(120,102,120,140,#000,1);
+line(120,160,120,200,#000,1);
+line(118,200,122,200,#000,1);
+text(116,153,n,#000,"");
+
+line(0,218,0,222,#000,1);
+line(100,218,100,222,#000,1);
+line(0,220,40,220,#000,1);
+line(60,220,100,220,#000,1);
+text(46,224,n,#000,"");
+
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_formula_box</cssclass>
+<css>width:50%;</css>
+<content>
+  Die ersten \(n\) ungeraden Zahlen geschickt untereinander geschrieben.
+</content>
+<specialcontent>
+<contenttype>datatable</contenttype>
+  <cssclass>table_design_math</cssclass>
+  <databody>
+    \(1\);\(3\);\(\ldots\);\(2n-3\);\(2n-1\)
+    \(+\);\(+\);\(\ldots\);\(+\);\(+\)
+    \(2n-1\);\(2n-3\);\(\ldots\);\(3\);\(1\)
+    ||;||;\(\ldots\);||;||
+    \(2n\);\(2n\);\(\ldots\);\(2n\);\(2n\)
+  </databody>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+  Tatsächlich erhalten wir in der letzten Zeile \(n\)-mal \(2n\) und, weil wir wieder doppelt gezählt haben, damit insgesamt die Summe \(n^2\).
+  Viel aufschlussreicher ist aber folgendes Bild.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Die Summe der ersten fünf ungeraden Zahlen graphisch.
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>100px</height>
+<code>
+box(0,0,20,20,#FDF283,#000);
+
+box(0,20,20,20,#D1D2FB,#000);
+box(20,0,20,20,#D1D2FB,#000);
+box(20,20,20,20,#D1D2FB,#000);
+
+box(0,40,20,20,#FDF283,#000);
+box(20,40,20,20,#FDF283,#000);
+box(40,40,20,20,#FDF283,#000);
+box(40,20,20,20,#FDF283,#000);
+box(40,0,20,20,#FDF283,#000);
+
+box(0,60,20,20,#D1D2FB,#000);
+box(20,60,20,20,#D1D2FB,#000);
+box(40,60,20,20,#D1D2FB,#000);
+box(60,60,20,20,#D1D2FB,#000);
+box(60,40,20,20,#D1D2FB,#000);
+box(60,20,20,20,#D1D2FB,#000);
+box(60,0,20,20,#D1D2FB,#000);
+
+box(0,80,20,20,#FDF283,#000);
+box(20,80,20,20,#FDF283,#000);
+box(40,80,20,20,#FDF283,#000);
+box(60,80,20,20,#FDF283,#000);
+box(80,80,20,20,#FDF283,#000);
+box(80,60,20,20,#FDF283,#000);
+box(80,40,20,20,#FDF283,#000);
+box(80,20,20,20,#FDF283,#000);
+box(80,0,20,20,#FDF283,#000);
+
+text(5,15,1,#000,"");
+text(25,35,3,#000,"");
+text(45,55,5,#000,"");
+text(65,75,7,#000,"");
+text(85,95,9,#000,"");
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>Ü</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+  Als <b>Übung</b> sollte man sich nun die geraden Zahlen vorknöpfen und für deren Summe ebenfalls eine Formel finden.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Der übliche Weg sich von der Korrektheit solcher Formeln zu überzeugen ist die
+<a href="https://de.wikipedia.org/wiki/Vollst%C3%A4ndige_Induktion">vollständige Induktion</a>.
+Der Anfang für \(n=1\) ist klar. Den Induktionsschritt erhält man leicht, indem man \((n+1)^2\) ausmultipliziert.
+Er hat eine schöne Veranschaulichung:
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Induktionsschritt zum Beweis von \(\sum_{i=1}^n2i-1 = n^2\).
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>120px</height>
+<code>
+box(0,0,100,100,#FDF283,#000);
+
+box(100,0,20,100,#D1D2FB,#000);
+box(0,100,100,20,#D1D2FB,#000);
+box(100,100,20,20,#EF8783,#000);
+
+text(105,115,1,#000,"");
+text(45,55,n,#000,"");
+text(52,50,2,#000,"");
+text(105,55,n,#000,"");
+text(45,115,n,#000,"");
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<toc>Potenzen</toc>
+<title>Potenzen</title>
+<content>
+Wir wollen das Bild zum Induktionsschritt aus dem letzten Absatz sofort ins Dreidimensionale erheben
+und damit den Weg von Summen einfacher Zahlen zu den Summen ihrer Potenzen ebnen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Zerlegung eines Würfels in einen kleineren Würfel, Grundfläche und Seiten.
+</content>
+<specialcontent>
+<contenttype>drawing3d</contenttype>
+<height>150px</height>
+<projection></projection>
+<code>
+box(20,20,10,20,20,20,#FDF283,#000);
+box(40,20,10,20,20,20,#FDF283,#000);
+box(60,20,10,20,20,20,#FDF283,#000);
+box(80,20,10,20,20,20,#FDF283,#000);
+box(20,20,30,20,20,20,#FDF283,#000);
+box(40,20,30,20,20,20,#FDF283,#000);
+box(60,20,30,20,20,20,#FDF283,#000);
+box(80,20,30,20,20,20,#FDF283,#000);
+box(20,20,50,20,20,20,#FDF283,#000);
+box(40,20,50,20,20,20,#FDF283,#000);
+box(60,20,50,20,20,20,#FDF283,#000);
+box(80,20,50,20,20,20,#FDF283,#000);
+box(20,20,70,20,20,20,#FDF283,#000);
+box(40,20,70,20,20,20,#FDF283,#000);
+box(60,20,70,20,20,20,#FDF283,#000);
+box(80,20,70,20,20,20,#FDF283,#000);
+
+box(20,0,70,20,20,20,#F283FD,#000);
+box(40,0,70,20,20,20,#F283FD,#000);
+box(60,0,70,20,20,20,#F283FD,#000);
+box(20,0,50,20,20,20,#F283FD,#000);
+box(40,0,50,20,20,20,#F283FD,#000);
+box(60,0,50,20,20,20,#F283FD,#000);
+box(20,0,30,20,20,20,#F283FD,#000);
+box(40,0,30,20,20,20,#F283FD,#000);
+box(60,0,30,20,20,20,#F283FD,#000);
+
+box(20,-20,70,20,20,20,#F283FD,#000);
+box(40,-20,70,20,20,20,#F283FD,#000);
+box(60,-20,70,20,20,20,#F283FD,#000);
+box(20,-20,50,20,20,20,#F283FD,#000);
+box(40,-20,50,20,20,20,#F283FD,#000);
+box(60,-20,50,20,20,20,#F283FD,#000);
+box(20,-20,30,20,20,20,#F283FD,#000);
+box(40,-20,30,20,20,20,#F283FD,#000);
+box(60,-20,30,20,20,20,#F283FD,#000);
+
+box(20,-40,70,20,20,20,#F283FD,#000);
+box(40,-40,70,20,20,20,#F283FD,#000);
+box(60,-40,70,20,20,20,#F283FD,#000);
+box(20,-40,50,20,20,20,#F283FD,#000);
+box(40,-40,50,20,20,20,#F283FD,#000);
+box(60,-40,50,20,20,20,#F283FD,#000);
+box(20,-40,30,20,20,20,#F283FD,#000);
+box(40,-40,30,20,20,20,#F283FD,#000);
+box(60,-40,30,20,20,20,#F283FD,#000);
+
+box(85,0,70,20,20,20,#D1D2FB,#000);
+box(85,0,50,20,20,20,#D1D2FB,#000);
+box(85,0,30,20,20,20,#D1D2FB,#000);
+box(85,-20,70,20,20,20,#D1D2FB,#000);
+box(85,-20,50,20,20,20,#D1D2FB,#000);
+box(85,-20,30,20,20,20,#D1D2FB,#000);
+box(85,-40,70,20,20,20,#D1D2FB,#000);
+box(85,-40,50,20,20,20,#D1D2FB,#000);
+box(85,-40,30,20,20,20,#D1D2FB,#000);
+
+box(85,0,5,20,20,20,#EF8783,#000);
+box(85,-20,5,20,20,20,#EF8783,#000);
+box(85,-40,5,20,20,20,#EF8783,#000);
+
+box(20,0,5,20,20,20,#D1D2FB,#000);
+box(40,0,5,20,20,20,#D1D2FB,#000);
+box(60,0,5,20,20,20,#D1D2FB,#000);
+box(20,-20,5,20,20,20,#D1D2FB,#000);
+box(40,-20,5,20,20,20,#D1D2FB,#000);
+box(60,-20,5,20,20,20,#D1D2FB,#000);
+box(20,-40,5,20,20,20,#D1D2FB,#000);
+box(40,-40,5,20,20,20,#D1D2FB,#000);
+box(60,-40,5,20,20,20,#D1D2FB,#000);
+
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Aus der Abbildung liest man leicht ab, dass sich eine dritte Potenz wie folgt zerlegen lässt:
+\[(n+1)^3 = n^3 + (n+1)^2 + 2n^2 + n\]
+Bei wiederholter Anwendung dieser Zerlegung bleibt zuletzt ein einzelnes Würfelchen übrig, das \(1^3\) repräsentiert.
+Dann bekommt man ingesamt die Gleichung
+\[(n+1)^3 = 1 + \sum_{k=1}^n(k+1)^2 + 2\sum_{k=1}^nk^2 + \sum_{k=1}^nk.\]
+Die einzelnen Terme darin entsprechen der Reihe nach dem übrig bleibenden Würfelchen, den gelben Basisflächen, den blauen Seitenflächen
+und den roten Kanten.
+
+Multipliziert man nun \((k+1)^2\) aus und fasst geeignet zusammen ergibt sich
+\[(n+1)^3 = 1 + 3\sum_{k=1}^nk^2 + 3\sum_{k=1}^nk + n.\]
+Löst man diese Gleichung jetzt nach \(\sum_{k=1}^nk^2\) auf, so bekommen wir analog zum letzten Abschnitt eine schöne Formel für diese Summe:
+\[\sum_{k=1}^nk^2 = \frac{1}{3}n^3 + \frac{1}{2}n^2 + \frac{1}{6}n\]
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>Ü</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Wem die geometrische Herleitung nicht geheuer ist oder wer noch <b>Übung</b> in der vollständigen Induktion anstrebt, der kann sich hier gleich ans Werk machen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Auch hier wollen wir von 1 und 2 den Schritt weiterlenken zu den Exponenten 3, 4 und so weiter und uns fragen, ob wir nicht auch Formeln
+für die Summen der \(m\)-ten Potenzen finden können, also für
+\[\sum_{k=1}^nk^m.\]
+Wir beginnen mit einer hilfreichen Beobachtung. Für die Exponenten 1 und 2 hatten wir
+als Formeln <a href="https://de.wikipedia.org/wiki/Polynom">Polynome</a> in \(n\) erhalten.
+Für \(m=1\) hatte das Polynom den Grad 2, für \(m=2\) den Grad 3.
+Man könnte nun vermuten, dass dies einer allgemeinen Regel entspricht, nämlich dass wir stets ein Polynom vom Grad \(m+1\) erhalten.
+
+Dies wollen wir flugs <a href="https://de.wikipedia.org/wiki/Beweis_(Mathematik)">beweisen</a>.
+Dazu verwenden wir eine geschickte <a href="https://de.wikipedia.org/wiki/Teleskopsumme">Teleskopsumme</a>:
+\[S := \sum_{k=1}^n ((k+1)^{m+1} - k^{m+1}) = (n+1)^{m+1} - 1\]
+Auf den ersten Term der Summe lässt sich der <a href="https://de.wikipedia.org/wiki/Binomischer_Lehrsatz">binomische Lehrsatz</a>
+(\((a+b)^n = \sum_{\ell=0}^n{n \choose \ell}a^\ell b^{n-\ell}\)) anwenden:
+\[S = \sum_{k=1}^n(\sum_{\ell=0}^{m+1}{m+1 \choose \ell}k^\ell - k^{m+1})\]
+Der Term für \(\ell = m+1\) hebt sich weg und die Reihenfolge der Summen lässt sich tauschen:
+\[S = \sum_{\ell=0}^{m}\sum_{k=1}^n{m+1 \choose \ell}k^\ell\]
+Wir trennen die Summe über \(\ell\) geeignet auf und nutzen das Ergebnis der Teleskopsumme, um schließlich zu sehen:
+\[(n+1)^{m+1} - 1 = \sum_{\ell=0}^{m-1}{m+1 \choose \ell}\sum_{k=1}^nk^\ell + {m+1 \choose m}\sum_{k=1}^nk^m\]
+Dies nutzen wir als Schritt in einem Induktionsbeweis über \(m\). Der Anfang für \(m=1\) ist klar, denn diesen Fall haben wir bereits oben ausführlich betrachtet.
+Wir können nun also davon ausgehen, dass für \(\ell &lt; m\) die \(\sum_{k=1}^nk^\ell\) ein Polynom vom Grad \(\leq m\) ist.
+Insgesamt haben wir dann in unserem letzten Ergebnis den rechten Term \((m+1)\sum_{k=1}^nk^m\) für den wir zeigen wollen, dass er ein Polynom vom Grad \(\leq m+1\) ist.
+Wir erhalten ihn aber als Differenz eines Polynoms vom Grad \(m+1\), nämlich \((n+1)^{m+1} - 1\) und Polynomen vom Grad \(\leq m\).
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Wofür war der Aufwand jetzt gut? Nun, wir wissen jetzt, dass wir, um eine Formel für die Summe \(F(n):=\sum_{k=1}^nk^m\)
+zu finden, nur unter den Polynomen vom Grad \(m+1\) zu suchen brauchen.
+Diese sind aber durch \(m+2\) Werte vollständig bestimmt. Wir müssen also unsere Summe nur z.B. für die Zahlen 0 bis \(m+1\) auswerten und dann
+ein Polynom vom Grad \(m+1\) finden, das an diesen Stellen dieselben Werte hat.
+Dies liefert uns zum Beispiel die <a href="https://de.wikipedia.org/wiki/Polynominterpolation#Lagrangesche_Interpolationsformel">Lagrange Interpolation</a>.
+Es ist recht offensichtlich, dass folgendes Polynom an den Stellen \(n=0, \ldots,  m+1\) die Werte \(F(0), \ldots, F(m+1)\) hat:
+\[f(x) = \sum_{n=0}^{m+1}F(n)\frac{\prod_{k\neq n} x-k}{\prod_{k\neq n} n-k}\]
+Die Produkte über \(k\) laufen dabei von \(0\) bis \(m+1\).
+
+Für jedes fest gewählte \(m\) können wir jetzt eine Formel für die Summe der ersten \(n\) Potenzen der Ordnung \(m\) automatisch berechnen.
+Das lässt sich hier sofort ausprobieren:
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_js_box</cssclass>
+<css>width:50%; overflow:scroll;</css>
+<content>
+</content>
+<specialcontent>
+<contenttype>code_interaction</contenttype>
+<code>
+function sum_of_powers(m)
+{
+  var result = new Array(m+2);
+  for (let c=0; c&lt;m+2; ++c)
+    result[c] = [0n, 1n];
+
+  for (let n=0; n&lt;=m+1; ++n)
+  {
+    let value = 0n;
+    for (let k=1; k&lt;=n; ++k)
+      value += BigInt(k)**BigInt(m);
+
+    let coeffs = [];
+    let denominator = 1n;
+    for (let i=0; i&lt;=m+1; ++i)
+    {
+      if (i != n)
+      {
+        coeffs.push(BigInt(-i));
+        denominator *= BigInt(n-i);
+      }
+    }
+
+    let coefficients = Polynomials.symmetric(coeffs);
+
+    for (let c=0; c&lt;coefficients.length; ++c)
+      result[c] = Rationals.sum(result[c], [value*coefficients[c], denominator]);
+  }
+
+  return Polynomials.toLatex(result);
+}
+</code>
+<display>
+\(m\) = @input:0! \(\sum_{i=1}^n i^m = \) @output:!
+</display>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Noch schöner wäre es natürlich, wenn wir direkt eine Formel nicht nur für alle \(n\), sondern auch für alle \(m\) angeben könnten.
+Das wollen wir zum Abschluss dieses Abschnitts tun und werden so zur sogenannten
+<a href="https://de.wikipedia.org/wiki/Faulhabersche_Formel">Faulhaberschen Formel</a> kommen.
+Wir folgen dabei der Herleitung in <a href="#Orosi2017">[Orosi 2017]</a>.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'><a href='https://de.wikipedia.org/wiki/Geometrische_Reihe#Herleitung_der_Formel_f%C3%BCr_die_Partialsummen'>?</a></div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Dazu soll das Objekt unserer Betrachtung folgende Funktion sein:
+\[H(x) := \sum_{i=1}^ne^{(i-1)x} = \frac{e^{(n+1)x}-1}{e^x-1}\]
+Warum haben wir uns ausgerechnete diese Funktion ausgesucht? Das wird klar, wenn man die Summendarstellung hernimmt
+und ihre <a href="https://de.wikipedia.org/wiki/Differenzierbarkeit">Ableitungen</a> bestimmt.
+Wegen \(\frac{\partial}{\partial x}e^{(i-1)x} = (i-1)e^{(i-1)x}\) folgt
+\[
+\begin{align*}
+H'(0) &amp;= 1 + 2 + \ldots + n =: S^1(n)\\
+H''(0) &amp;= 1^2 + 2^2 + \ldots + n^2 =: S^2(n)\\
+&amp; \vdots\\
+H^{(m)}(0) &amp;= 1^m + 2^m + \ldots + n^m =: S^3(n)\\
+\end{align*}
+\]
+Aha! Hier haben wir also genau die Summen, für die wir uns interessieren.
+Zur gesuchten Formel wird uns nun die Tatsache führen, dass diese Ableitungen
+die Koeffizienten der <a href="https://de.wikipedia.org/wiki/Taylorreihe">Taylorreihe</a> von \(H\) sind
+und sich diese Koeffizienten auch noch auf einem zweiten Weg bestimmen lassen, so dass die Ergebnisse der beiden Rechenwege übereinstimmen müssen.
+
+Einerseits haben wir also folgende Entwicklung:
+\[H(x) = S^0(n) + \frac{S^1(n)}{1!}x + \frac{S^2(n)}{2!}x^2 + \ldots + \frac{S^m(n)}{m!}x^m + \ldots\]
+
+Andererseits blasen wir die Produktdarstellung von \(H\) noch ein bisschen künstlich auf,
+um Faktoren mit leicht bestimmbarer bzw. bekannter Reihenentwicklung zu erhalten. Außerdem kürzen wir \(n+1\) als \(N\) ab.
+\[H(x) = \frac{x}{e^x-1}\frac{e^{Nx}-1}{x}\]
+Die Koeffizienten der Reihenentwicklung des ersten Faktors kommen in der Mathematik häufiger vor und haben deshalb einen eigenen Namen.
+Es sind die <a href="https://de.wikipedia.org/wiki/Bernoulli-Zahl">Bernoulli-Zahlen</a> \(B_k\).
+\[\frac{x}{e^x-1} = B_0 + B_1\frac{x}{1!} + B_2\frac{x}{2!} + \ldots\]
+Das wirkt erstmal geschummelt, weil wir scheinbar lauter unbekannte Zahlen \(B_k\) verwenden.
+Wir nehmen dies zunächst so hin und werden später zeigen, dass sich diese Zahlen leicht rekursiv berechnen lassen.
+
+
+
+Jetzt geht es an den zweiten Faktor. Für diesen nutzen wir aus, dass die <a href="https://de.wikipedia.org/wiki/Exponentialfunktion#Definition">Exponentialfunktion</a> bereits durch eine Potenzreihe definiert ist.
+\[\frac{e^{Nx}-1}{x} = \frac{\sum_{k=0}^\infty \frac{(Nx)^k}{k!}-1}{x}\]
+Da der erste Term der Summe eins ist können wie die Division ohne Schwierigkeiten ausführen und erhalten schließlich
+\[\frac{e^{Nx}-1}{x} = \sum_{k=1}^\infty \frac{N^k}{k!}x^{k-1}.\]
+Jetzt bleibt die für die beiden Faktoren erhaltenen Reihen zu multiplizieren und die Koeffizienten mit unserer ersten Variante,
+d.h. mit den \(S^m\) zu vergleichen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>Ü</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Dies wollen wir wiederum als <b>Übung</b> lassen. Nach geeigneter Umformung erhält man schließlich die folgende Faulhabersche Formel:
+\[S^m(n) = \sum_{i=1}^ni^m = \frac{1}{m+1}\sum_{k=0}^m(-1)^k{m+1 \choose k}B_kn^{m+1-k}\]
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Es bleibt unser Verspechen einzulösen die Bernoulli-Zahlen greifbar zu machen.
+Dazu schauen wir uns die Funktion \(f(x) := \frac{x}{e^x-1}\) an, deren Taylorreihe ja gerade die Bernoulli-Zahlen definiert.
+Sie erfüllt die Beziehung
+\[(e^x-1)f(x)=x.\]
+Dies wollen wir nun \(n\)-mal ableiten und erhalten mit der <a href="https://de.wikipedia.org/wiki/Produktregel">Produktregel</a>:
+\[
+\begin{align*}
+e^xf(x) + (e^x-1)f'(x) &amp;= 0\\
+e^xf(x) + e^xf'(x)  + e^xf'(x) + (e^x-1)f''(x) &amp;= 0\\
+\vdots\\
+\sum_{k=0}^n {n \choose k} (e^x-1)^{(n-k)}f^{(k)}(x) &amp;= 0
+\end{align*}
+\]
+Die Koeffizienten der Taylorreihe von \(f\) erhalten wir mit Hilfe der Ableitungen an der Stelle \(0\) und setzen dafür \(x=0\):
+\[\sum_{k=0}^{n-1} {n \choose k} f^{(k)}(0) = 0\]
+Führen wir dies mit \(n+1\) statt \(n\) aus und ziehen \(f^{(n)}(0) = B_n\) auf die andere Seite der Gleichung bekommen wir die Rekursion
+\[B_n = -\frac{1}{n+1}\sum_{k=0}^{n-1}{n+1 \choose k}B_k.\]
+\(f\) ist an der Stelle \(x=0\) eigentlich nicht definiert, man sieht aber leicht, dass die Funktion sich dort mit dem Wert 1 differenzierbar
+ fortsetzen lässt.
+Damit erhalten wir insbesondere \(B_0=1\), womit wir die rekursive Berechnung der Bernoulli-Zahlen starten können.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_js_box</cssclass>
+<css>width:50%;overflow:scroll;</css>
+<content>
+</content>
+<specialcontent>
+<contenttype>code_interaction</contenttype>
+<code>
+function Bernoulli(n)
+{
+  var B = [[1n, 1n]];
+
+  for (let m=1; m&lt;=n; ++m)
+  {
+    let value = [0n, 1n];
+
+    for (let k=0; k&lt;m; ++k)
+      value = Rationals.sum(value, [Combinatorics.binomial(BigInt(m+1), BigInt(k)) * B[k][0], B[k][1]]);
+
+    value = Rationals.product([-1n, BigInt(m+1)], value);
+
+    B.push(value);
+  }
+
+  var result_str = "\\(";
+  for (let i=0; i&lt;B.length; ++i)
+  {
+    if (i>0) result_str += ", ";
+    result_str += Rationals.toLatex(B[i]);
+  }
+  result_str += "\\)";
+
+  return result_str;
+}
+</code>
+<display>
+Die Bernoulli-Zahlen \(B_0, \ldots, B_n\) für \(n\) = @input:0! sind
+<br/><br/>
+@output:!
+</display>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>Ü</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Die Beobachtung zeigt, dass die Bernoulli-Zahlen zu ungeradem Index \(>1\) stets 0 zu sein scheinen.
+Man überlege sich, warum dies richtig ist.
+</content>
+</paragraph>
+
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<title>Figurierte Zahlen</title>
+<toc>Figurierte Zahlen</toc>
+<content>
+In den Abbildungen des vorausgegangenen Abschnitts haben wir Zahlen als Kästchen dargestellt und diese Kästchen haben begonnen Muster zu bilden:
+Rechtecke, Quadrate und Dreiecke. Zahlen die von geometrischen Figuren abgeleitet sind
+bezeichnet man als <a href="https://de.wikipedia.org/wiki/Figurierte_Zahl">figurierte Zahlen</a>.
+
+Von der Vielfalt solcher Zahlen schauen wir uns drei Arten genauer an: Rechteckzahlen, polygonale Zahlen und Pyramidalzahlen.
+
+
+Rechteckzahlen sind besonders einfach und wir sind ihnen in diesem Kapitel mehrfach begegnet.
+Sie haben die Form \(n \cdot m\) und repräsentieren Rechtecke mit den Seitenlängen \(n\) und \(m\).
+Zum Beispiel ist \(12 = 3 \cdot 4\):
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Eine Rechteckzahl.
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>158px</height>
+<code>
+circle(20,30,20,#FDF283,#000);
+circle(65,30,20,#FDF283,#000);
+circle(110,30,20,#FDF283,#000);
+circle(155,30,20,#FDF283,#000);
+circle(20,75,20,#FDF283,#000);
+circle(65,75,20,#FDF283,#000);
+circle(110,75,20,#FDF283,#000);
+circle(155,75,20,#FDF283,#000);
+circle(20,120,20,#FDF283,#000);
+circle(65,120,20,#FDF283,#000);
+circle(110,120,20,#FDF283,#000);
+circle(155,120,20,#FDF283,#000);
+text(180,81,n,#000,"");
+text(77,155,m,#000,"");
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Wir werden uns besonders für solche Rechteckzahlen interessieren bei denen \(m=n+1\) gilt und für die dreidimensionale Verallgemeinerung,
+die Zahlen, die Quader der Seitenlängen \(n, n+1\) und \(n+2\) repräsentieren.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Wir hatten gesehen, dass die Summen \(1+2+\ldots+n\) sich zu Dreiecken anordnen lassen und die Summen \(1+3+\ldots+(2n+1)\) zu Quadraten.
+Etwas allgemeiner lassen sich die Summen der Form \(\sum_{k=0}^n(kd+1)\) zu \(d+2\)-Ecken anordnen.
+Für \(d=1, 2, 3, 4\) sieht das zum Beispiel so aus:
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Einige Polygonalzahlen.
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>235px</height>
+<width>800px</width>
+<viewbox>0 -10 800 220</viewbox>
+<code>
+circle(140,150,10,#EF8783,#000);
+circle(110,150,10,#EF8783,#000);
+circle(80,150,10,#EF8783,#000);
+circle(50,150,10,#EF8783,#000);
+circle(95,72,10,#EF8783,#000);
+circle(110,98,10,#EF8783,#000);
+circle(125,124,10,#EF8783,#000);
+circle(140,150,10,#EF8783,#000);
+circle(65,124,10,#EF8783,#000);
+circle(80,98,10,#EF8783,#000);
+
+circle(110,150,10,#D1D2FB,#000);
+circle(80,150,10,#D1D2FB,#000);
+circle(50,150,10,#D1D2FB,#000);
+circle(80,98,10,#D1D2FB,#000);
+circle(95,124,10,#D1D2FB,#000);
+circle(110,150,10,#D1D2FB,#000);
+circle(65,124,10,#D1D2FB,#000);
+
+circle(80,150,10,#FDF283,#000);
+circle(50,150,10,#FDF283,#000);
+circle(65,124,10,#FDF283,#000);
+circle(80,150,10,#FDF283,#000);
+
+circle(340,150,10,#EF8783,#000);
+circle(310,150,10,#EF8783,#000);
+circle(280,150,10,#EF8783,#000);
+circle(250,150,10,#EF8783,#000);
+circle(340,60,10,#EF8783,#000);
+circle(340,90,10,#EF8783,#000);
+circle(340,120,10,#EF8783,#000);
+circle(340,150,10,#EF8783,#000);
+circle(250,59,10,#EF8783,#000);
+circle(280,59,10,#EF8783,#000);
+circle(310,60,10,#EF8783,#000);
+circle(340,60,10,#EF8783,#000);
+
+circle(310,150,10,#D1D2FB,#000);
+circle(280,150,10,#D1D2FB,#000);
+circle(250,150,10,#D1D2FB,#000);
+circle(310,90,10,#D1D2FB,#000);
+circle(310,120,10,#D1D2FB,#000);
+circle(310,150,10,#D1D2FB,#000);
+circle(250,90,10,#D1D2FB,#000);
+circle(280,90,10,#D1D2FB,#000);
+circle(310,90,10,#D1D2FB,#000);
+circle(250,150,10,#D1D2FB,#000);
+circle(250,120,10,#D1D2FB,#000);
+circle(250,90,10,#D1D2FB,#000);
+
+circle(280,150,10,#FDF283,#000);
+circle(250,150,10,#FDF283,#000);
+circle(280,120,10,#FDF283,#000);
+circle(280,150,10,#FDF283,#000);
+circle(250,120,10,#FDF283,#000);
+circle(280,120,10,#FDF283,#000);
+circle(250,150,10,#FDF283,#000);
+circle(250,120,10,#FDF283,#000);
+
+circle(540,150,10,#EF8783,#000);
+circle(510,150,10,#EF8783,#000);
+circle(480,150,10,#EF8783,#000);
+circle(450,150,10,#EF8783,#000);
+circle(567,64,10,#EF8783,#000);
+circle(558,92,10,#EF8783,#000);
+circle(549,121,10,#EF8783,#000);
+circle(540,150,10,#EF8783,#000);
+circle(495,11,10,#EF8783,#000);
+circle(519,29,10,#EF8783,#000);
+circle(543,46,10,#EF8783,#000);
+circle(567,64,10,#EF8783,#000);
+circle(422,64,10,#EF8783,#000);
+circle(446,46,10,#EF8783,#000);
+circle(470,29,10,#EF8783,#000);
+circle(495,11,10,#EF8783,#000);
+circle(450,150,10,#EF8783,#000);
+circle(440,121,10,#EF8783,#000);
+circle(431,92,10,#EF8783,#000);
+circle(422,64,10,#EF8783,#000);
+
+circle(510,150,10,#D1D2FB,#000);
+circle(480,150,10,#D1D2FB,#000);
+circle(450,150,10,#D1D2FB,#000);
+circle(528,92,10,#D1D2FB,#000);
+circle(519,121,10,#D1D2FB,#000);
+circle(510,150,10,#D1D2FB,#000);
+circle(480,57,10,#D1D2FB,#000);
+circle(504,75,10,#D1D2FB,#000);
+circle(528,92,10,#D1D2FB,#000);
+circle(431,92,10,#D1D2FB,#000);
+circle(455,75,10,#D1D2FB,#000);
+circle(480,57,10,#D1D2FB,#000);
+circle(450,150,10,#D1D2FB,#000);
+circle(440,121,10,#D1D2FB,#000);
+circle(431,92,10,#D1D2FB,#000);
+
+circle(480,150,10,#FDF283,#000);
+circle(450,150,10,#FDF283,#000);
+circle(489,121,10,#FDF283,#000);
+circle(480,150,10,#FDF283,#000);
+circle(465,103,10,#FDF283,#000);
+circle(489,121,10,#FDF283,#000);
+circle(440,121,10,#FDF283,#000);
+circle(465,103,10,#FDF283,#000);
+circle(450,150,10,#FDF283,#000);
+circle(440,121,10,#FDF283,#000);
+
+circle(740,150,10,#EF8783,#000);
+circle(710,150,10,#EF8783,#000);
+circle(680,150,10,#EF8783,#000);
+circle(650,150,10,#EF8783,#000);
+circle(785,72,10,#EF8783,#000);
+circle(770,98,10,#EF8783,#000);
+circle(755,124,10,#EF8783,#000);
+circle(740,150,10,#EF8783,#000);
+circle(740,-5,10,#EF8783,#000);
+circle(755,20,10,#EF8783,#000);
+circle(770,46,10,#EF8783,#000);
+circle(785,72,10,#EF8783,#000);
+circle(650,-5,10,#EF8783,#000);
+circle(680,-5,10,#EF8783,#000);
+circle(710,-5,10,#EF8783,#000);
+circle(740,-5,10,#EF8783,#000);
+circle(605,72,10,#EF8783,#000);
+circle(620,46,10,#EF8783,#000);
+circle(635,20,10,#EF8783,#000);
+circle(650,-5,10,#EF8783,#000);
+circle(635,124,10,#EF8783,#000);
+circle(620,98,10,#EF8783,#000);
+
+circle(710,150,10,#D1D2FB,#000);
+circle(680,150,10,#D1D2FB,#000);
+circle(650,150,10,#D1D2FB,#000);
+circle(740,98,10,#D1D2FB,#000);
+circle(725,124,10,#D1D2FB,#000);
+circle(710,150,10,#D1D2FB,#000);
+circle(710,46,10,#D1D2FB,#000);
+circle(725,72,10,#D1D2FB,#000);
+circle(740,98,10,#D1D2FB,#000);
+circle(650,46,10,#D1D2FB,#000);
+circle(680,46,10,#D1D2FB,#000);
+circle(710,46,10,#D1D2FB,#000);
+circle(620,98,10,#D1D2FB,#000);
+circle(635,72,10,#D1D2FB,#000);
+circle(650,46,10,#D1D2FB,#000);
+circle(650,150,10,#D1D2FB,#000);
+circle(635,124,10,#D1D2FB,#000);
+circle(620,98,10,#D1D2FB,#000);
+
+circle(680,150,10,#FDF283,#000);
+circle(650,150,10,#FDF283,#000);
+circle(695,124,10,#FDF283,#000);
+circle(680,150,10,#FDF283,#000);
+circle(680,98,10,#FDF283,#000);
+circle(695,124,10,#FDF283,#000);
+circle(650,98,10,#FDF283,#000);
+circle(680,98,10,#FDF283,#000);
+circle(635,124,10,#FDF283,#000);
+circle(650,98,10,#FDF283,#000);
+circle(635,124,10,#FDF283,#000);
+
+text(40,190,1,#000,"",drawing_text_20);
+text(70,190,3,#000,"",drawing_text_20);
+text(100,190,6,#000,"",drawing_text_20);
+text(127,190,10,#000,"",drawing_text_20);
+
+text(240,190,1,#000,"",drawing_text_20);
+text(270,190,4,#000,"",drawing_text_20);
+text(300,190,9,#000,"",drawing_text_20);
+text(327,190,16,#000,"",drawing_text_20);
+
+text(440,190,1,#000,"",drawing_text_20);
+text(470,190,5,#000,"",drawing_text_20);
+text(496,190,12,#000,"",drawing_text_20);
+text(527,190,22,#000,"",drawing_text_20);
+
+text(640,190,1,#000,"",drawing_text_20);
+text(670,190,6,#000,"",drawing_text_20);
+text(696,190,15,#000,"",drawing_text_20);
+text(727,190,28,#000,"",drawing_text_20);
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>Ü</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Zahlen dieser Form nennt man <a href="https://de.wikipedia.org/wiki/Polygonalzahl">Polygonalzahlen</a>.
+Auch diese Zahlen lassen sich in geschlossener Form angeben.
+Der Leser möge dies als Übung versuchen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Für die letzte Klasse figurierter Zahlen, die wir betrachten wollen, erheben wir uns noch einmal aus der Ebene und stapeln Kugeln.
+Wenn man die Kugel dabei in Schichten von Quadraten anordnet erhält man die
+(quadratischen) <a href="https://de.wikipedia.org/wiki/Quadratische_Pyramidalzahl">Pyramidalzahlen</a>.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Die ersten vier Pyramidalzahlen.
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>155px</height>
+<width>900px</width>
+<code>
+circle(50.000000,100.000000,15,#EF8783,#000);
+circle(45.000000,95.000000,3,#FFF,#FFF);
+
+circle(266.000000,84.000000,15,#EF8783,#000);
+circle(261.000000,79.000000,3,#FFF,#FFF);
+circle(298.000000,84.000000,15,#EF8783,#000);
+circle(293.000000,79.000000,3,#FFF,#FFF);
+circle(274.000000,76.000000,15,#EF8783,#000);
+circle(269.000000,71.000000,3,#FFF,#FFF);
+circle(250.000000,100.000000,15,#EF8783,#000);
+circle(245.000000,95.000000,3,#FFF,#FFF);
+circle(282.000000,100.000000,15,#EF8783,#000);
+circle(277.000000,95.000000,3,#FFF,#FFF);
+
+circle(482.000000,68.000000,15,#EF8783,#000);
+circle(477.000000,63.000000,3,#FFF,#FFF);
+circle(514.000000,68.000000,15,#EF8783,#000);
+circle(509.000000,63.000000,3,#FFF,#FFF);
+circle(546.000000,68.000000,15,#EF8783,#000);
+circle(541.000000,63.000000,3,#FFF,#FFF);
+circle(466.000000,84.000000,15,#EF8783,#000);
+circle(461.000000,79.000000,3,#FFF,#FFF);
+circle(498.000000,84.000000,15,#EF8783,#000);
+circle(493.000000,79.000000,3,#FFF,#FFF);
+circle(490.000000,60.000000,15,#EF8783,#000);
+circle(485.000000,55.000000,3,#FFF,#FFF);
+circle(522.000000,60.000000,15,#EF8783,#000);
+circle(517.000000,55.000000,3,#FFF,#FFF);
+circle(498.000000,52.000000,15,#EF8783,#000);
+circle(493.000000,47.000000,3,#FFF,#FFF);
+circle(474.000000,76.000000,15,#EF8783,#000);
+circle(469.000000,71.000000,3,#FFF,#FFF);
+circle(530.000000,84.000000,15,#EF8783,#000);
+circle(525.000000,79.000000,3,#FFF,#FFF);
+circle(506.000000,76.000000,15,#EF8783,#000);
+circle(501.000000,71.000000,3,#FFF,#FFF);
+circle(450.000000,100.000000,15,#EF8783,#000);
+circle(445.000000,95.000000,3,#FFF,#FFF);
+circle(482.000000,100.000000,15,#EF8783,#000);
+circle(477.000000,95.000000,3,#FFF,#FFF);
+circle(514.000000,100.000000,15,#EF8783,#000);
+circle(509.000000,95.000000,3,#FFF,#FFF);
+
+circle(794.000000,52.000000,15,#EF8783,#000);
+circle(789.000000,47.000000,3,#FFF,#FFF);
+circle(666.000000,84.000000,15,#EF8783,#000);
+circle(661.000000,79.000000,3,#FFF,#FFF);
+circle(698.000000,84.000000,15,#EF8783,#000);
+circle(693.000000,79.000000,3,#FFF,#FFF);
+circle(730.000000,84.000000,15,#EF8783,#000);
+circle(725.000000,79.000000,3,#FFF,#FFF);
+circle(682.000000,68.000000,15,#EF8783,#000);
+circle(677.000000,63.000000,3,#FFF,#FFF);
+circle(714.000000,68.000000,15,#EF8783,#000);
+circle(709.000000,63.000000,3,#FFF,#FFF);
+circle(746.000000,68.000000,15,#EF8783,#000);
+circle(741.000000,63.000000,3,#FFF,#FFF);
+circle(698.000000,52.000000,15,#EF8783,#000);
+circle(693.000000,47.000000,3,#FFF,#FFF);
+circle(730.000000,52.000000,15,#EF8783,#000);
+circle(725.000000,47.000000,3,#FFF,#FFF);
+circle(762.000000,52.000000,15,#EF8783,#000);
+circle(757.000000,47.000000,3,#FFF,#FFF);
+circle(706.000000,44.000000,15,#EF8783,#000);
+circle(701.000000,39.000000,3,#FFF,#FFF);
+circle(738.000000,44.000000,15,#EF8783,#000);
+circle(733.000000,39.000000,3,#FFF,#FFF);
+circle(770.000000,44.000000,15,#EF8783,#000);
+circle(765.000000,39.000000,3,#FFF,#FFF);
+circle(690.000000,60.000000,15,#EF8783,#000);
+circle(685.000000,55.000000,3,#FFF,#FFF);
+circle(722.000000,60.000000,15,#EF8783,#000);
+circle(717.000000,55.000000,3,#FFF,#FFF);
+circle(714.000000,36.000000,15,#EF8783,#000);
+circle(709.000000,31.000000,3,#FFF,#FFF);
+circle(746.000000,36.000000,15,#EF8783,#000);
+circle(741.000000,31.000000,3,#FFF,#FFF);
+circle(722.000000,28.000000,15,#EF8783,#000);
+circle(717.000000,23.000000,3,#FFF,#FFF);
+circle(698.000000,52.000000,15,#EF8783,#000);
+circle(693.000000,47.000000,3,#FFF,#FFF);
+circle(674.000000,76.000000,15,#EF8783,#000);
+circle(669.000000,71.000000,3,#FFF,#FFF);
+circle(778.000000,68.000000,15,#EF8783,#000);
+circle(773.000000,63.000000,3,#FFF,#FFF);
+circle(706.000000,76.000000,15,#EF8783,#000);
+circle(701.000000,71.000000,3,#FFF,#FFF);
+circle(754.000000,60.000000,15,#EF8783,#000);
+circle(749.000000,55.000000,3,#FFF,#FFF);
+circle(730.000000,52.000000,15,#EF8783,#000);
+circle(725.000000,47.000000,3,#FFF,#FFF);
+circle(762.000000,84.000000,15,#EF8783,#000);
+circle(757.000000,79.000000,3,#FFF,#FFF);
+circle(738.000000,76.000000,15,#EF8783,#000);
+circle(733.000000,71.000000,3,#FFF,#FFF);
+circle(650.000000,100.000000,15,#EF8783,#000);
+circle(645.000000,95.000000,3,#FFF,#FFF);
+circle(682.000000,100.000000,15,#EF8783,#000);
+circle(677.000000,95.000000,3,#FFF,#FFF);
+circle(714.000000,100.000000,15,#EF8783,#000);
+circle(709.000000,95.000000,3,#FFF,#FFF);
+circle(746.000000,100.000000,15,#EF8783,#000);
+circle(741.000000,95.000000,3,#FFF,#FFF);
+
+text(43,150,1,#000,"",drawing_text_20);
+text(255,150,5,#000,"",drawing_text_20);
+text(468,150,14,#000,"",drawing_text_20);
+text(690,150,30,#000,"",drawing_text_20);
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Man kann eine Menge Fragen zu den figurierten Zahlen stellen. Wir beschränken uns hier auf zwei solche Fragen.
+Erstens: Welche Zahlen lassen sich aus figurierten Zahlen zusammensetzen?
+Zweitens: Welche Zahlen sind gleichzeitig figurierten Zahlen unterschiedlicher Arten.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Die Frage inwiefern sich Zahlen als Summen von Polygonalzahlen darstellen lassen hat im
+<a href="https://de.wikipedia.org/wiki/Fermatscher_Polygonalzahlensatz">Fermatschen Polygonalzahlensatz</a>
+eine wunderschöne Antwort:
+
+<b>Jede natürliche Zahl ist die Summe von höchstens \(m\) \(m\)-Eckszahlen.</b>
+
+Das bedeutet also, dass sich jede natürliche Zahl als Summe von höchsten drei Dreieckszahlen oder von vier Quadraten,
+von fünf Fünfeckzahlen usw. darstellen lässt.
+
+Das muss man einfach ausprobieren:
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_js_box</cssclass>
+<css>width:50%;</css>
+<content>
+</content>
+<specialcontent>
+<contenttype>code_interaction</contenttype>
+<code>
+function sum_of_polygonals(n, m)
+{
+  var polygonals = [];
+
+  let polygonal = 0;
+  let i = 0;
+  while (polygonal &lt;= n)
+  {
+    polygonals.push(polygonal);
+    i += 1;
+    polygonal = (m-2) * (i*(i-1))/2 + i;
+  }
+
+  var indexes = Array.from({length: m}, (v, i) =&gt; 0);
+  while (indexes[indexes.length - 1] &lt; polygonals.length-1)
+  {
+    let pos = 0;
+    indexes[pos] += 1;
+
+    while ((indexes[pos] == polygonals.length) &amp;&amp; (pos &lt; indexes.length))
+    {
+      indexes[pos] = 0;
+      indexes[pos+1] += 1;
+      pos += 1;
+    }
+
+    let value = 0;
+    for (const index of indexes)
+      value += polygonals[index];
+
+    if (value == n)
+    {
+      let result_str = "" + n + " = ";
+      let i = 0;
+      for (const index of indexes)
+      {
+        if (i &gt; 0)
+          result_str += " + ";
+
+        result_str += polygonals[index];
+        i += 1;
+      }
+
+      return result_str;
+    }
+  }
+
+  return "";
+}
+</code>
+<display>
+Die Zahl \(n\) = @input:0! lässt sich wie folgt als Summe von @input:1!-Eckzahlen darstellen: <br/>@output:!
+</display>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Auf den Beweis des allgemeinen Falls wollen wir hier verzichten.
+Ein kurzer Beweis findet sich in <a href="#Edwards1977">[Edwards 1977]</a>.
+
+
+Einen Spezialfall können wir uns aber nicht verkneifen.
+Für \(m=3\) ist dies als <a href="https://de.wikipedia.org/wiki/Dreieckszahl#Summe_dreier_Dreieckszahlen">Heureka-Satz</a> bekannt.
+Man entnimmt dem Tagebuch von Gauss: \(\mathrm{E\Upsilon PEKA!}\,\mathrm{num} = \Delta + \Delta + \Delta\)
+
+Sei nun \(N\) die Zahl, die als Summe dreier Dreieckzahlen der Form \(n(n+1)/2\) dargestellt werden soll.
+Entscheidend ist, dass sich die Zahl \(8N+3\) stets als Summe dreier ungerader Quadrate darstellen lässt.
+
+Dies zu zeigen würde uns an dieser Stelle zu weit vom Weg führen. Es ist eine leichte Folge des
+<a href="https://de.wikipedia.org/wiki/Drei-Quadrate-Satz">drei Quadrate Satzes</a> von Legendre.
+Zwei recht unterschiedliche Beweise dazu finden sich in <a href="#Nathanson1996">[Nathanson 1996, Kapitel 1.5]</a>
+und in <a href="#Serre1973">[Serre 1973, Anhang zu Kapitel IV]</a>.
+
+Sind die ungeraden Zahlen in dieser Darstellung \(2k_1+1\), \(2k_2+1\) und \(2k_3+1\), dann haben wir
+\begin{align*}
+8N+3 &amp;= (2k_1+1)^2 + (2k_2+1)^2 + (2k_3+1)^2\\
+&amp;=4\cdot (k_1^2 + k_1 + k_2^2 + k_2 + k_3^2 + k_3)+3.
+\end{align*}
+Nach Subtraktion von drei und Division durch acht erhält man dann die gesuchte Darstellung als Summe von Dreieckszahlen.
+\[N=\frac{k_1(k_1+1)}{2} + \frac{k_2(k_2+1)}{2} + \frac{k_3(k_3+1)}{2}\]
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Zum Abschluss dieses Kapitels wollen wir uns noch der Frage nach Zahlen stellen, die gleichzeitig figurierte Zahlen unterschiedlicher Art sind.
+
+Als erstes Beispiel nehmen wir Dreiecke, die gleichzeitig Rechtecke oder Quader bilden können.
+Welche Dreieckszahlen sind gleichzeitig das Produkt zweier oder dreier aufeinander folgender Zahlen?
+
+Es wird sich herausstellen, dass die Antwort im zweiten Fall deutlich schwieriger ist als im ersten Fall und deshalb beginnen wir wie folgt.
+Wann ist die Dreieckszahl \(x(x+1)/2\) das Produkt \((y-1)y\) zweier aufeinander folgender Zahlen?
+Wir suchen ganzzahlige Lösungen der Gleichung
+\[x^2+x-2(y^2-y) = 0.\]
+
+Dazu betrachten wir dies als Polynom in der Variablen \(x\), das heißt über dem Ring \((\mathbb{Q}[y])[x]\)
+und können nach Multiplikation mit vier zur <a href="https://de.wikipedia.org/wiki/Quadratische_Erg%C3%A4nzung">quadratischen Ergänzung</a> schreiten:
+
+\begin{align*}
+0 &amp;= 4x^2+4y-8(y^2-y)\\
+0 &amp;= (2x+1)^2-8(y^2-y)-1\\
+t^2 &amp;= 8y^2-2\cdot 4y + 1\\
+8t^2 &amp;= 64y^2-2\cdot 4\cdot 8y + 8\\
+8t^2 &amp;= u^2 - 8
+\end{align*}
+Dabei sind \(t=2x+1\) und \(u=8y-4\) jeweils so gewählt, dass sie den Term im Quadrat nach der quadratischen Ergänzung abkürzen.
+Lösungen \(u, t\) der letzten Gleichung liefern uns Lösungen \(x=\frac{t-1}{2}, y=\frac{u+4}{8}\) wann immer diese Werte ganzzahlig sind.
+
+\(u^2-8t^2=8\) ist eine Instanz der <a href="https://de.wikipedia.org/wiki/Pellsche_Gleichung">Pellschen Gleichung</a>.
+Diese Gleichung kann systematisch gelöst werden, z.B. mit Hilfe von <a href="https://de.wikipedia.org/wiki/Kettenbruch">Kettenbrüchen</a>.
+Dies wird zum Beispiel in <a href="#Edwards1977">[Edwards 1977]</a> und <a href="#Andreescu2015">[Andreescu 2015]</a> behandelt.
+In unserem Beispiel ist es aber leicht und hinreichend eine Lösung zu raten: \(u=\pm 4\), \(t=\pm 1\).
+
+Um weitere Lösungen zu finden wollen ein kleines bisschen
+<a href="https://de.wikipedia.org/wiki/Algebraische_Zahlentheorie">algebraische Zahlentheorie</a> verwenden.
+Wir erweitern unseren Zahlenraum und lassen neben den bisher verwendeten ganzen Zahlen auch noch Zahlen der
+Form \(x+2y\sqrt{2}\) zu. Dabei haben wir \(2\sqrt{2}\) gewählt, weil dies die Wurzel von 8 ist.
+
+\(u^2-8t^2=8\) ist die Norm-Gleichung \((u+2\sqrt{2}t)(u-2\sqrt{2}t)=8\)
+in einer <a href="https://de.wikipedia.org/wiki/Ordnung_(algebraische_Zahlentheorie)">Ordnung</a> im Ring \(\mathbb{Z}[\sqrt{2}]\).
+Weil die Norm multiplikativ ist, erhält man unendlich viele Lösungen, indem man ein Element der Norm 8,
+zum Beispiel \(4+2\sqrt{2}\), mit Elementen der Norm 1 multipliziert, die man gerade als Potenzen
+der <a href="https://de.wikipedia.org/wiki/Einheitengruppe">Einheiten</a> in dieser Ordnung erhält.
+
+Um die Einheiten zu finden müssen wir wieder eine Variante der Pellschen Gleichung lösen: \(u^2-8t^2=1\).
+Wiederum ist es leicht eine Lösung zu erraten. Mit \(u=3\) und \(t=1\) erhalten wir die Einheit \(3+2\sqrt{2}\).
+Somit erhalten wir unendlich viele Lösungen unseres Problems in der Form \((3+2\sqrt{2})^n(4+2\sqrt{2})\).
+
+Als Beispiel ergibt sich für \(n=2\) die Lösung \(\frac{119\cdot 120}{2} = 84\cdot 85\).
+Weitere Lösungen kann man hier einfach ausrechnen:
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_js_box</cssclass>
+<css>width:50%;overflow:scroll;</css>
+<content>
+</content>
+<specialcontent>
+<contenttype>code_interaction</contenttype>
+<code>
+function RectangularTriangle(n)
+{
+  // Fundamental unit
+  var u0 = 3n;
+  var t0 = 2n;
+
+  // Compute n-th power of fundamental unit
+  var u = u0;
+  var t = t0;
+  for (let i=0; i&lt;n; ++i)
+  {
+    let u1 = u*u0 + 2n*t*t0;
+    let t1 = u*t0 + t*u0;
+    u = u1;
+    t = t1;
+  }
+
+  // Multiply by fundamental solution
+  let u1 = u*4n + 2n*t*2n;
+  let t1 = u*2n + t*4n;
+  u = u1;
+  t = t1;
+
+  var x = (t/2n - 1n)/2n;
+  var y = (u + 4n)/8n;
+
+  var result_str = "\\(\\frac{" + x + "\\cdot " + (x + 1n) + "}{2} = " + ((x*(x + 1n))/2n) + " = " + (y - 1n) + "\\cdot " + y + "\\)";
+
+  return result_str;
+}
+</code>
+<display>
+Die \(n\)-te Lösung für \(n\) = @input:0! ist
+<br/><br/>
+@output:!
+</display>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+An dieser Stelle kann man sich fragen, ob man noch weitere Einheiten finden kann, mit deren Hilfe sich weitere Lösungen finden lassen.
+Dies lässt sich mit ein wenig algebraischer Zahlentheorie verneinen.
+
+Dazu werfen wir einen Blick auf den <a href="https://de.wikipedia.org/wiki/Dirichletscher_Einheitensatz">Dirichletschen Einheitensatz</a>.
+Sei \(K\) ein <a href="https://de.wikipedia.org/wiki/Algebraischer_Zahlk%C3%B6rper">Zahlkörper</a>
+(in unserem Fall \(\mathbb{Q}[\sqrt{2}]\)) und \(\mathcal{O}_K\)
+der zugehörige <a href="https://de.wikipedia.org/wiki/Ganzheitsring">Ring der ganzen Zahlen</a>
+(in unserem Fall \(\mathbb{Z}[\sqrt{2}]\)), so lässt sich die Einheitengruppe darin anhand der Gruppe der Einheitswurzeln \(\mu(K)\),
+wenn man weiß, dass \(K\) \(r\) reelle <a href="https://de.wikipedia.org/wiki/Einbettung_(Mathematik)#K%C3%B6rpertheorie">Einbettungen</a>
+und \(s\) Paare komplexer Einbettungen in \(\mathbb{C}\) hat, wie folgt bestimmen:
+$$\mathcal{O}_K^\times = \mu(K) \otimes \mathbb{Z}^{r+s-1}$$
+In unserem Fall haben wir \(r=2\) reelle Einbettungen und \(s=0\) Paare komplexer Einbettungen.
+Der Rang der Einheitengruppe ist also eins und wir brauchen nicht nach weiteren Einheiten zu suchen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Im Fall dreier aufeinander folgender Zahlen erhalten wir die Gleichung
+$$y(y+1) = 2 x(x+1)(x+2).$$
+Mit den Substitutionen \(X := 2x+2\) und \(Y := 2y+1\) liefert uns dies
+
+\begin{equation}
+  Y^2 = X^3 - 4X + 1.
+\end{equation}
+
+Es stellt sich heraus, dass dieser Fall anders gelagert ist, als der vorausgehende.
+Unsere Gleichung beschreibt eine <a href="https://de.wikipedia.org/wiki/Elliptische_Kurve">elliptische Kurve</a>.
+Diesen geometrisch und arithmetisch sehr interessanten Objekten wenden wir uns in einem späteren Kapitel zu.
+Jedenfalls können wir schon einen berühmten <a href="https://en.wikipedia.org/wiki/Siegel%27s_theorem_on_integral_points">Satz von Siegel</a>
+schätzen, der uns sagt, dass diese Gleichung nur endlich viele Lösungen in ganzen Zahlen haben kann.
+Dahinter steckt eine <a href="https://de.wikipedia.org/wiki/Topologie_(Mathematik)">topologische</a> Eigenschaft
+der durch die Gleichung beschriebenen <a href="https://de.wikipedia.org/wiki/Algebraische_Kurve">Kurve</a>:
+Ihr <a href="https://de.wikipedia.org/wiki/Geschlecht_(Fl%C3%A4che)">Geschlecht</a> ist eins, während das Geschlecht der durch die Gleichung
+im vorausgehenden Fall beschriebenen Kurve null ist.
+
+Tatsächlich lassen sich in diesem Fall alle Lösungen bestimmen, wenn die rechte Seite der Gleichung faktorisiert.
+Ist \(\theta\) eine Nullstelle der Gleichung \(X^3 - 4X + 1\), so gilt über dem Körper \(\mathbb{Q}[\theta]\):
+$$Y^2 = (X-\theta)(X^2+\theta X+\theta^2-4)$$
+Nun kann man untersuchen, welche gemeinsamen Teiler die Faktoren auf der rechten Seite haben, denn diese Seite muss ja \(Y^2\) entsprechen,
+also durch ein Quadrat teilbar sein.
+Die etwas mühsame Fallunterscheidung kann man in <a href="#Mohanty1988">[Mohanty 1988]</a> nachlesen.
+Dann erhält man folgende Lösungen unserer Gleichung:
+\begin{align*}
+(X, Y) \in \{&amp;(-2, \pm 1), (-1, \pm 2), (0, \pm 1), (2, \pm 1), (3, \pm 4), (4, \pm 7),\\
+&amp;(10, \pm 31), (12, \pm 41), (20, \pm 89), (114, \pm 1217), (1274, \pm 45473)\}
+\end{align*}
+Um Lösungen unserer ursprünglichen Gleichung zu erhalten müssen wir nun noch die Substitution rückgängig machen.
+In der folgenden Animation sind die Fälle \((X, Y)=(10, 31) \Rightarrow (x, y) = (4, 15) \Rightarrow 4\cdot 5 \cdot 6 = \frac{15\cdot 16}{2}\)
+und \((X, Y)=(12, 41) \Rightarrow (x, y) = (5, 20) \Rightarrow 5\cdot 6 \cdot 7 = \frac{20\cdot 21}{2}\) dargestellt.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<img style="width:48%;padding-right:4%;" src="contents/reisebegleiter/triangular1.gif"/><img style="width:48%" src="contents/reisebegleiter/triangular2.gif"/>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Welche Quadrate sind quadratische Pyramidalzahlen? Setzen wir wieder die Formeln für die zwei Typen von Zahlen gleich, so erhalten wir
+$$P_n = \sum_{k=1}^nk^2 = \frac{n(n+1)(2n+1)}{6}.$$
+Nach Multiplikation beider Seiten mit sechs und Ausmultiplizieren der rechten Seite suchen wir also ganzzahlige Lösungen zur Gleichung
+$$6y^2 = n(n+1)(2n+1) = 2n^3+3n^2+n.$$
+Sie ist wieder von der Form \(y^2 = \) Polynom dritten Grades in \(x\), also haben wir es wieder mit einer elliptischen Kurve zu tun!
+Die einzigen Lösungen sind die Zahlen 1 und 4900.
+Eine schöne Behandlung von Gleichungen dieser Familie findet sich bei <a href="#Bennett2002">[Bennett 2002]</a>.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<css>text-align:left;</css>
+<title>Referenzen</title>
+<toc>Referenzen</toc>
+<content>
+<ul class="book_references">
+<li id='Orosi2017'>
+ [Orosi 2017] Greg Orosi:
+ <a href="https://www.emis.de/journals/AMEN/2018/AMEN-170803.pdf">A Simple Derivation Of Faulhaber's Formula</a>
+</li>
+<li id='Edwards1977'>
+[Edwards 1977] Harold M. Edwards:
+ <a href="https://link.springer.com/book/9780387902302">Fermat's Last Theorem</a> A Genetic Introduction to Algebraic Number Theory
+</li>
+<li id='Andreescu2015'>
+ [Andreescu 2015] Titu Andreescu, Dorin Andrica:
+ <a href="https://link.springer.com/book/10.1007/978-0-387-54109-9">Quadratic Diophantine Equations</a>
+</li>
+<li id='Nathanson1996'>
+ [Nathanson 1996] Melvyn B. Nathanson:
+ <a href="https://link.springer.com/book/10.1007/978-1-4757-3845-2">Additive Number Theory</a> The Classical Bases
+</li>
+<li id='Serre1973'>
+ [Serre 1973] Jean-Pierre Serre:
+ <a href="https://link.springer.com/book/10.1007/978-1-4684-9884-4">A Course in Arithmetic</a>
+</li>
+<li id='Mohanty1988'>
+ [Mohanty 1988] S. P. Mohanty:
+ <a href="https://www.sciencedirect.com/science/article/pii/0022314X88900273">Integer Points of \(y^2 = x^3 - 4x + 1\)</a>
+</li>
+<li id='Bennett2002'>
+ [Bennett 2002] Michael A. Bennett:
+ <a href="https://personal.math.ubc.ca/~bennett/paper21.pdf">Lucas' square pyramid problem revisited</a>
+</li>
+</ul>
+</content>
+</paragraph>
+
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'><a onclick="deepLink('contents/reisebegleiter/reste.xml', 'Reste', '')">&#8680;</a></div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph_center</cssclass>
+<content>
+Weiter geht es im nächsten Kapitel über Reste.
+
+
+&#65374;
+</content>
+</paragraph>
+
+</document>

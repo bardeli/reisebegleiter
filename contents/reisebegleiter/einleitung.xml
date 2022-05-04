@@ -1,0 +1,142 @@
+<document>
+
+<paragraph>
+<cssclass>book_chapter_heading</cssclass>
+<title>Einleitung</title>
+<content>
+  <i>Es ist eine gefährliche Sache, Frodo, aus deiner Tür hinauszugehen. [...]
+    Du betrittst die Straße und wenn du nicht auf deine Füße aufpaßt, kann man nicht wissen, wohin sie dich tragen.</i>
+
+  ― J.R.R. Tolkien, Der Herr der Ringe: Die Gefährten
+
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Woher soll man wissen, ob man nach Paris reisen möchte?
+Nun, man kann Leute fragen, die schon einmal dort waren. Man kann sich ihre Geschichten anhören und ihre Fotos anschauen.
+Solche Geschichten und Fotos finden sich auch in Reiseführern und mit einem solchen Reiseführer bewaffnet kann man sich einen
+ersten Eindruck verschaffen. Man erfährt wie es in Paris aussieht, was es dort zu sehen und zu tun gibt und so weiter.
+Ist man zum Schluss gekommen, dass Paris ein würdiges Reiseziel ist, so kann man den Reiseführer auch zur Vorbereitung einer Reise
+nutzen. Und wenn es dann soweit ist, dass man tatsächlich selbst auf Reisen geht, dann kann man den Reiseführer mitnehmen und
+ihn vor Ort weiter nutzen.
+
+
+
+Eine ähnliche Aufgabe soll der <i>Reisebegleiter Mathematik</i> erfüllen.
+Er soll kein Lehrbuch der Mathematik sein.
+Dort ist die Auswahl groß. Es gibt solche Lehrbücher auf jedem erdenklichen Niveau, zu zahllosen Themen und für jeden Geschmack.
+Der Reisebegleiter soll solche Texte, Vorlesungen, Videos und weiteres Material ergänzen,
+ja motivieren nach spannenden Quellen aus denen man Mathematik lernen kann Ausschau zu halten.
+Dieser Text soll vielmehr an vielen Beispielen zeigen, mit welchen Themen sich Mathematik beschäftigt, welche Techniken
+zum Einsatz kommen und vor allem, dass all dies wunderschön und faszinierend ist.
+
+
+
+Aus einem Reiseführer lernt man weder Französisch noch Land und Leute wirklich kennen.
+Man muss schließlich selbst auf Reisen gehen und eigene Erfahrungen machen.
+Ähnlich verhält es sich mit der Mathematik und mit diesem Text.
+Er kann ein wenig zeigen, was die Mathematik ausmacht und welche Sehenswürdigkeiten es gibt.
+Er kann aber nicht alle Details bieten.
+Einerseits würde der Text dadurch viel zu lang.
+Andererseits aber, ist Mathematik auch kein Zuschauersport.
+Man kann sie leider nicht alleine dadurch erfassen, dass man über sie liest oder jemandem zuhört, der über sie spricht.
+Man muss aktiv Mathematik betreiben, um ihr wirklich folgen zu können.
+Das heißt, dass man Fragen stellen muss, dass man Dinge Nachrechnen muss, dass man selber über Antworten nachdenken und
+sie mitunter auch selber finden muss.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>Ü</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Deshalb sind an vielen Stellen bestimmte Aspekte dem Leser als Übung überlassen, was üblicherweise durch ein Ü im Rand zu erkennen ist.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>?</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Der Autor kann natürlich nicht wissen, welches Vorwissen der Leser mitbringt. Unterschiedliche Leser haben zudem unterschiedliches Vorwissen.
+An den Stellen wo mir beim Schreiben bewusst war, dass ein gewisses Vorwissen zum Verständnis nötig ist, findet sich ein Link in einem Fragezeichen im Rand,
+so dass die Möglichkeit zum Nachschlagen besteht.
+Zudem sind die meisten mathematischen Begriffe mit einem Link, meist zur Wikipedia, versehen. Dort können die Begriffe nicht nur nachgeschlagen
+werden, sondern es finden sich oft sehr schöne weitere Beispiele, Vertiefungen und Querverweise.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Wo kein Lehrbuch geschrieben wird, da ist man mitunter von den Fesseln eines systematischen Aufbaus befreit.
+Das habe ich ganz bewusst zumindest innerhalb der Kapitel so gehalten, wie es im Epigraph am Anfang dieser Einleitung angedeutet wird.
+In jedem Kapitel wollen wir gemeinsam in eine bestimmte Richtung aufbrechen, Schritt vor Schritt setzen, und uns überraschen lassen,
+wo uns die Neugier hinträgt.
+Die entsprechende Richtung und die Schritte kann nur der Autor vorgeben und dies bedingt, dass sie notwendiger Weise den Geschmackt und
+Kenntnisstand des Autors widerspiegeln. Die Mathematik ist viel zu umfangreich als dass alles in gleichem Maße hier Niederschlag finden
+kann und jedem Aspekt Gerechtigkeit widerfahren kann. Dem kann der Leser nur entgegenwirken, indem er seinem eigenen Geschmack folgt und
+sich dort, wo ihm hier nicht hinreichend Genüge getan werden kann, nach anderen Quellen umschaut.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Wenn Sie sich über diesen Text geärgert oder gefreut haben, wenn Sie Fragen oder sonstige Rückmeldungen haben,
+senden Sie mir gerne eine E-Mail an rolf.bardeli@gmail.com.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Bei wissenschaftlicher Literatur führt häufig ein Text zum nächsten und ehe man sich versieht hat man einen schönen Stapel an Büchern und
+anderen Texten angesammelt, die viele Stunden spannender Lektüre garantieren.
+So wollen wir es in diesem Text auch handhaben und fangen damit gleich hier in der Einleitung an.
+Natürlich ist dieser Text nicht der erste, der das Ziel verfolgt einen einleitenden Überblick über die Mathematik zu geben.
+Die folgenden Bücher mit einem ähnlichen Ziel wollen wir dem Leser wärmstens ans Herz legen.
+
+<ul class="book_references">
+<li>Richard Courant, Herbert Robbins: <a href="https://link.springer.com/book/10.1007/978-3-642-13701-3">Was ist Mathematik?</a></li>
+<li>Philip J. Davis, Reuben Hersch: <a href="https://link.springer.com/book/10.1007/978-3-0348-5040-7">Erfahrung Mathematik</a></li>
+<li>Jean Dieudonné: <b>Pour l'honneur de l'esprit humain:</b> les mathématiques aujourd'hui</li>
+<li>David Hilbert, Stephan Cohn-Vossen: <a href="https://link.springer.com/book/10.1007/978-3-642-19948-6">Anschauliche Geometrie</a></li>
+<li>Hans Rademacher, Otto Toeplitz: <a href="https://link.springer.com/book/10.1007/978-3-662-36239-6">Von Zahlen und Figuren</a></li>
+</ul>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'><a onclick="deepLink('contents/reisebegleiter/zahlen.xml', 'Zahlen', '')">&#8680;</a></div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph_center</cssclass>
+<content>
+Jetzt aber los zum ersten Kapitel, das sich mit Zahlen beschäftigt.
+
+
+&#65374;
+</content>
+</paragraph>
+
+</document>
