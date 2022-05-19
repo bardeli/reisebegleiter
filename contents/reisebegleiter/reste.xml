@@ -4,7 +4,626 @@
 <cssclass>book_chapter_heading</cssclass>
 <title>Reste</title>
 <content>
-Hier geht es demnächst weiter...
+Manchem mag es schwer fallen, aber jetzt geht es ans Teilen.
+Wir bleiben in diesem Kapitel bei ganzen Zahlen und da bleibt beim Teilen häufig ein Rest.
+Zum Beispiel lässt sich 14 nicht durch 3 teilen, sondern es gilt \(14 = 4 \cdot 3 + 2\).
+14 lässt also bei Division durch 3 den Rest 2.
+Dieser landet bei uns aber nicht im Abfall, sondern wird in diesem Kapitel zum Hauptdarsteller.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<title>Reste im Kreis</title>
+<toc>Reste im Kreis</toc>
+<content>
+Zum Aufwärmen zeichnen wir einen Kreis und unterteilen ihn gleichmäßig in \(n\) Teile, indem wir ebensoviele Punkte im gleichen Abstand
+darauf verteilen.
+Dann verbinden wir die Punkte wie folgt.
+Wir starten bei einem Punkt und gehen im Kreis \(m\) Schritte weiter.
+Dann verbinden wir Start- und Zielpunkt.
+Von letzterem gehen wir wieder \(m\) Schritte weiter und so weiter.
+Wenn wir an einem Punkt ankommen, den wir schon besucht haben und es sind noch nicht alle Punkte auf dem Kreis mit
+einer Linie verbunden wechseln wir den Stift und nehmen eine neue Farbe.
+Dann fangen wir beim ersten Punkt, der noch keine Linie hat, wieder an, bis schließlich alle Punkte besucht worden sind.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_js_box</cssclass>
+<css>width:50%;</css>
+<content>
+</content>
+<specialcontent>
+<contenttype>code_interaction</contenttype>
+<code>
+function modular_circle(n, m)
+{
+  var result_str = "&lt;svg height='300'&gt;";
+
+  result_str += "&lt;circle cx='120' cy='150' r='100' stroke='#000' fill='none'/&gt;";
+
+  for (let i=0; i&lt;Rationals.gcd(n, m); ++i)
+  {
+    let color = Colormap.getColor(Colormap.basic_lines, i, "#000");
+
+    for (let j=0; j&lt;n; ++j)
+    {
+      let x1 = 120 + 100 * Math.cos(2*(i+j*m)*Math.PI / n);
+      let y1 = 150 + 100 * Math.sin(2*(i+j*m)*Math.PI / n);
+      let x2 = 120 + 100 * Math.cos(2*(i+(j+1)*m)*Math.PI / n);
+      let y2 = 150 + 100 * Math.sin(2*(i+(j+1)*m)*Math.PI / n);
+      result_str += "&lt;line x1='" + x1 + "' y1='" + y1 + "' x2='" + x2 + "' y2='" + y2 + "' stroke-width=2 stroke='" + color + "'/&gt;";
+    }
+  }
+
+  for (let i=0; i&lt;n; ++i)
+  {
+    let xpos = 120 + 100 * Math.cos(2*i*Math.PI / n);
+    let ypos = 150 + 100 * Math.sin(2*i*Math.PI / n);
+
+    result_str += "&lt;circle cx='" + xpos + "' cy='" + ypos + "' r='5'/&gt;";
+  }
+
+  // test inner circle
+  let x1 = 100;
+  let y1 = 0;
+  let x2 = 100 * Math.cos(2*m*Math.PI / n);
+  let y2 = 100 * Math.sin(2*m*Math.PI / n);
+
+  let lambda = - (x1*(x2-x1)+y1*(y2-y1)) / ((x2-x1)**2 + (y2-y1)**2);
+  let radius = Math.sqrt((x1+lambda*(x2-x1))**2 + (y1+lambda*(y2-y1))**2);
+
+  result_str += "&lt;circle cx='120' cy='150' r='" + radius + "' stroke='#000' fill='none'/&gt;";
+
+  result_str += "&lt;/svg&gt;";
+
+  return result_str;
+}
+</code>
+<display>
+\(n\) = @input:0! \(m\) = @input:1!
+<br/>
+@output:!
+</display>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Wir haben das einmal für die Unterteilung in bis zu zwölf Teile in eine Übersicht gebracht.
+Dabei sind in jeder Zeile zu einer festen Unterteilung des Kreises in \(n\) Teile jeweils
+die Sehnen eingezeichnet, die man erhält, wenn man stets eine feste Anzahl an Schritten im Kreis weitergeht.
+Die Anzahl der Schritte ist in jeder Spalte fest.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<img style="width:100%;" src="contents/reisebegleiter/reste.png"/>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Was kann man daraus erkennen?
+Die einfachste Beobachtung ist, dass die Zeilen jeweils symmetrisch sind.
+Das erste Bild stimmt mit dem letzten überein, das zweite mit dem vorletzten und so weiter.
+Das liegt daran, dass sich, wenn man bei Unterteilung in \(n\) Teile immer \(m\) Schritte im Uhrzeigersinn macht,
+die gleiche Schrittfolge ergibt, wie wenn man stets \(m\) Schritte gegen den Uhrzeigersinn macht, nur in umgekehrter Richtung.
+
+
+Dann fallen Zeilen auf, in denen nur eine Farbe vorkommt.
+Dies bedeutet, dass der ganze Kreis abgeschritten wird, bevor ein Punkt ein zweites Mal besucht wird.
+Dies passiert genau dann, wenn \(n\) eine Primzahl ist.
+Allgemeiner kann man zählen wie oft man neu ansetzen muss, um den ganzen Kreis abzudecken.
+Bei unserem Vorgehen, bei dem jeder geschlossene Kantenzug eine andere Farbe erhält, entspricht dies also der Anzahl unterschiedlicher Farben.
+Diese Zahl findet sich in der Abbildung in der Mitte jedes Kreises.
+Sie entspricht dem <a href="https://de.wikipedia.org/wiki/Gr%C3%B6%C3%9Fter_gemeinsamer_Teiler">größten gemeinsamen Teiler</a> der Anzahl \(n\) der Punkte,
+in die wir den Kreis unterteilt haben, und der Anzahl \(m\) der Schritte, die gemacht werden.
+
+
+
+Wer musikalisch ist, kann sich die Reihe zur Unterteilung in sieben Punkte vornehmen und an die Punkte der Reihe nach die Noten
+einer <a href="https://de.wikipedia.org/wiki/Tonleiter">Tonleiter</a> schreiben. Dann kann man die gesamte Tonleiter
+in festen <a href="https://de.wikipedia.org/wiki/Intervall_(Musik)">Intervallen</a> durchspielen.
+Dabei ist die Richtung die man durch den Kreis nimmt nicht ganz egal.
+Man erhält das gleiche musikalische Muster dann einmal mit aufsteigenden und einmal mit absteigenden Tonhöhen, je nachdem, ob man
+vorwärts oder rückwärts durch den Kreis geht.
+
+
+
+Das war alles schön, aber was soll das mit Resten zu tun haben?
+Ein in \(n\) Teile unterteilter Kreis symbolisiert Reste modulo \(n\).
+Dies lässt sich gut am Beispiel einer <a href="https://de.wikipedia.org/wiki/Analoguhr">Analoguhr</a> nachvollziehen.
+Welche Uhrzeit ist 3 Stunden nach 11? 11+3 = 14 = 12+2. 14 Uhr entspricht 2 Uhr (nachmittags).
+Genauso kann man auch mit Resten modulo jeder anderen Zahl umgehen.
+Mit den Resten kann man rechnen.
+
+Für die Addition ist das nicht weiter überraschend, denn genau das haben wir im Prinzip beim Zeichnen der Kantenzüge und an der Uhr getan.
+Auch die Subtraktion stellt kein Problem dar. Man muss nur im Kreis die entgegengesetzte Richtung einschlagen.
+
+
+Da die Multiplikation von ganzen Zahlen sich auf die Addition zurückführen lässt ergibt sie sich für Reste ebenfalls natürlich.
+Wir wollen dies nur an einem Beispiel veranschaulichen.
+Was ist \(7\cdot 3\) modulo 8? Nun wir müssen einfach beim Punkt null im Kreis starten und siebenmal drei Schritte weitergehen.
+</content>
+</paragraph>
+
+<paragraph>
+<css>fill:#f00;</css>
+<cssclass>book_paragraph</cssclass>
+<content>
+\(7\cdot 3\) modulo 8 ergibt 5.
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>250px</height>
+<width>100%</width>
+<code>
+circle(400,125,100,none,#000);
+
+circle(500,125,5,#000,#000);
+circle(471,196,5,#000,#000);
+circle(400,225,5,#000,#000);
+circle(329,196,5,#000,#000);
+circle(300,125,5,#000,#000);
+circle(329,54,5,#000,#000);
+circle(400,25,5,#000,#000);
+circle(471,54,5,#000,#000);
+
+arrow(400,25,471,196,#F00,2);
+arrow(471,196,300,125,#F00,2);
+arrow(300,125,471,54,#F00,2);
+arrow(471,54,400,225,#F00,2);
+arrow(400,225,329,54,#F00,2);
+arrow(329,54,500,125,#F00,2);
+arrow(500,125,329,196,#F00,2);
+
+text(510,128,2 = 6x3,#000,"");
+text(478,206,3 = 1x3,#000,"");
+text(396,243,4 = 4x3,#000,"");
+text(272,206,7x3 = 5,#000,"");
+text(243,128,2x3 = 6,#000,"");
+text(272,47,5x3 = 7,#000,"");
+text(396,15,0,#000,"");
+text(478,47,1 = 3x3,#000,"");
+</code>
+</specialcontent>
+</paragraph>
+
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Alternativ können wir auch \(7\cdot 3 = 21\) ausrechnen und dann den Rest modulo 8 bestimmen: \(21 = 2\cdot 8 + 5\).
+
+
+
+Wie steht es um die Division?
+Diese funktioniert leider nur unter einer zusätzlichen Bedingung.
+Einerseits haben wir modulo \(n\) wann immer eine Zahl \(a\) nicht teilerfremd zu \(n\) ist
+einen <a href="https://de.wikipedia.org/wiki/Nullteiler">Nullteiler</a>.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'><a href='https://de.wikipedia.org/wiki/Kongruenz_(Zahlentheorie)'>?</a></div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Zum Beispiel ist 4 modulo 6 ein Nullteiler, denn \(3\cdot 4 = 12 = 2\cdot 6 \equiv 0(6)\).
+Durch Nullteiler kann man nicht teilen. Sei etwa \(a\cdot b = 0\) und \(a\) und \(b\) nicht null.
+Angenommen man könnte durch \(b\) teilen, so folgte \(a = 0\), was wir ausgeschlossen hatten.
+
+Andererseits finden wir stets <a href="https://de.wikipedia.org/wiki/Inverses_Element">Inverse</a>, wenn der größte gemeinsame Teiler mit \(n\) eins ist.
+Der <a href="https://de.wikipedia.org/wiki/Erweiterter_euklidischer_Algorithmus">erweiterte euklidische Algorithmus</a>
+liefert eine lineare Darstellung des ggT.
+Ist \(\mathrm{ggT}(a, n)=g\), dann gibt es ganze Zahlen \(\alpha\) und \(\nu\), so dass gilt:
+$$\alpha a + \nu n = g$$
+Zum Beispiel ist \(\mathrm{ggT}(3, 5)=1\) und \(-3\cdot 3 + 2\cdot 5 = 1\).
+
+Insbesondere haben wir im Fall \(g=1\): \(\alpha a = 1 - \nu n\), also ist \(\alpha a \equiv 1 (n)\) und
+demnach  \(\alpha\) multiplikativ invers zu \(a\).
+Wir können, wenn \(a\) und \(n\) teilerfremd sind durch \(a\) teilen!
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Die Anzahl der zu einer gegebenen Zahl teilerfremden Zahlen wird durch die
+<a href="https://de.wikipedia.org/wiki/Eulersche_Phi-Funktion">Eulersche \(\phi\)-Funktion</a>
+gezählt, d.h.
+$$\phi(n) := \#\{d \in \mathbb{N} \mid d|n\}$$
+In unserem Diagramm entsprechen diese Zahlen gerade den gänzlich roten Kreisen, so dass wir \(\phi(n)\) bestimmen können,
+indem wir die roten Kreise in Zeile \(n\) des Diagramms zählen.
+Wir hatten schon festgestellt, dass in Zeilen, die zu Primzahlen gehören stets alle Kreise rot sind.
+Damit erkennen wir, dass für jede Primzahl \(p\) gilt: \(\phi(p)=p-1\).
+
+Eine weitere Eigenschaft der \(\phi\)-Funktion kann man anhand unseres Diagramms für kleine Zahlen überprüfen.
+Es gilt allgemein:
+$$\sum_{d|n}\phi(d)=n$$
+Da \(n=1\) und \(n=2\) in unserem Diagramm fehlen, stellen wir zunächst fest, dass in diesen Fällen jeweils \(\phi(n)=1\) gilt.
+Wollen wir die Identität für \(n \in \{3, 4, \ldots, 12\}\) überprüfen, so müssen wir zunächst die Teiler von \(n\) bestimmen und
+dann in den entsprechenden Zeilen unseres Diagramms die rein roten Kreise mit einer eins in der Mitte zählen.
+Für \(n=9\) erhalten wir sechs solche Kreise in Zeile 9, zwei in Zeile 3 und müssen noch eins für \(\phi(1)\) addieren.
+Wir erhalten also \(6 + 2 + 1 = 9\).
+Entsprechend bekommen wir \(4 + 4 + 1 + 1 = 10\) und \(4 + 2 + 2 + 2 + 1 + 1= 12\).
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'><a href='https://de.wikipedia.org/wiki/Fakult%C3%A4t_(Mathematik)'>?</a></div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Als Beispiel für das Rechnen mit Resten ziehen wir den <a href="https://de.wikipedia.org/wiki/Satz_von_Wilson">Satz von Wilson</a> heran.
+Er besagt, dass eine Zahl \(n\) genau dann prim ist, wenn \((n-1)!\) modulo \(n\) den Rest -1 lässt, d.h. wenn \((n-1)!+1\) durch \(n\) teilbar ist.
+
+Das Rechnen mit Fakultäten macht wenig Spaß, denn sie werden sehr schnell sehr groß.
+Schauen wir uns das Beispiel \(n=11\) an.
+Bei naiver Anwendung von Wilsons Kriterium müssten wir \(10! = 1\cdot 2 \cdot \ldots \cdot 10 = 3\,628\,800\) berechnen.
+Das geht gerade noch so, aber für größeres \(n\) wird es schnell unhandlich.
+Tatsächlich interessieren wir uns aber nur für den Rest modulo 11 und den können wir auch berechnen, indem wir nach jeder Multiplikation
+in der Berechnung von 10! den Rest bestimmen.
+Also:
+
+\begin{alignat*}{5}
+  &amp;1! &amp;&amp;= 1 &amp;&amp; &amp;&amp;\\
+  &amp;2! &amp;&amp;= 2 &amp;&amp; &amp;&amp;\\
+  &amp;3! &amp;&amp;= 6 &amp;&amp; &amp;&amp;\\
+  &amp;4! &amp;&amp;= 24 &amp;&amp;\equiv 2 &amp;&amp; &amp;&amp;(11)\\
+  &amp;5! &amp;&amp;\equiv 5\cdot 2 &amp;&amp;\equiv 10 &amp;&amp; &amp;&amp; (11)\\
+  &amp;6! &amp;&amp;\equiv 6\cdot 10 &amp;&amp;\equiv 60 &amp;&amp;\equiv 5\,&amp;&amp; (11)\\
+  &amp;7! &amp;&amp;\equiv 7\cdot 5 &amp;&amp;\equiv 35 &amp;&amp;\equiv 2\,&amp;&amp; (11)\\
+  &amp;8! &amp;&amp;\equiv 8\cdot 2 &amp;&amp;\equiv 16 &amp;&amp;\equiv 5\,&amp;&amp; (11)\\
+  &amp;9! &amp;&amp;\equiv 9\cdot 5 &amp;&amp;\equiv 45 &amp;&amp;\equiv 1\,&amp;&amp; (11)\\
+  &amp;10! &amp;&amp;\equiv 10\cdot 1 &amp;&amp;\equiv 10 &amp;&amp; &amp;&amp; (11)\\
+\end{alignat*}
+
+Der letzte Rest ist also \(10 = 11-1\), was zu erwarten war, weil 11 prim ist.
+Schön ist aber, dass die größte Zahl mit der wir umgehen mussten 60 war, was im Vergleich zu \(3\,628\,800\) ein echter Gewinn ist.
+Leider haben wir so keinen effizienten <a href="https://de.wikipedia.org/wiki/Primzahltest">Primalitätstest</a> erhalten,
+weil die Berechnung von \((n-1)!\) modulo \(n\) letztlich den gleichen Aufwand hat wie das Vorgehen jeden möglichen Teiler von \(n\) auszuprobieren.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<title>Chinesische Reste</title>
+<toc>Chinesische Reste</toc>
+<content>
+Im <a onclick="deepLink('contents/reisebegleiter/reste.xml', 'Zahlen', '')">Kapitel über Zahlen</a>
+hatten wir die <a href="https://de.wikipedia.org/wiki/Polynominterpolation#Lagrangesche_Interpolationsformel">Lagrange-Interpolation</a> genutzt.
+Dabei ging es darum ein Polynom zu finden, das durch vorgegebene Punkte geht.
+Sind an den Stellen \(x_1, \ldots, x_m\) die Werte \(y_1, \ldots, y_m\) vorgegeben, so finden wir das Polynom
+$$f(x) = \sum_{n=1}^{m}y_n\frac{\prod_{k\neq n} x-x_k}{\prod_{k\neq n} n-x_k}$$
+vom Grad \(m-1\), das genau diese Vorgaben erfüllt.
+
+Der Trick dabei ist, dass für jeden vorgegebenen Wert ein Term verwendet wird, der an den anderen vorgegebenen Stellen null ist (Zähler)
+und an der gewünschten Stelle den richtigen Wert annimmt.
+
+Dieses Vorgehen lässt sich auch für Zahlen realisieren.
+Für den Anfang wollen wir folgende Aufgabe lösen:
+Es sind Primzahlen \(p_1, \ldots, p_m\) und Reste \(r_1, \ldots, r_m\) bezüglich dieser Primzahlen gegeben.
+Zu finden ist eine Zahl \(N\), die genau diese Reste hat, d.h. \(N \equiv r_i (p_i)\).
+
+Hier ist ein Beispiel für diese Aufgabe.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Welche Zahl lässt modulo 2 den Rest 1, modulo 3 den Rest 2 und modulo 7 den Rest 4?
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>420px</height>
+<width>50%</width>
+<code>
+circle(25,30,20,#FDF283,#000);
+circle(70,30,20,#FDF283,#000);
+circle(115,30,20,#FDF283,#000);
+circle(160,30,20,#FDF283,#000);
+circle(205,30,20,#FDF283,#000);
+circle(25,75,20,#FDF283,#000);
+circle(70,75,20,#FDF283,#000);
+circle(115,75,20,#FDF283,#000);
+circle(160,75,20,#FDF283,#000);
+circle(205,75,20,#FDF283,#000);
+circle(250,75,20,#D1D2FB,#000);
+
+circle(25,165,20,#FDF283,#000);
+circle(25,210,20,#FDF283,#000);
+circle(25,255,20,#FDF283,#000);
+circle(70,165,20,#FDF283,#000);
+circle(70,210,20,#FDF283,#000);
+circle(70,255,20,#FDF283,#000);
+circle(115,165,20,#FDF283,#000);
+circle(115,210,20,#FDF283,#000);
+circle(115,255,20,#FDF283,#000);
+circle(160,210,20,#D1D2FB,#000);
+circle(160,255,20,#D1D2FB,#000);
+
+circle(25,345,20,#D1D2FB,#000);
+circle(70,345,20,#D1D2FB,#000);
+circle(115,345,20,#D1D2FB,#000);
+circle(160,345,20,#D1D2FB,#000);
+circle(25,390,20,#FDF283,#000);
+circle(70,390,20,#FDF283,#000);
+circle(115,390,20,#FDF283,#000);
+circle(160,390,20,#FDF283,#000);
+circle(205,390,20,#FDF283,#000);
+circle(250,390,20,#FDF283,#000);
+circle(295,390,20,#FDF283,#000);
+
+text(330,60,11 = 5 x 2 + 1,#000,"");
+text(330,208,11 = 3 x 3 + 2,#000,"");
+text(330,368,11 = 1 x 7 + 4,#000,"");
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Jetzt bilden wir die Lagrange-Interpolation nach.
+Wir brauchen Terme, die modulo jeder der vorgegebenen Primzahlen außer einer null sind.
+Die sind leicht zu erhalten, nämlich als \(\prod_{k\neq n} p_k\).
+Wäre nun \(\prod_{k\neq n} p_k \equiv 1 (p_n)\) hätten wir unser Ziel erreicht, indem wir
+\(N = \sum_{n=1}^{m}r_n\prod_{k\neq n} p_k\) setzen.
+Da dies nicht immer der Fall ist, müssen wir noch den Nenner aus der Polynomvariante nachbilden.
+Dazu können wir \(\prod_{k\neq n} p_k\) in \(\mathbb{Z}/p_n\mathbb{Z}\) invertieren, nennen wir das Inverse \(I_n\).
+Dann erhalten wir
+$$N = \sum_{n=1}^{m}r_nI_n\prod_{k\neq n} p_k.$$
+Das wollen wir sofort an unserem Beispiel nachprüfen.
+
+Dazu bestimmen wir zunächst die Inversen.
+
+\(3 \cdot 7 = 21\) lässt modulo 2 den Rest 1 und braucht damit nicht invertiert zu werden.
+Wir setzen also \(I_1 = 1\).
+
+\(2 \cdot 7 = 14\) lässt modulo 3 den Rest 2.
+\(2 \cdot 2 = 4 \equiv 1 (3)\). Wir setzen also \(I_2 = 2\).
+
+Schließlich lässt \(2 \cdot 3 = 6\) modulo 7 den Rest -1 und ist damit selbstinvers:
+\(6 \cdot 6 = 36 \equiv 1 (7)\). Wir setzen also \(I_3 = 6\).
+
+Damit haben wir alles, um unsere Formel zu befüllen:
+$$r_1I_1\prod_{k\neq 1} p_k + r_2I_2\prod_{k\neq 2} p_k + r_3I_3\prod_{k\neq 3} p_k
+= 1 \cdot 1 \cdot 3 \cdot 7 + 2 \cdot 2 \cdot 2 \cdot 7 + 4 \cdot 6 \cdot 2 \cdot 3 = 221.$$
+
+Das haben wir so eher nicht erwartet. Aber die Probe zeigt, dass die Zahl die gewünschten Eigenschaften hat.
+Also, wo ist unsere 11 geblieben?
+Nun ist das Produkt unserer Primzahlen gerade \(2 \cdot 3 \cdot 7 = 42\) und \(5 \cdot 42 + 11 = 221\).
+Modulo 42 ist also alles gut.
+
+Wir können uns diese Aufgabe auch wie folgt vorstellen.
+Angenommen ich wäre reich und exzentrisch und wollte, dass meine drei Kinder an ein besonderes Stück aus meinem Erbe nur gemeinsam
+herankommen können.
+Dazu besorge ich 42 Schatztruhen und lege das Erbstück in eine davon.
+Um Glücksritter davon abzuhalten die Truhen einfach zufällig oder der Reihe nach zu öffnen versehe ich die anderen Truhen mit Bomben.
+Jetzt ordne ich die Truhen in zwei Schichten von je drei mal sieben Truhen an.
+Dem ersten Kind verrate ich in welcher der beiden Schichten sich die richtige Truhe befindet.
+Dem zweiten Kind sage ich in welcher von sieben Spalten sich die Truhe befindet und das dritte Kind erfährt in welcher von drei Reihen es suchen muss.
+Zusammen können sie so genau die richtige Truhe finden.
+Jedes Kind für sich könnte jedoch nur auf 6, 14 oder 21 Truhen einschränken.
+Zwei Kinder zusammen müssten immer noch aus 2, 3 oder 7 Truhen auswählen.
+Hier werden die Bomben wichtig! Die Wahl von nur zwei Schichten ist für den Schutz des Erbes eventuell etwas wenig.
+
+
+
+Das obige Vorgehen lässt sich schrittweise verallgemeinern.
+Zunächst einmal fragen wir, ob wir uns auf Reste modulo Primzahlen beschränken müssen.
+Der entscheidende in unserem Vorgehen ist dabei, dass wir \(\prod_{k\neq n} p_k\) in \(\mathbb{Z}/p_n\mathbb{Z}\) invertieren müssen.
+Wenn wir uns an unsere Kreise erinnern, sehen wir, dass dies immer dann klappt, wenn \(\prod_{k\neq n} p_k\) zu \(p_n\) teilerfremd ist.
+Diese Bedingung ist nicht nur dann erfüllt, wenn die \(p_i\) Primzahlen sind, sondern auch, wenn sie paarweise teilerfremd sind.
+Damit sind wir bei einer ersten Form des <a href="https://de.wikipedia.org/wiki/Chinesischer_Restsatz">chinesischen Restsatzes</a> angekommen.
+
+Tatsächlich geht es noch ein gutes Stück allgemeiner.
+Für beliebige <a href="https://de.wikipedia.org/wiki/Ring_(Algebra)">Ringe</a> mit Eins und paarweise teilerfremde Ideale \(I_1, \ldots, I_n\)
+gilt, mit \(I:=\cap_k I_k\):
+$$R/I \cong R/I_1 \times \cdots \times R/I_n$$
+Dies macht man sich zum Beispiel in der <a href="https://de.wikipedia.org/wiki/Computeralgebra">Computer Algebra</a> zunutze,
+wo man statt in dem großen Ideal \(I\) in kleineren Idealen \(I_k\) rechnet und die Teilergebnisse dann zusammensetzt.
+So, kann man beim Rechnen mit ganzen Zahlen vermeiden, dass man mit sehr großen Zahlen rechnen muss.
+Beim Rechnen mit Polynomen kann man auf die gleiche Art und Weise sowohl die Grade der Polynome, als auch die Größe der Koeffizienten
+unter Kontrolle halten.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<title>Faktorisieren</title>
+<toc>Faktorisieren</toc>
+<content>
+Jetzt wollen wir mir den Resten noch mehr anstellen.
+Die Zahlen der Form \(2^{2^k}+1\) sind als <a href="https://de.wikipedia.org/wiki/Fermat-Zahl">Fermat-Zahlen</a> bekannt.
+Die ersten fünf Fermat-Zahlen, für \(k=0,1,2,3,4\), sind Primzahlen.
+Diese Serie reißt entgegen der ursprünglichen Vermutung von Fermat schon an der nächsten Stelle ab.
+Das zeigen wir, indem wir zeigen, dass die Zahl \(2^{32}+1 = 4\,294\,967\,297\) modulo 641  den Rest null lässt, also durch 641 teilbar ist.
+
+Beginnen wir mit zwei Beobachtungen:
+$$641 \stackrel{(a)}{=} 1 + 2^7\cdot 5 \stackrel{(b)}{=} 2^4 + 5^4$$
+Beobachtung (a) gibt uns die Kongruenz \(2^7\cdot 5 \equiv -1(641)\) und mit Beobachtung (b) haben wir \(2^4 \equiv -(5^4)(641)\).
+Damit wollen wir uns an \(2^{32}\) herantasten. Wir können modulo 641 durch 5 teilen, weil 5 zu 641 teilerfremd ist.
+Also macht es Sinn zu sagen, dass \(2^7 \equiv -\frac{1}{5}(641)\). Nach Multiplikation mit zwei haben wir dann \(2^8 \equiv -\frac{2}{5}(641)\).
+Jetzt müssen wir nur noch die vierte Potenz nehmen und unsere Folgerung aus Beobachtung (b) verwenden:
+$$2^{32} \equiv (-\frac{2}{5})^4 \equiv \frac{2^4}{5^4} \equiv -1 (641)$$
+Also haben wir gezeigt, dass \(2^{2^5} +1 \equiv 0 (641)\) gilt. Die sechste Fermat-Zahl ist nicht prim!
+
+Fermat-Zahlen sind aus verschiedenen Gründen interessant. Einer davon ist, dass sich regelmäßige \(n\)-Ecke genau dann
+<a href="https://de.wikipedia.org/wiki/Konstruierbares_Polygon">mit Zirkel und Lineal konstruieren</a>
+lassen, wenn \(n\) von der Form \(2^k\cdot p_1 \cdot \ldots \cdot p_m\) ist, wobei die \(p_i\) paarweise verschiedene Fermat-Primzahlen sind.
+Wir können hier einen Kreis zum Anfang des Kapitels schließen.
+\(n\) ist nämlich genau dann von dieser Form, wenn \(\phi(n)\) eine Potenz von zwei ist.
+Diese Zusammenhänge erschließen sich am klarsten mit Hilfe der <a href="https://de.wikipedia.org/wiki/Galoistheorie">Galoistheorie</a>,
+auf die wir später noch zu sprechen kommen werden.
+
+
+
+Mit dem Computer ist es ziemlich leicht zu überprüfen ob eine bestimmte Zahl Teiler einer gegebenen Zahl ist oder nicht.
+Die Berechnung von \(2^{32}\) modulo 641 hätte er uns spielend in Sekundenbruchteilen abgenommen.
+Will man ganz allgemein die Teiler von Zahlen finden, so ist es eben die Frage, wie man schnell Kandidaten für die Teiler findet, die
+die Schwierigkeit darstellt.
+
+
+
+
+Folgende einfache Beobachtung kann hier helfen.
+Sei \(p\) Teiler einer Zahl \(N\).
+Wenn zwei unterschiedliche Zahlen \(a\) und \(b\) den gleichen Rest modulo \(p\) lassen,
+so ist \(a-b \equiv 0 (p)\) und ihre Differenz also ein Vielfaches von \(p\).
+Häufig ist dann \(\mathrm{ggT}(a-b, N)\) ein echter Teiler von \(N\).
+
+In <a href="https://de.wikipedia.org/wiki/Pollard-Rho-Methode">Pollards Rho-Methode</a> wird versucht solche Paare durch
+wiederholte Anwendung einer Funktion zu finden.
+Angenommen \(a\) und \(b\) lassen den gleichen Rest modulo \(p\).
+Dann lassen auch \(a^2+1\) und \(b^2+1\) den gleichen Rest, denn \(a^2+1 - (b^2+1) = a^2-b^2 = (a+b)(a-b) \equiv 0(p)\).
+Dadurch kommen in der Folge \(x_0 := 2\), \(x_{i+1} := x_i^2+1\) höchstens \(p\) unterschiedliche Reste modulo \(p\) vor.
+Eine Kollision in dieser Folge lässt sich dann finden, indem sie in zwei Geschwindigkeiten durchlaufen wird.
+Wir starten mit Werten \(x_0 := 2\) und \(y_0 := 2\), definieren \(x_{i+1}\) wie oben, aber \(y_{i+1}\) durch zweimalige
+Anwendung des Vorgehens für \(x_{i+1}\), also durch \(y_{i+1} := (y_i^2 + 1)^2 + 1\).
+Wie schnell dadurch Faktoren gefunden werden können hängt stark von der Größe des kleinsten Teilers ab.
+Die Methode ist jedenfalls extrem einfach zu implementieren und kann hier auszuprobiert werden:
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_js_box</cssclass>
+<css>width:50%;</css>
+<content>
+</content>
+<specialcontent>
+<contenttype>code_interaction</contenttype>
+<code>
+function pollard_rho(n)
+{
+  var d = 1n;
+  var x = 2n;
+  var y = 2n;
+
+  n = BigInt(n);
+
+  while (d==1n)
+  {
+    x = (x**2n + 1n) % n;
+    let y1 = (y**2n + 1n) % n;
+    y = (y1**2n + 1n) % n;
+
+    var diff = x - y;
+    if (diff &lt; 0)
+      diff = y - x;
+    d = Rationals.gcd(diff, n);
+  }
+
+  return "\\(" + d + " \\cdot " + (n/d) + "\\)";
+}
+</code>
+<display>
+\(n\) = @input:0! = @output:!
+</display>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Mit Resten lassen sich auch auf eine weitere Art Faktoren finden.
+Dazu gilt es zwei Zahlen \(a\) und \(b\) zu finden, die unterschiedliche Reste modulo der zu faktorisierenden Zahl \(N\) lassen,
+für die aber
+$$a^2 \equiv b^2(N)$$
+gilt.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'><a href='https://de.wikipedia.org/wiki/Binomische_Formeln'>?</a></div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Dann erhält man mit \(\mathrm{ggT}(a-b, N)\) und \(\mathrm{ggT}(a+b, N)\) geeignete Faktoren.
+
+Zum Beispiel ist \(5^2 = 25 \equiv 4 \equiv 2^2(21)\).
+Mit \((5-2)(5+2) = 21\) haben wir also 21 faktorisiert.
+
+Auf dieser Idee bauen eine Reihe moderner Verfahren zur Faktorisierung auf.
+Sie unterscheiden sich darin, wie die Zahlen \(a\) und \(b\) gefunden werden, was den schwierigen Teil darstellt.
+
+Wer die Reise in diese Richtung fortsetzen möchte, kann sich mit <a href="">Dixons Faktorisierungsmethode</a>,
+mit dem <a href="https://de.wikipedia.org/wiki/Quadratisches_Sieb">quadratischen Sieb</a> und
+mit dem <a href="https://de.wikipedia.org/wiki/Zahlk%C3%B6rpersieb">Zahlkörpersieb</a> auseinandersetzen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Als letzte Beobachtung in diesem Kapitel wollen wir noch feststellen, dass sich Zahlen auch dann faktorisieren lassen,
+wenn man die Periode von Elementen modulo dieser Zahl finden kann.
+Sei wieder \(N\) die zu faktorisierende Zahl.
+Man wähle zufällig eine zu \(N\) teilerfremde Zahl \(a\) und bestimme die kleinste Zahl \(r\), so dass \(a^r\equiv 1(N)\) gilt.
+Wenn \(r\) gerade ist und \(a^{r/2}\not\equiv -1(N)\), dann bekommen wir eine Faktorisierung:
+$$mN = (a^{r/2}+1)(a^{r/2}-1)$$
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>Ü</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Keiner der beiden Faktoren ist null modulo \(N\) (warum?), so dass tatsächlich echte Faktoren gefunden werden.
+
+Um aus dieser Beobachtung einen effizienten Algorithmus machen zu können müssen noch zwei Probleme gelöst werden.
+Erstens muss die Wahrscheinlichkeit ein \(a\) mit den geforderten Eigenschaften zu finden hoch genug sein.
+Mit Hilfe des chinesischen Restsatzes kann man zeigen, dass diese Wahrscheinlichkeit mindestens \(1/2\) ist.
+
+Zweitens ist eine Möglichkeit nötig, wie man schnell die Periode von \(a\) bestimmen kann.
+Der Kern des berühmten <a href="https://de.wikipedia.org/wiki/Shor-Algorithmus">Shor-Algorithmus</a> ist, dass dies
+auf <a href="https://de.wikipedia.org/wiki/Quantencomputer">Quantencomputern</a> tatsächlich möglich wäre.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'><a onclick="deepLink('contents/reisebegleiter/graphen.xml', 'Graphen', '')">&#8680;</a></div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph_center</cssclass>
+<content>
+Jetzt müssen die Zahlen das Zentrum der Bühne verlassen und Platz machen für andere interessante Objekte: die Graphen.
+
+
+&#65374;
 </content>
 </paragraph>
 

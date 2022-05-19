@@ -17,6 +17,8 @@ Colormap = {
 function createDrawing(drawing_data)
 ////////////////////////////////////////////////////////////
 {
+  var uses_arrow = false;
+
   var new_drawing = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   var drawing_code = drawing_data.getElementsByTagName("code");
 
@@ -95,6 +97,42 @@ function createDrawing(drawing_data)
               line.setAttributeNS(null, 'stroke-width', params[5]);
 
               new_drawing.appendChild(line);
+              break;
+
+            case 'arrow':
+              var line = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+              line.setAttributeNS(null, 'x1', params[0]);
+              line.setAttributeNS(null, 'y1', params[1]);
+              line.setAttributeNS(null, 'x2', params[2]);
+              line.setAttributeNS(null, 'y2', params[3]);
+              line.setAttributeNS(null, 'stroke', params[4]);
+              line.setAttributeNS(null, 'stroke-width', params[5]);
+              line.setAttributeNS(null, 'marker-end', "url(#arrow)");
+
+              new_drawing.appendChild(line);
+
+              if (!uses_arrow)
+              {
+                  uses_arrow = true;
+                  defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+                  new_drawing.appendChild(defs);
+
+                  marker_def = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
+                  marker_def.id = "arrow";
+                  marker_def.setAttributeNS(null, "viewBox", "0 0 10 10");
+                  marker_def.setAttributeNS(null, "refX", "10");
+                  marker_def.setAttributeNS(null, "refY", "5");
+                  marker_def.setAttributeNS(null, "markerWidth", "6");
+                  marker_def.setAttributeNS(null, "markerHeight", "6");
+                  marker_def.setAttributeNS(null, "orient", "auto-start-reverse");
+
+                  path_def = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                  path_def.setAttributeNS(null, "d", "M 0 0 L 10 5 L 0 10 z");
+                  marker_def.appendChild(path_def);
+
+                  defs.appendChild(marker_def);
+              }
+
               break;
           }
         }
