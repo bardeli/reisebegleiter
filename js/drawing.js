@@ -73,7 +73,7 @@ function createDrawing(drawing_data)
 
             case 'text':
               var text = document.createElementNS("http://www.w3.org/2000/svg", 'text');
-              text.innerHTML = params[2];
+              text.innerHTML = params[2].replaceAll("[", "(").replaceAll("]", ")").replaceAll("--", "&mdash;");
               text.setAttributeNS(null, 'x', params[0]);
               text.setAttributeNS(null, 'y', params[1]);
               text.setAttributeNS(null, 'fill', params[3]);
@@ -128,6 +128,7 @@ function createDrawing(drawing_data)
 
                   path_def = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                   path_def.setAttributeNS(null, "d", "M 0 0 L 10 5 L 0 10 z");
+                  path_def.setAttributeNS(null, "fill", "context-stroke");
                   marker_def.appendChild(path_def);
 
                   defs.appendChild(marker_def);

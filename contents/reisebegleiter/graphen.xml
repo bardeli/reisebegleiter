@@ -4,7 +4,1092 @@
 <cssclass>book_chapter_heading</cssclass>
 <title>Graphen</title>
 <content>
-Hier geht es demnächst weiter...
+In den vorausgehenden Abschnitten haben wir uns stets mit Zahlen als Objekt unserer Untersuchung beschäftigt.
+Um nicht den Eindruck zu erwecken, dies sei die einzige Spielwiese der Mathematik, wollen wir uns nun ein paar neue
+Spielzeuge besorgen.
+Es soll in diesem Kapitel um Graphen gehen, eine Struktur, die beschreibt wie Dinge zusammenhängen.
+Apropos Spielwiese, wir wollen mit einem Spiel beginnen, das viele aus der Kindheit kennen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<toc>Eulerkreise</toc>
+<title>Eulerkreise</title>
+<content>
+Das --- ist --- das --- Haus --- vom --- Ni --- ko --- laus.
+Jedes Kind weiß, dass man folgende Figur in einem Zug zeichnen kann, ohne den Stift absetzen zu müssen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Das Haus vom Nikolaus.</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>250px</height>
+<code>
+line(200,60,140,120,#000,2);
+line(200,60,260,120,#000,2);
+
+line(140,220,140,120,#000,2);
+line(260,120,140,120,#000,2);
+line(260,220,140,120,#000,2);
+
+line(260,220,260,120,#000,2);
+line(140,220,260,120,#000,2);
+line(140,220,260,220,#000,2);
+
+circle(200,60,10,#FDF283,#000);
+circle(140,120,10,#FDF283,#000);
+circle(260,120,10,#FDF283,#000);
+circle(140,220,10,#FDF283,#000);
+circle(260,220,10,#FDF283,#000);
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>Ü</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Häufig beginnt man beim Zeichnen dieser Figur in der unteren linken Ecke.
+Kann man sie auch woanders beginnen?
+Es empfiehlt sich dies vor der weiteren Lektüre dieses Abschnitts einmal auszuprobieren.
+
+Dabei sollte man auf die Vermutung kommen, dass man an jedem der beiden unteren Knoten anfangen kann,
+aber an keinem anderen Knoten.
+Dass es unten rechts funktioniert, wenn es von unten links bereits geklappt hat, sollte aus Symmetriegründen klar sein.
+Aber warum klappt es bei den anderen Ecken nicht?
+
+Um dies beantworten zu können wollen wir schnell ein wenig Vokabular einführen und dann zu zählen beginnen.
+
+Eine Figur wie unser Haus vom Nikolaus, die darstellt, wie bestimmte Dinge miteinander verbunden sind
+nennt man <a href="https://de.wikipedia.org/wiki/Graph_(Graphentheorie)">Graphen</a>.
+Formal beschreibt man sei durch ein Paar von Mengen:
+\[G = (V, E)\]
+Dabei ist \(G\) der Name des Graphen. Die Menge \(V\) nennt man die Menge der Knoten (oder auch Ecken).
+Sie entspricht in unserem Beispiel den gelben Kreisen und beschreibt welche Objekte verbunden werden können.
+Man beachte, dass \(V\) nur eine Aufzählung dieser Objekte ist. Die Menge gibt nicht an, wo sich ein Objekt befindet.
+Im Falle von Graphen interessiert uns nämlich nur wer mit wem verbunden; alles Andere blenden wir aus.
+Die Menge \(E\) der sogenannten Kanten beschreibt genau die Verbindungen.
+Wir wollen zunächst den Verbindungen keine Richtung geben und arbeiten mit ungerichteten Graphen.
+Dann ist \(E\) eine Teilmenge von \(V \times V\). Ist ein Paar \(\{u, v\}\) von Knoten \(u\) und \(v\) in dieser Menge enthalten,
+dann sagen wir, dass \(u\) und \(v\) verbunden sind. Die entsprechende Kante zeichnen wir in unseren Bildern als eine Linie
+zwischen den beiden Knoten.
+
+Der nächste Begriff führt uns auch schon wieder zurück zum Haus vom Nikolaus.
+Die Menge der Kanten an einem Knoten, also die Anzahl an Knoten mit denen dieser Knoten verbunden ist, nennt man den Grad des Knotens.
+Im folgenden Bild ist der Knotengrad in jedem Knoten eingetragen.
+Wir haben außerdem in einer zweiten Version den Grad modulo 2 eingetragen, d.h. eine Null, wenn der Grad gerade ist und eine Eins, wenn der Grad ungerade ist.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Das Haus vom Nikolaus mit Knotengraden (links) bzw. Knotengraden modulo 2 (rechts).</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>250px</height>
+<width>600px</width>
+<code>
+line(200,60,140,120,#000,2);
+line(200,60,260,120,#000,2);
+
+line(140,220,140,120,#000,2);
+line(260,120,140,120,#000,2);
+line(260,220,140,120,#000,2);
+
+line(260,220,260,120,#000,2);
+line(140,220,260,120,#000,2);
+line(140,220,260,220,#000,2);
+
+circle(200,60,10,#FDF283,#000);
+circle(140,120,10,#FDF283,#000);
+circle(260,120,10,#FDF283,#000);
+circle(140,220,10,#FDF283,#000);
+circle(260,220,10,#FDF283,#000);
+
+text(195,65,2,#000,"");
+text(135,125,4,#000,"");
+text(255,125,4,#000,"");
+text(135,225,3,#000,"");
+text(255,225,3,#000,"");
+
+line(500,60,440,120,#000,2);
+line(500,60,560,120,#000,2);
+
+line(440,220,440,120,#000,2);
+line(560,120,440,120,#000,2);
+line(560,220,440,120,#000,2);
+
+line(560,220,560,120,#000,2);
+line(440,220,560,120,#000,2);
+line(440,220,560,220,#000,2);
+
+circle(500,60,10,#FDF283,#000);
+circle(440,120,10,#FDF283,#000);
+circle(560,120,10,#FDF283,#000);
+circle(440,220,10,#FDF283,#000);
+circle(560,220,10,#FDF283,#000);
+
+text(495,65,0,#000,"");
+text(435,125,0,#000,"");
+text(555,125,0,#000,"");
+text(435,225,1,#000,"");
+text(555,225,1,#000,"");
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Jetzt müssen wir eigentlich nur im Geiste (oder auf dem Papier) noch einmal langsam das Haus vom Nikolaus zeichnen und schauen,
+was mit den Knotengraden passiert.
+Jeder Knoten beginnt mit dem Grad Null.
+Dann setzen wir den Stift an und legen bei einem Knoten los.
+Dieser bekommt dadurch eine Kante hinzu.
+Im Laufe des Zeichnens werden wir nun Knoten durchfahren, das heißt, wir kommen beim Knoten an, dadurch bekommt er eine Kante hinzu,
+und wir verlassen den Knoten auch wieder, so dass er eine zweite Kante hinzubekommt.
+Schließlich kommen wir beim letzten Knoten an, der dadurch wiederum nur eine Kanten hinzubekommt.
+
+
+
+Fassen wir dies zusammen. Jeder Knoten beginnt mit dem geraden Grad Null. Der Startknoten bekommt eine Kante hinzu und damit ungeraden Grad.
+Jeder Knoten der durchlaufen wird erhält zwei Kanten hinzu, was bedeutet, dass sich die Parität (gerade oder ungerade) seines Grades nicht ändert.
+Schließlich bekommt der letzte Knoten noch eine Kante hinzu, wodurch sich seine Parität ändert.
+
+Das ergibt zwei mögliche Fälle.
+Entweder, Start- und Endknoten sind unterschiedlich. Dann haben diese beiden Knoten ungeraden Grad und alle anderen Knoten haben geraden Grad.
+Oder, der Startknoten ist auch der Endknoten. Dann hat er ebenfalls geraden Grad und alle Knoten haben geraden Grad.
+
+Das Mysterium um das Haus vom Nikolaus ist also gelöst.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Dieses Ergebnis lässt sich verallgemeinern.
+Am Haus vom Nikolaus haben wir beobachtet, dass Graphen, die sich in einem Zug zeichnen lassen entweder genau zwei Knoten von ungeradem Grad
+haben, oder ausschließlich Knoten von geradem Grad.
+
+Lassen sich auch alle Graphen, die eine dieser beiden Bedingungen erfüllen in einem Zug zeichnen?
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>Ü</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Die Antwort lautet ja. Allerdings wollen wir den Beweis als Übung lassen.
+Im Prinzip findet man stets einen Eulerkreis, indem man sich im Graph einfach treiben lässt, aber auf eine Kleinigkeit Acht gibt.
+Entfernt man solche Kanten, die man schon besucht hat aus dem Graph, so mag es sein, dass sich als nächster Schritt eine Kante
+anbietet, deren Löschung den Graph in zwei Teilkomponenten zerlegt.
+Solche sogenannten <a href="https://de.wikipedia.org/wiki/Trenner_(Graphentheorie)#Br%C3%BCcke">Brücken</a> sollte man meiden,
+es sei denn, es bleibt keine Alternative mehr übrig.
+Per Induktion über die Anzahl der Kanten lässt sich auf diesem Wege ein Beweis finden.
+Dass dieser im Prinzip auch konstruktiv ist, sich die Strategie also zur Konstruktion von Eulerkreisen eignet, sieht man am besten
+ein, wenn man das Verfahren implementiert.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<toc>Hamiltonkreise</toc>
+<title>Hamiltonkreise</title>
+<content>
+Nachdem wir uns bisher damit beschäftigt haben einen Graph so zu durchwandern, dass jede Kante genau einmal durchlaufen wird,
+betrachten wir jetzt das <a href="https://de.wikipedia.org/wiki/Dualit%C3%A4t_(Mathematik)">duale</a> Problem,
+wir wollen jeden Knoten im Graph genau einmal besuchen, dürfen dafür aber möglicherweise Kanten mehrfach verwenden.
+
+Im Haus vom Nikolaus sieht das ganz einfach aus. Einen sogenannten <a href="https://de.wikipedia.org/wiki/Hamiltonkreisproblem">Hamiltonkreis</a>,
+d.h. einen Weg durch den Graphen, der jeden Knoten genau einmal besucht, bevor er wieder beim Startknoten endet,
+haben wir z.B. in der folgenden Abbildung.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Hamiltonkreis im Haus vom Nikolaus.</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>250px</height>
+<width>600px</width>
+<code>
+arrow(140,120,193,67,#000,2);
+arrow(200,60,253,113,#000,2);
+
+arrow(140,220,140,130,#000,2);
+line(260,120,140,120,#000,2);
+line(260,220,140,120,#000,2);
+
+arrow(260,120,260,210,#000,2);
+line(140,220,260,120,#000,2);
+arrow(260,220,150,220,#000,2);
+
+circle(200,60,10,#FDF283,#000);
+circle(140,120,10,#FDF283,#000);
+circle(260,120,10,#FDF283,#000);
+circle(140,220,10,#FDF283,#000);
+circle(260,220,10,#FDF283,#000);
+
+text(195,65,3,#000,"");
+text(135,125,2,#000,"");
+text(255,125,4,#000,"");
+text(135,225,1,#000,"");
+text(255,225,5,#000,"");
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Tatsächlich ist es schwer zu entscheiden, ob ein gegebener Graph einen Hamiltonkreis besitzt oder nicht.
+Bevor wir das genauer erklären wollen wir uns aber einer Familie von Graphen widmen, für die das Problem zwar schwer
+aussieht, aber recht leicht ist.
+
+Dieses Problem ist das sogenannte <a href="https://de.wikipedia.org/wiki/Springerproblem">Springerkreisproblem</a>.
+Es spielt auf einem Schachbrett und die Aufgabe ist es jedes Feld des Schachbretts genau einmal mit einem Springer zu besuchen,
+ehe der Springer wieder auf sein Ausgangsfeld zurückkehrt.
+
+Erinnern wir zunächst daran, wie ein Springer sich auf dem Schachbrett bewegen kann:
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Zugmöglichkeiten eines Springers auf einem Schachbrett.</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>402px</height>
+<width>600px</width>
+<code>
+box(0,0,50,50,#F8F8F8,#000);
+box(50,0,50,50,#333,#000);
+box(100,0,50,50,#F8F8F8,#000);
+box(150,0,50,50,#333,#000);
+box(200,0,50,50,#F8F8F8,#000);
+box(250,0,50,50,#333,#000);
+box(300,0,50,50,#F8F8F8,#000);
+box(350,0,50,50,#333,#000);
+
+box(0,50,50,50,#333,#000);
+box(50,50,50,50,#F8F8F8,#000);
+box(100,50,50,50,#333,#000);
+box(150,50,50,50,#F8F8F8,#000);
+box(200,50,50,50,#333,#000);
+box(250,50,50,50,#F8F8F8,#000);
+box(300,50,50,50,#333,#000);
+box(350,50,50,50,#F8F8F8,#000);
+
+box(0,100,50,50,#F8F8F8,#000);
+box(50,100,50,50,#333,#000);
+box(100,100,50,50,#F8F8F8,#000);
+box(150,100,50,50,#333,#000);
+box(200,100,50,50,#F8F8F8,#000);
+box(250,100,50,50,#333,#000);
+box(300,100,50,50,#F8F8F8,#000);
+box(350,100,50,50,#333,#000);
+
+box(0,150,50,50,#333,#000);
+box(50,150,50,50,#F8F8F8,#000);
+box(100,150,50,50,#333,#000);
+box(150,150,50,50,#F8F8F8,#000);
+box(200,150,50,50,#333,#000);
+box(250,150,50,50,#F8F8F8,#000);
+box(300,150,50,50,#333,#000);
+box(350,150,50,50,#F8F8F8,#000);
+
+box(0,200,50,50,#F8F8F8,#000);
+box(50,200,50,50,#333,#000);
+box(100,200,50,50,#F8F8F8,#000);
+box(150,200,50,50,#333,#000);
+box(200,200,50,50,#F8F8F8,#000);
+box(250,200,50,50,#333,#000);
+box(300,200,50,50,#F8F8F8,#000);
+box(350,200,50,50,#333,#000);
+
+box(0,250,50,50,#333,#000);
+box(50,250,50,50,#F8F8F8,#000);
+box(100,250,50,50,#333,#000);
+box(150,250,50,50,#F8F8F8,#000);
+box(200,250,50,50,#333,#000);
+box(250,250,50,50,#F8F8F8,#000);
+box(300,250,50,50,#333,#000);
+box(350,250,50,50,#F8F8F8,#000);
+
+box(0,300,50,50,#F8F8F8,#000);
+box(50,300,50,50,#333,#000);
+box(100,300,50,50,#F8F8F8,#000);
+box(150,300,50,50,#333,#000);
+box(200,300,50,50,#F8F8F8,#000);
+box(250,300,50,50,#333,#000);
+box(300,300,50,50,#F8F8F8,#000);
+box(350,300,50,50,#333,#000);
+
+box(0,350,50,50,#333,#000);
+box(50,350,50,50,#F8F8F8,#000);
+box(100,350,50,50,#333,#000);
+box(150,350,50,50,#F8F8F8,#000);
+box(200,350,50,50,#333,#000);
+box(250,350,50,50,#F8F8F8,#000);
+box(300,350,50,50,#333,#000);
+box(350,350,50,50,#F8F8F8,#000);
+
+arrow(175,225,129,133,#23AD23,2);
+arrow(175,225,221,133,#23AD23,2);
+arrow(175,225,129,317,#23AD23,2);
+arrow(175,225,221,317,#23AD23,2);
+
+arrow(175,225,83,179,#23AD23,2);
+arrow(175,225,267,179,#23AD23,2);
+arrow(175,225,83,271,#23AD23,2);
+arrow(175,225,267,271,#23AD23,2);
+
+text(162,238,&#x265E;,#F8F8F8,"",drawing_text_40);
+
+circle(125,125,8,#FDF283,#000);
+circle(225,125,8,#FDF283,#000);
+circle(75,175,8,#FDF283,#000);
+circle(275,175,8,#FDF283,#000);
+circle(125,325,8,#FDF283,#000);
+circle(225,325,8,#FDF283,#000);
+circle(75,275,8,#FDF283,#000);
+circle(275,275,8,#FDF283,#000);
+
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Warum sieht dieses Problem schwer aus? Nun, ich empfehle einmal ein Schachbrett und einen Springer zur Hand zu nehmen und
+zu versuchen einen Springerkreis zu finden (klar, das geht auch mit Papier und Bleistift, wenn man kein Schachbrett zur Hand hat).
+
+
+Was hat das jetzt mit Graphen zu tun?
+Um dies aufzuklären schauen wir uns folgendes Rätsel an, dass ich aus einem
+<a href="https://www.mathunion.org/fileadmin/IMU/Prizes/Fields/2022/Huh%20_June_Interview.pdf">Interview</a> mit dem
+<a href="https://de.wikipedia.org/wiki/Fields-Medaille">Fields-Medaillien</a>-Träger <a href="https://en.wikipedia.org/wiki/June_Huh">June Huh</a> kenne.
+In folgender Situation ist die Aufgabe die Positionen der beiden schwarzen Springer mit denen der beiden weißen Springer zu vertauschen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Springertausch-Problem: Die Positionen der beiden schwarzen Springer und der beiden weißen Springer sollen getauscht werden.
+</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>200px</height>
+<width>600px</width>
+<code>
+box(50,0,50,50,#333,#000);
+
+box(50,50,50,50,#F8F8F8,#000);
+box(100,50,50,50,#333,#000);
+
+box(50,100,50,50,#333,#000);
+box(100,100,50,50,#F8F8F8,#000);
+box(150,100,50,50,#333,#000);
+
+box(0,150,50,50,#333,#000);
+box(50,150,50,50,#F8F8F8,#000);
+box(100,150,50,50,#333,#000);
+box(150,150,50,50,#F8F8F8,#000);
+
+text(62,35,&#x265E;,#F8F8F8,"",drawing_text_40);
+text(112,135,&#x2658;,#333,"",drawing_text_40);
+text(12,185,&#x2658;,#F8F8F8,"",drawing_text_40);
+text(112,185,&#x2658;,#F8F8F8,"",drawing_text_40);
+
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Nun bilden wir einen Graph, dessen Knoten genau den Feldern des Schachbretts entsprechen.
+Zwei Knoten verbinden wir genau dann mit einer Kante, wenn ein Springer sich in einem Zug zwischen diesen Feldern bewegen kann.
+Tatsächlich vereinfacht diese Sichtweise das Problem erheblich.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Springertausch-Problem: Nach Transformation in einen Graphen wird es ganz leicht.
+Auf der rechten Seite repräsentieren die Kästchen die Knoten und die grünen Pfeile die Kanten des Graphen.
+</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>200px</height>
+<width>800px</width>
+<code>
+box(50,0,50,50,#333,#000);
+
+box(50,50,50,50,#F8F8F8,#000);
+box(100,50,50,50,#333,#000);
+
+box(50,100,50,50,#333,#000);
+box(100,100,50,50,#F8F8F8,#000);
+box(150,100,50,50,#333,#000);
+
+box(0,150,50,50,#333,#000);
+box(50,150,50,50,#F8F8F8,#000);
+box(100,150,50,50,#333,#000);
+box(150,150,50,50,#F8F8F8,#000);
+
+text(62,35,&#x265E;,#F8F8F8,"",drawing_text_40);
+text(112,135,&#x2658;,#333,"",drawing_text_40);
+text(12,185,&#x2658;,#F8F8F8,"",drawing_text_40);
+text(112,185,&#x2658;,#F8F8F8,"",drawing_text_40);
+
+box(350,150,50,50,#333,#000);
+box(400,150,50,50,#F8F8F8,#000);
+box(450,150,50,50,#333,#000);
+box(500,150,50,50,#F8F8F8,#000);
+box(550,150,50,50,#333,#000);
+box(600,150,50,50,#F8F8F8,#000);
+box(650,150,50,50,#333,#000);
+box(700,150,50,50,#F8F8F8,#000);
+box(750,150,50,50,#333,#000);
+
+box(500,100,50,50,#333,#000);
+
+text(362,185,&#x265E;,#F8F8F8,"",drawing_text_40);
+text(412,185,&#x2658;,#333,"",drawing_text_40);
+text(462,185,&#x2658;,#F8F8F8,"",drawing_text_40);
+text(512,135,&#x2658;,#F8F8F8,"",drawing_text_40);
+
+text(385,167,1,#C1C2FF,"",drawing_text_20);
+text(435,167,2,#A1A2FF,"",drawing_text_20);
+text(485,167,3,#C1C2FF,"",drawing_text_20);
+text(535,167,4,#A1A2FF,"",drawing_text_20);
+text(585,167,5,#C1C2FF,"",drawing_text_20);
+text(635,167,6,#A1A2FF,"",drawing_text_20);
+text(685,167,7,#C1C2FF,"",drawing_text_20);
+text(735,167,8,#A1A2FF,"",drawing_text_20);
+text(785,167,9,#C1C2FF,"",drawing_text_20);
+
+text(525,117,10,#C1C2FF,"",drawing_text_20);
+
+text(85,17,1,#C1C2FF,"",drawing_text_20);
+text(135,117,2,#A1A2FF,"",drawing_text_20);
+text(35,167,3,#C1C2FF,"",drawing_text_20);
+text(85,67,4,#A1A2FF,"",drawing_text_20);
+text(185,117,5,#C1C2FF,"",drawing_text_20);
+text(85,167,6,#A1A2FF,"",drawing_text_20);
+text(135,67,7,#C1C2FF,"",drawing_text_20);
+text(185,167,8,#A1A2FF,"",drawing_text_20);
+text(85,117,9,#C1C2FF,"",drawing_text_20);
+
+text(125,167,10,#C1C2FF,"",drawing_text_20);
+
+text(390,185,&#x2194;,#23AD23,"",drawing_text_20);
+text(440,185,&#x2194;,#23AD23,"",drawing_text_20);
+text(490,185,&#x2194;,#23AD23,"",drawing_text_20);
+text(540,185,&#x2194;,#23AD23,"",drawing_text_20);
+text(590,185,&#x2194;,#23AD23,"",drawing_text_20);
+text(640,185,&#x2194;,#23AD23,"",drawing_text_20);
+text(690,185,&#x2194;,#23AD23,"",drawing_text_20);
+text(740,185,&#x2194;,#23AD23,"",drawing_text_20);
+
+text(518,158,&#x2195;,#23AD23,"",drawing_text_20);
+
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Das Springerkreisproblem können wir genauso in ein Graphenproblem überführen.
+Ein Springerkreis auf dem Graphen zu einem Schachbrett ist dann gerade ein Hamiltonkreis auf diesem Graph.
+
+
+
+Wer nun versucht hat selbst einen Springerkreis zu finden, wird sicherlich nicht auf Anhieb eine Lösung gefunden haben.
+Warum habe ich also behauptet das Problem sei leicht?
+Das liegt daran, dass es Algorithmen gibt, die dieses Problem in Linearzeit lösen können.
+Dies bedeutet, dass zum Finden eines Springerkreises auf einem Schachbrett mit \(n \times n\) Feldern eine Anzahl an
+Rechenoperationen benötigt wird, die proportional zur Größe des Brettes ist, also von der
+<a href="https://de.wikipedia.org/wiki/Landau-Symbole">Größenordnung</a> \(\mathcal{O}(n^2)\).
+Solche Algorihmen kann man etwa in <a href="#Conrad1994">[Conrad 1994]</a> oder <a href="#Parberry1997">[Parberry 1997]</a> nachlesen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Das allgemeine Hamiltonkreis-Problem dagegen ist schwer.
+Was bedeutet schwer in diesem Zusammenhang?
+Angenommen, man findet einen Algorithmus, der für jeden Graph entscheiden kann, ob er einen Hamiltonkreis besitzt oder nicht.
+Nehmen wir außerdem an, dass er dafür eine Anzahl an Rechenoperationen benötigt, die höchstens polynomiell in der Größe des Graphen ist.
+Dies bedeutet, dass es ein Polynom \(P\) gibt, so dass unser Algorithmus für jeden Graph der Knotenzahl \(n\) höchstens
+\(P(n)\) viele Schritte benötigt.
+Wenn es einen solchen Algorithmus gibt, so lassen sich auch alle anderen Probleme aus einer großen Klassen von Problemen namens
+<a href="https://de.wikipedia.org/wiki/NP_(Komplexit%C3%A4tsklasse)">NP</a>
+in polynomieller Zeit lösen. Man hat bisher allerdings für kein einziges Problem in dieser Klasse einen solchen Algorithmus gefunden
+und deshalb vermutet man, dass dies schlicht nicht möglich ist.
+Dies ist das berühmte <a href="https://de.wikipedia.org/wiki/P-NP-Problem">P-NP-Problem</a> und der geneigte Leser kann sich für eine Lösung
+<a href="https://de.wikipedia.org/wiki/Millennium-Probleme">einen hohen Geldpreis sichern</a>.
+
+Wir hatten gesehen, dass wenn wir uns auf den Speziellfall derjenigen Graphen, die das Springerkreisproblem beschreiben beschränken,
+das Problem deutlich leichter wird.
+
+Eine weitere Variante des Problems ist sehr bekannt.
+Es ist das Problem des Handlungsreisenden (<a href="https://de.wikipedia.org/wiki/Problem_des_Handlungsreisenden">Travelling Salesman Problem</a>).
+Dabei betrachtet man stets vollständige Graphen, in denen jeder Knoten mit jedem anderen verbunden ist.
+Man ordnet den Kanten zudem ein Gewicht zu. Das ist eine nicht-negative Zahl, die in diesem Problem als Abstand zwischen zwei Knoten
+interpretiert wird.
+Die Knoten stellt man sich meist als Städte vor.
+Dann geht es darum, einen Hamiltonkreis zu finden, der eine möglichst geringe Länge hat.
+Addiert man also die Gewichte der Kanten, die verwendet werden, um den Kreis zu bilden, so soll diese Summe so klein wie möglich werden.
+Man stellt sich einen Handlungsreisenden vor, der alle im Problem vorkommenden Städte besuchen soll, dabei keine zweimal abklappern will und
+insgesamt eine möglichst kurze Reisestrecke zurücklegen möchte.
+
+Viele hochrelevante Probleme aus der Wirtschaft lassen sich auf diese Art formulieren. Leider gehört auch diese Variante zu den in obigem
+Sinne harten Problemen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<toc>Die chromatische Zahl</toc>
+<title>Die chromatische Zahl</title>
+<content>
+Wir kehren nun noch einmal zum Haus vom Nikolaus zurück und wollen anhand dieses Graphen eine weitere Art der Fragestellung betrachten.
+Wieviele Farben braucht man, um das Haus vom Nikolaus anzumalen?
+Dieses Anmalen soll auf folgendem Weg erfolgen.
+Jeder Knoten des Graphen soll eine Farbe erhalten.
+Allerdings dürfen zwei Knoten nicht dieselbe Farbe erhalten, wenn sie durch eine Kante verbunden sind.
+
+Wir verallgemeinern die Fragestellung sofort und wollen wissen, wieviele Möglichkeiten es gibt den Graphen mit \(t\) Farben
+einzufärben.
+Das kleinste \(t\), für das diese Anzahl größer als null ist, gibt uns dann die Antwort auf unsere ursprüngliche Frage.
+
+Wir beginnen mit ein paar einfachen Beobachtungen.
+Für einen Graph mit \(n\) Knoten und ohne Kanten können wir für jeden Knoten die Farbe beliebig wählen.
+Deshalb gibt es hier \(t^n\) Möglichkeiten.
+
+Besteht der Graph aus mehreren nicht miteinander zusammenhängenden Teilen, so ist das Ergebnis das Produkt der Teilergebnisse
+für diese sogenannten <a href="https://de.wikipedia.org/wiki/Zusammenhang_(Graphentheorie)">Zusammenhangskomponenten</a>.
+Insbesondere erhalten wir für jeden isolierten Knoten den Faktor \(t\) im Ergebnis.
+
+Jetzt wollen wir eine Methode kennenlernen, um die Anzahl der Möglichkeiten als Funktion von \(t\) zu bestimmen.
+Sie wird sich als überraschend weittragend herausstellen.
+
+Betrachten wir einmal das Haus vom Nikolaus, bei dem eine Kante fehlt, links in der folgenden Abbildung.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Löschen und Kontrahieren.</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>250px</height>
+<width>730px</width>
+<code>
+line(65,60,5,120,#000,2);
+
+line(5,220,5,120,#000,2);
+line(125,120,5,120,#000,2);
+line(125,220,5,120,#000,2);
+
+line(125,220,125,120,#000,2);
+line(5,220,125,120,#000,2);
+line(5,220,125,220,#000,2);
+
+circle(65,60,8,#FDF283,#000);
+circle(125,120,8,#FDF283,#000);
+
+text(160,170,=,#000,"",drawing_text_20);
+text(360,170,+,#000,"",drawing_text_20);
+
+line(265,60,205,120,#000,2);
+line(265,60,325,120,#000,2);
+
+line(205,220,205,120,#000,2);
+line(325,120,205,120,#000,2);
+line(325,220,205,120,#000,2);
+
+line(325,220,325,120,#000,2);
+line(205,220,325,120,#000,2);
+line(205,220,325,220,#000,2);
+
+
+line(405,220,405,120,#000,2);
+line(525,120,405,120,#000,2);
+line(525,220,405,120,#000,2);
+
+line(525,220,525,120,#000,2);
+line(405,220,525,120,#000,2);
+line(405,220,525,220,#000,2);
+
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Betrachten wir die beiden gelb markierten Knoten.
+Für diese gibt es zwei Möglichkeiten.
+Entweder, sie bekommen dieselbe Farbe, oder sie bekommen unterschiedliche Farben.
+Im zweiten Fall können wir sie getrost mit einer Kante verbinden und untersuchen damit nur noch diejenigen Färbungen,
+in denen die Farbe dieser Knoten unterschiedlich ist.
+Im ersten Fall können wir die Knoten zu einem einzigen Knoten zusammenfassen, der genau die Kanten bekommt,
+die mindestens einer der beiden Ausgangsknoten hatte. Dabei erzeugen wir keine doppelten Kanten.
+
+In unserem Bild stehen die Graphen jetzt als Platzhalter für die Anzahl der Möglichkeiten sie zu färben
+und entsprechend ist die Gleichung zu verstehen.
+
+Bringen wir nun den Summanden mit den zusammengefassten Knoten auf die andere Seite der Gleichung, so haben wir folgenden Vorgang erreicht.
+Wählt man in einem Graphen eine Kante aus, so ist
+die Anzahl der Möglichkeiten ihn mit \(t\) Farben einzufärben gleich
+der Anzahl der Möglichkeiten, wenn man diese Kante löscht minus
+die Anzahl der Möglichkeiten, wenn man die Endpunkte der Kante zu einem Knoten zusammenfasst.
+
+Für Letzteres sagt man auch, man habe die Kante <a href="https://de.wikipedia.org/wiki/Kantenkontraktion">kontrahiert</a>.
+
+Wiederholt man diesen Vorgang des Löschens und Kontrahierens geschickt, so kann man damit die gesuchte Anzahl bestimmen.
+Wir machen dies jetzt für das Haus vom Nikolaus.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>
+Auf dem Weg zum chromatischen Polynom mit Löschen und Kontrahieren.
+Der Kreis in der Abbildung steht für einen einzelnen Knoten, der beim Löschen einer Kante übriggeblieben ist.
+</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>450px</height>
+<width>730px</width>
+<code>
+line(65,60,5,120,#000,2);
+line(65,60,125,120,#000,2);
+
+line(5,220,5,120,#000,2);
+line(125,120,5,120,#000,2);
+line(125,220,5,120,#000,2);
+
+line(125,220,125,120,#000,2);
+line(5,220,125,120,#000,2);
+line(5,220,125,220,#000,2);
+
+text(160,170,=,#000,"",drawing_text_20);
+text(360,170,--,#000,"",drawing_text_20);
+
+line(265,60,205,120,#000,2);
+
+line(205,220,205,120,#000,2);
+line(325,120,205,120,#000,2);
+line(325,220,205,120,#000,2);
+
+line(325,220,325,120,#000,2);
+line(205,220,325,120,#000,2);
+line(205,220,325,220,#000,2);
+
+
+line(405,220,405,120,#000,2);
+line(525,120,405,120,#000,2);
+line(525,220,405,120,#000,2);
+
+line(525,220,525,120,#000,2);
+line(405,220,525,120,#000,2);
+line(405,220,525,220,#000,2);
+
+
+
+text(160,370,=,#000,"",drawing_text_20);
+text(360,370,-- 2,#000,"",drawing_text_20);
+
+circle(265,290,8,none,#000);
+
+line(205,420,205,320,#000,2);
+line(325,320,205,320,#000,2);
+line(325,420,205,320,#000,2);
+
+line(325,420,325,320,#000,2);
+line(205,420,325,320,#000,2);
+line(205,420,325,420,#000,2);
+
+
+line(405,420,405,320,#000,2);
+line(525,320,405,320,#000,2);
+line(525,420,405,320,#000,2);
+
+line(525,420,525,320,#000,2);
+line(405,420,525,320,#000,2);
+line(405,420,525,420,#000,2);
+
+
+text(540,370,= [t-2],#000,"",drawing_text_20);
+
+line(605,420,605,320,#000,2);
+line(725,320,605,320,#000,2);
+line(725,420,605,320,#000,2);
+
+line(725,420,725,320,#000,2);
+line(605,420,725,320,#000,2);
+line(605,420,725,420,#000,2);
+
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Wir haben jetzt die Berechnung des chromatischen Polynoms ein Stück reduziert.
+In drei weiteren Schritten werden wir zur endgültigen Lösung kommen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Die letzten Schritte auf dem Weg zum chromatischen Polynom mit Löschen und Kontrahieren.</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>650px</height>
+<width>730px</width>
+<code>
+line(5,220,5,120,#000,2);
+line(125,120,5,120,#000,2);
+line(125,220,5,120,#000,2);
+
+line(125,220,125,120,#000,2);
+line(5,220,125,120,#000,2);
+line(5,220,125,220,#000,2);
+
+text(160,170,=,#000,"",drawing_text_20);
+text(360,170,--,#000,"",drawing_text_20);
+
+line(205,220,205,120,#000,2);
+line(325,220,205,120,#000,2);
+
+line(325,220,325,120,#000,2);
+line(205,220,325,120,#000,2);
+line(205,220,325,220,#000,2);
+
+
+line(405,220,405,120,#000,2);
+line(525,220,405,120,#000,2);
+
+line(405,220,525,220,#000,2);
+
+
+
+text(160,370,=,#000,"",drawing_text_20);
+text(360,370,-- 2,#000,"",drawing_text_20);
+
+
+line(205,420,205,320,#000,2);
+line(325,420,205,320,#000,2);
+
+line(325,420,325,320,#000,2);
+line(205,420,325,420,#000,2);
+
+
+line(405,420,405,320,#000,2);
+line(525,420,405,320,#000,2);
+
+line(405,420,525,420,#000,2);
+
+
+circle(265,490,8,none,#000);
+
+line(205,620,205,520,#000,2);
+line(325,620,205,520,#000,2);
+
+line(205,620,325,620,#000,2);
+
+
+text(360,570,-- 3,#000,"",drawing_text_20);
+
+line(405,620,405,520,#000,2);
+line(525,620,405,520,#000,2);
+
+line(405,620,525,620,#000,2);
+
+
+text(540,570,= [t-3],#000,"",drawing_text_20);
+
+line(605,620,605,520,#000,2);
+line(725,620,605,520,#000,2);
+
+line(605,620,725,620,#000,2);
+
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Damit haben wir das chromatische Polynom für das Haus vom Nikolaus gefunden!
+Wir erhalten nämlich \((t-2)(t-3)\) mal das Polynom eines Dreiecks.
+Für ein Dreick gibt es \(t\) Möglichkeiten für den ersten Knoten, \(t-1\) Möglichkeiten für den zweiten Knoten, und
+\(t-3\) Möglichkeiten für den dritten Knoten.
+
+Ähnliches gilt für jeden vollständigen Graphen.
+
+Nehmen wir dies zusammen, erhalten wir
+$$\chi_G(t) = t(t-1)(t-2)^2(t-3).$$
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>Ü</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Es ist kein Zufall, dass wir als Ergebnis ein Polynom in \(t\) erhalten haben.
+Tatsächlich ist die Anzahl der Möglichkeiten einen Graphen mit \(t\) Farben einzufärben stets ein Polynom in \(t\).
+Dies mit Hilfe von Löschen und Kontrahieren zu zeigen lassen wir als Übung.
+
+Setzen wir noch schnell ein paar Zahlen für \(t\) ein.
+Offensichtlich ist \(\chi_G(t)=0\) für \(t=0, 1, 2, 3\).
+Das überrascht nicht, denn mit diesen Anzahlen ist es offenbar nicht möglich den Graph zu färben.
+Für \(t=4\) erhalten wir \(\chi_G(t)=48\) und für \(t=5\) erhalten wir \(\chi_G(t)=360\).
+Diese Anzahlen lassen sich noch recht leicht durch vollständiges Durchprobieren mit dem Computer überprüfen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Multiplizieren wir unser Ergebnis für \(\chi_G(t)\) doch einmal aus:
+$$\chi_G(t) = t(t-1)(t-2)^2(t-3) = t^5 -8t^4 +23t^3 -28t^2 +12t.$$
+
+Macht man dies für viele Graphen, so fällt einem ein Muster ins Auge.
+Die Beträge der Koeffizienten steigen nämlich zunächst an, um dann wieder abzufallen.
+
+Ist das immer so? Tatsächlich lautet die Antwort ja und es gilt sogar noch eine stärkere Eigenschaft.
+Die Folge der Beträge der Koeffizienten des chromatischen Polynoms ist log-konkav.
+Für eine Folge \(a_0, \ldots, a_n\) (z.B. die Beträge der Koeffizienten oben) bedeutet dies, dass für alle \(0 &lt; i &lt; n\) gilt:
+$$a_{i-1}a_{i+1} \leq a_i^2$$
+Das klingt erstmal abstrakt. Um sich ein Bild machen zu können helfen zwei Dinge.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>Ü</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Erstens überzeuge man sich davon, dass die Eigenschaft log-konkav zu sein für eine Folge impliziert, dass sie die von uns beobachtete
+Eigenschaft ebenfalls hat. Man sagt, die Folge sei <a href="https://de.wikipedia.org/wiki/Unimodale_Abbildung">unimodal</a>,
+wenn für ein \(0 \leq i \leq n\) gilt:
+$$a_0 \leq a_1 \leq \cdots \leq a_i \geq a_{i+1} \geq \cdots \geq a_n.$$
+
+Zweitens schauen wir uns in der Tat ein Bild an, nämlich das der Anzahl der Dezimalstellen der Einträge in der 21-ten Zeile
+des <a href="https://de.wikipedia.org/wiki/Pascalsches_Dreieck">Pascalschen Dreiecks</a>.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Graphische Darstellung der Anzahl der Dezimalstellen der Einträge in der 21-ten Zeile des Pascalschen Dreiecks.
+Die Zahl in der \(k\)-ten Reihe gibt den Binomialkoeffizient \(21 \choose k\) wieder.</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>440px</height>
+<width>730px</width>
+<code>
+box(0,0,0,20,#D1D2FB,#000);
+text(5,15,1,#000,"");
+box(0,20,122,20,#D1D2FB,#000);
+text(5,35,21,#000,"");
+box(0,40,214,20,#D1D2FB,#000);
+text(5,55,210,#000,"");
+box(0,60,288,20,#D1D2FB,#000);
+text(5,75,1330,#000,"");
+box(0,80,348,20,#D1D2FB,#000);
+text(5,95,5985,#000,"");
+box(0,100,397,20,#D1D2FB,#000);
+text(5,115,20349,#000,"");
+box(0,120,436,20,#D1D2FB,#000);
+text(5,135,54264,#000,"");
+box(0,140,467,20,#D1D2FB,#000);
+text(5,155,116280,#000,"");
+box(0,160,489,20,#D1D2FB,#000);
+text(5,175,203490,#000,"");
+box(0,180,504,20,#D1D2FB,#000);
+text(5,195,293930,#000,"");
+box(0,200,511,20,#D1D2FB,#000);
+text(5,215,352716,#000,"");
+box(0,220,511,20,#D1D2FB,#000);
+text(5,235,352716,#000,"");
+box(0,240,504,20,#D1D2FB,#000);
+text(5,255,293930,#000,"");
+box(0,260,489,20,#D1D2FB,#000);
+text(5,275,203490,#000,"");
+box(0,280,467,20,#D1D2FB,#000);
+text(5,295,116280,#000,"");
+box(0,300,436,20,#D1D2FB,#000);
+text(5,315,54264,#000,"");
+box(0,320,397,20,#D1D2FB,#000);
+text(5,335,20349,#000,"");
+box(0,340,348,20,#D1D2FB,#000);
+text(5,355,5985,#000,"");
+box(0,360,288,20,#D1D2FB,#000);
+text(5,375,1330,#000,"");
+box(0,380,214,20,#D1D2FB,#000);
+text(5,395,210,#000,"");
+box(0,400,122,20,#D1D2FB,#000);
+text(5,415,21,#000,"");
+box(0,420,0,20,#D1D2FB,#000);
+text(5,435,1,#000,"");
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Dieses Bild sagt auf einen Blick, was es mit der Eigenschaft log-konkav auf sich hat.
+(Es funktioniert für jede andere Zeile des Dreiecks ebenso.)
+Dass wir es hier mit etwas <a href="https://de.wikipedia.org/wiki/Konkav">konkavem</a> zu tun haben braucht wohl nicht weiter erläutert zu werden.
+Der <a href="https://de.wikipedia.org/wiki/Logarithmus#Anzahl_der_Ziffern_einer_Zahl">Logarithmus</a> kommt ins Spiel,
+weil er es ist, der die Anzahl der Dezimalstellen zählt.
+
+
+
+Warum aber die Koeffizienten des chromatischen Polynoms diese Eigenschaft haben sollten bleibt zunächst mysteriös.
+Genau solche Mysterien treiben den Mathematiker an und er will nicht ruhen, ehe er eine Erklärung gefunden hat.
+
+In diesem Fall ist es June Huh gelungen Licht ins Dunkel zu bringen, in dem er für die Beträge der Koeffizienten
+eine geometrische Bedeutung gefunden hat.
+Wir wollen seine tiefgehende Arbeit <a href="#Huh2012">[Huh 2012]</a> hier kurz sehr grob skizzieren.
+Sie kann als Ausgangspunkt für viele schöne Spaziergänge in die Mathematik genutzt werden.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Zunächst lässt sich einem Graph eine weitere kombinatorische Struktur zuordnen, sein
+graphisches <a href="https://de.wikipedia.org/wiki/Matroid">Matroid</a>.
+Dieses kommt wieder mit einem Polynom daher, seinem charakteristischen Polynom und dieses lässt sich wieder
+mit einem Vorgehen berechnen, das dem oben vorgestellten Löschen und Kontrahieren entspricht.
+Diese Polynome stimmen bis auf einen Faktor \(t^c\) überein, wobei \(c\) die Anzahl der Zusammenhangskomponenten des Graphen ist.
+
+Dem Graphen, wie dem Matroid, lässt sich eine sogenannte Konfiguration von Hyperebenen zuordnen.
+Dies geschieht vom Graph aus gesehen dadurch, dass jedem Knoten eine komplexwertige Variable \(v_i\) zugeordnet wird und
+dann die Hyperebenen \(v_i - v_j = 0\) für alle Kanten \(v_i --- v_j\) zu einer Konfiguration vereinigt werden.
+Dieses Objekt hat wiederum ein charakteristisches Polynom, sowie einen Löschen und Kontrahieren-Vorgang zu dessen Berechnung.
+Das Löschen ist hier genau das, was man sich vorstellen würde: Man entfernt eine Hyperebene aus der Konfiguration.
+Das Kontrahieren entspricht dem Einschränken auf eine gegebene Hyperebene, d.h. man geht zu den Schnitten aller übrigen
+Ebenen mit der ausgewählten Ebene über.
+Mehr zu Konfiguration von Hyperebenen findet man in <a href="#Orlik1992">[Orlik/Terao 1992]</a>.
+
+Nun stellt sich heraus, dass das Komplement der Konfiguration von Hyperebenen, d.h. die Menge aller Punkte für die keine der oben
+genannten Gleichungen erfüllt ist, ein recht zahmer <a href="https://de.wikipedia.org/wiki/Topologischer_Raum">topologischer Raum</a> ist
+(ein <a href="https://de.wikipedia.org/wiki/Zellkomplex">CW-Komplex</a>) dessen
+<a href="https://de.wikipedia.org/wiki/Betti-Zahl">Betti-Zahlen</a> eng mit dem charakteristischen
+Polynom der Konfiguration zusammenhängen.
+
+Schließlich gibt es für diese Betti-Zahlen einen weiteren geometrischen Zusammenhang, der dann zur Log-Konkavität führt.
+
+Was man aus dieser Skizze ablesen kann, ist, dass sich in der Mathematik oft überraschende Verbindungen zwischen scheinbar
+sehr verschiedenen Bereichen finden lassen und es mitunter erst das Verständnis solch tiefer Verbindungen ermöglicht
+unlösbar erscheinende Probleme zu lösen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<css>text-align:left;</css>
+<title>Referenzen</title>
+<toc>Referenzen</toc>
+<content>
+<ul class="book_references">
+<li id='Conrad1994'>
+[Conrad 1994] Axel Conrad, Tanja Hindrichs, Hussein Morsy, Ingo Wegener:
+ <a href="https://www.sciencedirect.com/science/article/pii/0166218X9200170Q">Solution of the knight's Hamiltonian path problem on chessboards</a>
+</li>
+<li id='Parberry1997'>
+ [Parberry 1997] Ian Parberry:
+ <a href="https://www.sciencedirect.com/science/article/pii/S0166218X96000108">An efficient algorithm for the Knight's tour problem</a>
+</li>
+<li id='Huh2012'>
+ [Huh 2012] June Huh:
+ <a href="https://www.ams.org/journals/jams/2012-25-03/S0894-0347-2012-00731-0/S0894-0347-2012-00731-0.pdf">Milnor numbers of projective hypersurfaces and the chromatic polynomial of graphs</a>
+</li>
+<li id='Orlik1992'>
+ [Orlik/Terao 1992] P. Orlik, H. Terao:
+ <a href="https://link.springer.com/book/10.1007/978-3-662-02772-1">Arrangements of Hyperplanes</a>
+</li>
+</ul>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'><a onclick="deepLink('contents/reisebegleiter/zaehlen.xml', 'Zählen', '')">&#8680;</a></div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph_center</cssclass>
+<content>
+Wir haben nun schon die ersten interessanten mathematischen Objekte kennengelernt.
+Im nächsten Kapitel wollen wir Objekte zählen.
+
+
+&#65374;
 </content>
 </paragraph>
 

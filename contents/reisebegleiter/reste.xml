@@ -157,7 +157,7 @@ Was ist \(7\cdot 3\) modulo 8? Nun wir müssen einfach beim Punkt null im Kreis 
 <css>fill:#f00;</css>
 <cssclass>book_paragraph</cssclass>
 <content>
-\(7\cdot 3\) modulo 8 ergibt 5.
+<figcaption>\(7\cdot 3\) modulo 8 ergibt 5.</figcaption>
 </content>
 <specialcontent>
 <contenttype>drawing</contenttype>
@@ -329,7 +329,7 @@ Hier ist ein Beispiel für diese Aufgabe.
 <paragraph>
 <cssclass>book_paragraph</cssclass>
 <content>
-Welche Zahl lässt modulo 2 den Rest 1, modulo 3 den Rest 2 und modulo 7 den Rest 4?
+<figcaption>Welche Zahl lässt modulo 2 den Rest 1, modulo 3 den Rest 2 und modulo 7 den Rest 4?</figcaption>
 </content>
 <specialcontent>
 <contenttype>drawing</contenttype>

@@ -16,6 +16,10 @@ div .book_paragraph {
   margin-right: auto;
 }
 
+div .book_paragraph figcaption {
+  font: italic 14px sans-serif;
+}
+
 div .book_paragraph_center {
   position:relative;
   width:50%;
@@ -37,6 +41,10 @@ div .book_margin_paragraph {
   width:20%;
   margin-right: 40px;
   float:right;
+}
+
+div .book_margin_paragraph figcaption {
+  font: italic 14px sans-serif;
 }
 
 .book_references li {

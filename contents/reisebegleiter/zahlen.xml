@@ -38,7 +38,7 @@ Schreiben wir die Zahlen geschickt untereinander.
 <paragraph>
 <cssclass>book_margin_paragraph</cssclass>
 <content>
-Die Summe der ersten fünf Zahlen graphisch.
+<figcaption>Die Summe der ersten fünf Zahlen graphisch.</figcaption>
 </content>
 <specialcontent>
 <contenttype>drawing</contenttype>
@@ -84,7 +84,7 @@ text(45,135,n,#000,"");
 <cssclass>book_formula_box</cssclass>
 <css>width:50%;</css>
 <content>
-  Die Zahlen von \(1\) bis \(n\) geschickt untereinander geschrieben.
+<figcaption>Die Zahlen von \(1\) bis \(n\) geschickt untereinander geschrieben.</figcaption>
 </content>
 <specialcontent>
 <contenttype>datatable</contenttype>
@@ -185,7 +185,7 @@ function sum_of_odd_n(n)
 <paragraph>
 <cssclass>book_margin_paragraph</cssclass>
 <content>
-Die Summe der ersten fünf ungeraden Zahlen graphisch.
+<figcaption>Die Summe der ersten fünf ungeraden Zahlen graphisch.</figcaption>
 </content>
 <specialcontent>
 <contenttype>drawing</contenttype>
@@ -279,7 +279,7 @@ text(46,224,n,#000,"");
 <cssclass>book_formula_box</cssclass>
 <css>width:50%;</css>
 <content>
-  Die ersten \(n\) ungeraden Zahlen geschickt untereinander geschrieben.
+<figcaption>Die ersten \(n\) ungeraden Zahlen geschickt untereinander geschrieben.</figcaption>
 </content>
 <specialcontent>
 <contenttype>datatable</contenttype>
@@ -305,7 +305,7 @@ text(46,224,n,#000,"");
 <paragraph>
 <cssclass>book_paragraph</cssclass>
 <content>
-Die Summe der ersten fünf ungeraden Zahlen graphisch.
+<figcaption>Die Summe der ersten fünf ungeraden Zahlen graphisch.</figcaption>
 </content>
 <specialcontent>
 <contenttype>drawing</contenttype>
@@ -377,7 +377,7 @@ Er hat eine schöne Veranschaulichung:
 <paragraph>
 <cssclass>book_paragraph</cssclass>
 <content>
-Induktionsschritt zum Beweis von \(\sum_{i=1}^n2i-1 = n^2\).
+<figcaption>Induktionsschritt zum Beweis von \(\sum_{i=1}^n2i-1 = n^2\).</figcaption>
 </content>
 <specialcontent>
 <contenttype>drawing</contenttype>
@@ -411,7 +411,7 @@ und damit den Weg von Summen einfacher Zahlen zu den Summen ihrer Potenzen ebnen
 <paragraph>
 <cssclass>book_paragraph</cssclass>
 <content>
-Zerlegung eines Würfels in einen kleineren Würfel, Grundfläche und Seiten.
+<figcaption>Zerlegung eines Würfels in einen kleineren Würfel, Grundfläche und Seiten.</figcaption>
 </content>
 <specialcontent>
 <contenttype>drawing3d</contenttype>
@@ -798,7 +798,7 @@ Zum Beispiel ist \(12 = 3 \cdot 4\):
 <paragraph>
 <cssclass>book_paragraph</cssclass>
 <content>
-Eine Rechteckzahl.
+<figcaption>Eine Rechteckzahl.</figcaption>
 </content>
 <specialcontent>
 <contenttype>drawing</contenttype>
@@ -842,7 +842,7 @@ Für \(d=1, 2, 3, 4\) sieht das zum Beispiel so aus:
 <paragraph>
 <cssclass>book_paragraph</cssclass>
 <content>
-Einige Polygonalzahlen.
+<figcaption>Einige Polygonalzahlen.</figcaption>
 </content>
 <specialcontent>
 <contenttype>drawing</contenttype>
@@ -1062,7 +1062,7 @@ Wenn man die Kugel dabei in Schichten von Quadraten anordnet erhält man die
 <paragraph>
 <cssclass>book_paragraph</cssclass>
 <content>
-Die ersten vier Pyramidalzahlen.
+<figcaption>Die ersten vier Pyramidalzahlen.</figcaption>
 </content>
 <specialcontent>
 <contenttype>drawing</contenttype>
