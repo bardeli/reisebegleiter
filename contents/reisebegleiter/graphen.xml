@@ -4,6 +4,13 @@
 <cssclass>book_chapter_heading</cssclass>
 <title>Graphen</title>
 <content>
+<i>Graph theory is the slum of topology.</i>
+― <a href="">Henry Whitehead</a> (?),
+ siehe <a href="https://cameroncounts.wordpress.com/2010/02/02/combinatorics-for-the-working-mathematician">1</a>
+ und <a href="https://sites.math.rutgers.edu/~zeilberg/Opinion1.html">2</a>.
+
+
+
 In den vorausgehenden Abschnitten haben wir uns stets mit Zahlen als Objekt unserer Untersuchung beschäftigt.
 Um nicht den Eindruck zu erwecken, dies sei die einzige Spielwiese der Mathematik, wollen wir uns nun ein paar neue
 Spielzeuge besorgen.

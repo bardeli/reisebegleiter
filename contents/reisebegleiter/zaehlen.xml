@@ -4,7 +4,1946 @@
 <cssclass>book_chapter_heading</cssclass>
 <title>Zählen</title>
 <content>
-Hier geht es demnächst weiter...
+  <i>Das ideale Drama zu \(n\) Personen muss enthalten: \(n\) Persönlichkeiten, \(\frac{n(n-1)}{2}\) dialogische Beziehungen
+    (Unterdramen zu je Zweien), \(\frac{n(n-1)(n-2)}{6}\) &#x0201E;dreieckige Verhältnisse&#x0201D; (Unterdramen zu je Dreien) und so fort,
+    oder, wie man in der Arithmetik sagt, Unionen, Binionen, Ternionen in der überhaupt möglichen Anzahl.
+    Also innere Vollständigkeit und Erschöpfung aller denkbaren Combinationen; keiner der Handelnden soll nur einseitig wirken oder einseitig empfangen
+    \(\ldots\) Man sieht, wie sehr der ernsthafte Dramatiker bemüht sein wird, sein \(n\) zu verkleinern.</i>
+
+  ― <a href="https://de.wikipedia.org/wiki/Felix_Hausdorff">Paul Mongré</a>, Sant' Ilario. Gedanken aus der Landschaft Zarathustras
+
+
+
+Im <a onclick="deepLink('contents/reisebegleiter/reste.xml', 'Zahlen', '')">ersten Kapitel</a> hatten wir uns mit Zahlen befasst,
+sie dabei aber ein wenig ihrer natürlichen Funktion beraubt, indem wir direkt begonnen haben mit ihnen zu rechnen.
+Noch natürlicher ist aber die Erkenntnis, dass man mit Zahlen zählen kann.
+Ja sind sie denn nicht genau dazu da?
+In diesem Kapitel wollen wir uns jedenfalls mit dem Zählen befassen und uns damit die
+<a href="https://de.wikipedia.org/wiki/Kombinatorik">Kombinatorik</a> als Sehenswürdigkeit erschließen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<toc>Fibonacci-Zahlen</toc>
+<title>Fibonacci-Zahlen</title>
+<content>
+Es ist ein völlig natürlicher Reflex Kaninchen zählen zu wollen.
+So beginnt spätestens 1202 <a href="https://de.wikipedia.org/wiki/Leonardo_Fibonacci">Leonardo Fibonacci</a>
+im zwöften Kapitel seines Buches Liber Abaci <a href="#Sigler2002">[Sigler 2002]</a> eine Tradition praxisnaher Beispiele,
+indem er sich mit der Frage beschäftigt, wieviele Kaninchenpaare man nach einer gegebenen Anzahl an Monaten erhält,
+wenn man mit einem Paar beginnt, jedes geschlechtsreife Paar von Kaninchen einmal im Monat ein weiteres Paar Kaninchen gebiert,
+diese Paare nach einem Monat wiederum geschlechtsreif werden und sich die Kaninchen stets zu geeigneten Paaren zusammenfinden.
+
+Nennt man die gesuchte Anzahl nach \(n\) Monaten \(F_n\), so erhält man unter all diesen Annahmen folgende Zusammenhänge.
+Wir starten im ersten Monat mit einem noch nicht geschlechtsreifen Paar Kaninchen und haben damit
+$$F_1 = 1.$$
+Im Monat darauf bleibt es zunächst bei diesem einen Paar, auch wenn es jetzt mit der Kaninchenproduktion loslegen kann.
+Also ist auch
+$$F_2 = 1.$$
+Ab dem dritten Monat können wir nun allgemein wie folgt schließen.
+Alle Paare aus dem vergangenen Monat bleiben uns erhalten, also \(F_{n-1}\) viele.
+Alle Paare, die schon vor zwei Monaten dabei waren bekommen jetzt Nachwuchs, so dass noch einmal \(F_{n-2}\) Paare hinzukommen.
+Die liefert uns die <a href="https://de.wikipedia.org/wiki/Lineare_Differenzengleichung">Rekurrenz</a>
+$$F_n = F_{n-1} + F_{n-2}.$$
+Fibonacci hat als Aufgabe gestellt die Situation nach 12 Monaten zu bestimmen, was sich durch einfaches Einsetzen und Ausrechnen erledigen
+lässt:
+$$F_1 = 1,\,F_2 = 1,\,F_3 = 2,\,F_4 = 3,\,F_5 = 5,\,F_6 = 8,\,F_7 = 13,\,F_8 = 21,\,F_9 = 34,\,F_{10} = 55,\,F_{11} = 89,\,F_{12} = 144.$$
+Aus praktischen Gründen fügt man gerne noch vorne an die Folge die Zahl null an, setzt also \(F_0 = 0\).
+Fibonacci weist insbesondere darauf hin, dass sich durch diesen Vorgang die gesuchten Anzahlen für einen beliebig langen Zeitraum bestimmen
+lassen.
+
+Folgen ganzer Zahlen treten im Zusammenhang mit Zählproblemen praktisch ständig auf.
+Kennt man die ersten paar Zahlen der Folge, kann man sich eines schönen Werkzeugs bedienen, um interessante Folgen zu finden, die
+mit diesen Zahlen beginnen und um zu lernen, was über diese Folgen bekannt ist und wie sie zusammenhängen.
+Dies ist <a href="https://oeis.org/?language=german">Die Online-Enzyklopädie der Zahlenfolgen</a> von
+<a href="https://en.wikipedia.org/wiki/Neil_Sloane">Neil Sloane</a>.
+
+Die Fibonacci-Folge findet sich hier als Folge <a href="https://oeis.org/A000045">A000045</a>.
+Man kann beginnen dieses Werkzeug schätzen zu lernen, wenn sich im Vergleich dazu noch die
+Folge <a href="https://oeis.org/A324969">A324969</a> anschaut.
+
+
+
+Die Fibonacci-Zahlen sind nicht wegen der Kaninchen so berühmt.
+Sie kommen in so vielen Zusammenhängen vor, dass man sein ganzes Leben damit verbringen könnte über sie zu berichten.
+Wir wollen wenigstens an einem besonders einfachen Beispiel sehen, dass sie noch etwas anderes zählen.
+Im folgenden Bild sind alle möglichen <a href="https://de.wikipedia.org/wiki/Parkettierung">Parkettierungen</a> einer Reihe von fünf Kästchen
+mit Teilen der Breite eins oder zwei dargestellt.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Alle acht Parkettierungen einer Reihe von fünf Kästchen mit Teilen der Breite eins und zwei.</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>400px</height>
+<width>800px</width>
+<code>
+box(0,180,20,20,#FDF283,#000);
+box(20,180,20,20,#FDF283,#000);
+box(40,180,20,20,#FDF283,#000);
+box(60,180,20,20,#FDF283,#000);
+box(80,180,20,20,#FDF283,#000);
+
+arrow(100,180,120,80,#000,1);
+arrow(100,200,120,300,#000,1);
+
+box(120,60,20,20,#FDF283,#000);
+box(140,60,20,20,#FDF283,#000);
+box(160,60,20,20,#FDF283,#000);
+box(180,60,20,20,#FDF283,#000);
+box(200,60,20,20,#FDF283,#000);
+
+box(123,63,34,14,#D1D2FB,#000);
+arrow(220,60,240,40,#000,1);
+arrow(220,80,240,100,#000,1);
+
+box(120,300,20,20,#FDF283,#000);
+box(140,300,20,20,#FDF283,#000);
+box(160,300,20,20,#FDF283,#000);
+box(180,300,20,20,#FDF283,#000);
+box(200,300,20,20,#FDF283,#000);
+
+box(123,303,14,14,#D1D2FB,#000);
+arrow(220,300,240,280,#000,1);
+arrow(220,320,240,340,#000,1);
+
+box(240,20,20,20,#FDF283,#000);
+box(260,20,20,20,#FDF283,#000);
+box(280,20,20,20,#FDF283,#000);
+box(300,20,20,20,#FDF283,#000);
+box(320,20,20,20,#FDF283,#000);
+
+box(243,23,34,14,#D1D2FB,#000);
+box(283,23,34,14,#D1D2FB,#000);
+box(323,23,14,14,#D1D2FB,#000);
+
+box(240,100,20,20,#FDF283,#000);
+box(260,100,20,20,#FDF283,#000);
+box(280,100,20,20,#FDF283,#000);
+box(300,100,20,20,#FDF283,#000);
+box(320,100,20,20,#FDF283,#000);
+
+box(243,103,34,14,#D1D2FB,#000);
+box(283,103,14,14,#D1D2FB,#000);
+arrow(340,100,360,80,#000,1);
+arrow(340,120,360,140,#000,1);
+
+box(360,80,20,20,#FDF283,#000);
+box(380,80,20,20,#FDF283,#000);
+box(400,80,20,20,#FDF283,#000);
+box(420,80,20,20,#FDF283,#000);
+box(440,80,20,20,#FDF283,#000);
+
+box(363,83,34,14,#D1D2FB,#000);
+box(403,83,14,14,#D1D2FB,#000);
+box(423,83,34,14,#D1D2FB,#000);
+
+box(360,120,20,20,#FDF283,#000);
+box(380,120,20,20,#FDF283,#000);
+box(400,120,20,20,#FDF283,#000);
+box(420,120,20,20,#FDF283,#000);
+box(440,120,20,20,#FDF283,#000);
+
+box(363,123,34,14,#D1D2FB,#000);
+box(403,123,14,14,#D1D2FB,#000);
+box(423,123,14,14,#D1D2FB,#000);
+box(443,123,14,14,#D1D2FB,#000);
+
+box(240,260,20,20,#FDF283,#000);
+box(260,260,20,20,#FDF283,#000);
+box(280,260,20,20,#FDF283,#000);
+box(300,260,20,20,#FDF283,#000);
+box(320,260,20,20,#FDF283,#000);
+
+box(243,263,14,14,#D1D2FB,#000);
+box(263,263,34,14,#D1D2FB,#000);
+arrow(340,260,360,240,#000,1);
+arrow(340,280,360,300,#000,1);
+
+box(240,340,20,20,#FDF283,#000);
+box(260,340,20,20,#FDF283,#000);
+box(280,340,20,20,#FDF283,#000);
+box(300,340,20,20,#FDF283,#000);
+box(320,340,20,20,#FDF283,#000);
+
+box(243,343,14,14,#D1D2FB,#000);
+box(263,343,14,14,#D1D2FB,#000);
+arrow(340,340,360,320,#000,1);
+arrow(340,360,360,380,#000,1);
+
+box(360,240,20,20,#FDF283,#000);
+box(380,240,20,20,#FDF283,#000);
+box(400,240,20,20,#FDF283,#000);
+box(420,240,20,20,#FDF283,#000);
+box(440,240,20,20,#FDF283,#000);
+
+box(363,243,14,14,#D1D2FB,#000);
+box(383,243,34,14,#D1D2FB,#000);
+box(423,243,34,14,#D1D2FB,#000);
+
+box(360,280,20,20,#FDF283,#000);
+box(380,280,20,20,#FDF283,#000);
+box(400,280,20,20,#FDF283,#000);
+box(420,280,20,20,#FDF283,#000);
+box(440,280,20,20,#FDF283,#000);
+
+box(363,283,14,14,#D1D2FB,#000);
+box(383,283,34,14,#D1D2FB,#000);
+box(423,283,14,14,#D1D2FB,#000);
+box(443,283,14,14,#D1D2FB,#000);
+
+box(360,320,20,20,#FDF283,#000);
+box(380,320,20,20,#FDF283,#000);
+box(400,320,20,20,#FDF283,#000);
+box(420,320,20,20,#FDF283,#000);
+box(440,320,20,20,#FDF283,#000);
+
+box(363,323,14,14,#D1D2FB,#000);
+box(383,323,14,14,#D1D2FB,#000);
+box(403,323,34,14,#D1D2FB,#000);
+box(443,323,14,14,#D1D2FB,#000);
+
+box(360,360,20,20,#FDF283,#000);
+box(380,360,20,20,#FDF283,#000);
+box(400,360,20,20,#FDF283,#000);
+box(420,360,20,20,#FDF283,#000);
+box(440,360,20,20,#FDF283,#000);
+
+box(363,363,14,14,#D1D2FB,#000);
+box(383,363,14,14,#D1D2FB,#000);
+box(403,363,14,14,#D1D2FB,#000);
+arrow(460,360,480,340,#000,1);
+arrow(460,380,480,400,#000,1);
+
+
+box(480,340,20,20,#FDF283,#000);
+box(500,340,20,20,#FDF283,#000);
+box(520,340,20,20,#FDF283,#000);
+box(540,340,20,20,#FDF283,#000);
+box(560,340,20,20,#FDF283,#000);
+
+box(483,343,14,14,#D1D2FB,#000);
+box(503,343,14,14,#D1D2FB,#000);
+box(523,343,14,14,#D1D2FB,#000);
+box(543,343,34,14,#D1D2FB,#000);
+
+box(480,380,20,20,#FDF283,#000);
+box(500,380,20,20,#FDF283,#000);
+box(520,380,20,20,#FDF283,#000);
+box(540,380,20,20,#FDF283,#000);
+box(560,380,20,20,#FDF283,#000);
+
+box(483,383,14,14,#D1D2FB,#000);
+box(503,383,14,14,#D1D2FB,#000);
+box(523,383,14,14,#D1D2FB,#000);
+box(543,383,14,14,#D1D2FB,#000);
+box(563,383,14,14,#D1D2FB,#000);
+
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Fragt man allgemeiner nach der Anzahl der möglichen Parkettierungen von \(n\) Feldern in einer Reihe mit Teilen der Breite eins oder zwei
+so erhält man genau die \(n\)-te Fibonacci-Zahl.
+
+Das ist überraschend leicht einzusehen.
+Zunächst betrachten wir die zwei einfachsten Fälle: Ein bzw. zwei Kästchen in einer Reihe.
+Im ersten Fall gibt es genau eine Möglichkeit und das passt zu \(F_1 = 1\).
+Im zweiten Fall können wir entweder ein Teil der Breite zwei oder zwei Teile der Breite eins verwenden.
+Die passt wiederum zu \(F_2 = 2\).
+Im allgemeinen Fall können wir vorgehen wie in der Abbildung. Wenn wir beginnen die Reihe von links mit Teilen zu belegen,
+so können wir entweder mit einem Teil der Breite zwei oder mit einem Teil der Breite eins beginnen.
+Nennen wir die Anzahl der möglichen Parkettierungen für eine Reihe der Länge \(n\) nun \(P_n\), so ergibt sich,
+dass entsprechend dieser beiden Möglichkeiten gilt:
+$$P_n = P_{n-2} + P_{n-1}.$$
+Wir können mit Breite zwei beginnen und dann gibt es noch \(n-2\) Felder abzudecken, oder
+wir können mit Breite eins beginnen und dann gibt es noch \(n-1\) Felder abzudecken.
+
+Dies ist aber genau die gleiche Berechnungsvorschrift wie für die Fibonacci-Zahlen!
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Wie kann man die Fibonacci-Zahlen schnell berechnen und gibt es eine Formel für die \(n\)-te Fibonacci-Zahl?
+Beide Fragen beantworten wir durch den Auftritt einer zauberhaften Matrix:
+$$
+\begin{pmatrix}
+1 &amp; 1\\
+1 &amp; 0\\
+\end{pmatrix}
+$$
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'><a href='https://de.wikipedia.org/wiki/Matrizenmultiplikation'>?</a></div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Berechnen wir einmal die \(n\)-te Potenz dieser Matrix:
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_js_box</cssclass>
+<css>width:50%;</css>
+<content>
+</content>
+<specialcontent>
+<contenttype>code_interaction</contenttype>
+<code>
+function matrix_power(n)
+{
+  var result_a = 1n;
+  var result_b = 0n;
+  var result_c = 0n;
+  var result_d = 1n;
+
+  var base_a = 1n;
+  var base_b = 1n;
+  var base_c = 1n;
+  var base_d = 0n;
+
+  while (n &gt; 0)
+  {
+    if (n%2 == 1)
+    {
+      let a2 = base_a * result_a + base_b * result_c;
+      let b2 = base_a * result_b + base_b * result_d;
+      let c2 = base_c * result_a + base_d * result_c;
+      let d2 = base_c * result_b + base_d * result_d;
+
+      result_a = a2; result_b = b2; result_c = c2; result_d = d2;
+      n -= 1;
+    }
+
+    n /= 2;
+
+    let a2 = base_a * base_a + base_b * base_c;
+    let b2 = base_a * base_b + base_b * base_d;
+    let c2 = base_a * base_c + base_c * base_d;
+    let d2 = base_b * base_c + base_d * base_d;
+
+    base_a = a2; base_b = b2; base_c = c2; base_d = d2;
+  }
+
+  var result_str = "\\begin{pmatrix}" + result_a + " &amp; " + result_b + "\\\\" + result_c + " &amp; " + result_d + "\\end{pmatrix}";
+
+  return result_str;
+}
+</code>
+<display>
+  \(\begin{pmatrix}
+  1 &amp; 1\\
+  1 &amp; 0\\
+  \end{pmatrix}^n\) für \(n\) = @input:0!: @output:!
+</display>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>Ü</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+An dieser Stelle erhält man wohl folgende Vermutung, von deren Richtigkeit der Leser sich am besten selbst überzeugt.
+$$\begin{pmatrix}
+1 &amp; 1\\
+1 &amp; 0\\
+\end{pmatrix}^n =
+\begin{pmatrix}
+F_{n+1} &amp; F_n\\
+F_n &amp; F_{n-1}\\
+\end{pmatrix}$$
+
+Je nachdem, ob man mit dem Computer schnell \(F_n\) berechnen will, oder ob man eine geschlossene Formel dafür sucht,
+bieten sich zwei unterschiedliche Wege an die \(n\)-te Potenz dieser Matrix, nennen wir sie für den Rest des
+Abschnitts \(M\), zu berechnen.
+
+
+
+Will man mit dem Computer schnell \(M^n\) berechnen kann man sich der Methode der
+<a href="https://de.wikipedia.org/wiki/Bin%C3%A4re_Exponentiation">binären Exponentiation</a> bedienen.
+Fangen wir mit der Grundidee an.
+Möchte man \(M^{16}\) auf naivem Wege berechnen, so braucht man mittels \(M^{16}=((M\cdot M)\cdot M \ldots)\)
+fünfzehn Multiplikationen.
+Andererseits ist aber \(M^{16} = (((M^2)^2)^2)^2\).
+Hier brauchen wir also nur vier Multiplikationen und allgemein kommen wir, wenn \(n\) eine Zweierpotenz ist, mit \(\log_2 n\)
+Multiplikationen aus.
+Was ist nun, wenn \(n\) keine Zweierpotenz ist?
+Schauen wir uns noch ein Beispiel an: \(M^{20}\).
+Hier können wir nutzen, dass \(M^{20} = M^{16} \cdot M^{4}\) ist.
+Bei der Berechnung von \(M^{16}\) fällt \(M^{4}\) als Abfallprodukt an, so dass wir neben dieser Berechnung nur noch
+ein weiteres Produkt berechnen müssen.
+Allgemein kann man an der Binärdarstellung von \(n\) ablesen welche Zweierpotenzen berechnet und miteinander multipliziert
+werden müssen.
+Dazu geht man die Binärdarstellung von \(n\) von \(2^0, 2^1, 2^2, \ldots\) nach aufsteigenden Zweierpotenzen durch.
+In jedem Schritt berechnet man durch Quadrieren die passende Potenz von \(M\), also \(M^0, M^{2^1}, M^{2^2}, \ldots\).
+Für die zu berechnende Potenz von \(M\) startet man mit der Einheitsmatrix als Zwischenergebnis, also mit \(M^0 = \mathbb{1}\).
+Für jede Eins in der Binärdarstellung von \(n\) wird das Zwischenergebnis mit der passenden Zweierpotenz von \(M\) multipliziert.
+So benötigen wir insgesamt \(\log_2(n)\) Multiplikationen, um die Zweierpotenzen zu berechnen und noch einmal so viele Multiplikationen,
+wie Einsen in der Binärdarstellung vorkommen, also noch einmal höchstens \(\log_2(n)\) viele.
+
+
+
+Zum Auffinden einer geschlossenen Formel bietet es sich an \(M\) zu
+<a href="https://de.wikipedia.org/wiki/Diagonalisierbare_Matrix#Diagonalisierung">diagonalisieren</a>.
+Dazu bestimmen wir die <a href="https://de.wikipedia.org/wiki/Eigenwertproblem">Eigenwerte und Eigenvektoren</a>.
+Wir wollen dies für erstere kurz ausführen und letztere nur angeben.
+Die Eigenwerte bestimmt man durch Lösen der Gleichung \(Mv=\lambda v\), wobei \(v\) ein Eigenvektor und \(\lambda\) ein Eigenwert ist.
+Dies führt auf die Gleichung
+$$\det \begin{pmatrix}
+1-\lambda &amp; 1\\
+1 &amp; -\lambda\\
+\end{pmatrix} = 0.$$
+Wir müssen also die quadratische Gleichung \(\lambda^2 - \lambda - 1\) lösen und erhalten die beiden Lösugen
+$$\phi = \frac{1+\sqrt{5}}{2},\,\psi = \frac{1-\sqrt{5}}{2}.$$
+Dem geschulten Beobachter springt hier in Form von \(\phi\) der <a href="https://de.wikipedia.org/wiki/Goldener_Schnitt">goldene Schnitt</a> ins Auge.
+Wir lassen ihn hier jedoch genauso wie die <a href="https://de.wikipedia.org/wiki/Goldener_Schnitt#Goldene_Spirale">goldene Spirale</a> und
+ihren Zusammenhang mit den Fibonacci-Zahlen links liegen.
+
+Unserem Wege folgend erhält man folgende Diagonalisierung von \(M\).
+$$M = \begin{pmatrix}
+\psi &amp; \phi\\
+1 &amp; 1\\
+\end{pmatrix}
+\begin{pmatrix}
+\psi &amp; 0\\
+0 &amp; \phi\\
+\end{pmatrix}
+\begin{pmatrix}
+-\frac{1}{\sqrt{5}} &amp; \frac{5+\sqrt{5}}{10}\\
+\frac{1}{\sqrt{5}} &amp; \frac{5-\sqrt{5}}{10}\\
+\end{pmatrix}$$
+
+Weil die äußeren Matrizen, wie bei jeder Eigenwertzerlegung, invers zueinander sind überzeugt man sich leicht, dass man die \(n\)-te Potenz von
+\(M\) so erhält:
+$$\begin{pmatrix}
+1 &amp; 1\\
+1 &amp; 0\\
+\end{pmatrix}^n =
+\begin{pmatrix}
+\psi &amp; \phi\\
+1 &amp; 1\\
+\end{pmatrix}
+\begin{pmatrix}
+\psi^n &amp; 0\\
+0 &amp; \phi^n\\
+\end{pmatrix}
+\begin{pmatrix}
+-\frac{1}{\sqrt{5}} &amp; \frac{5+\sqrt{5}}{10}\\
+\frac{1}{\sqrt{5}} &amp; \frac{5-\sqrt{5}}{10}\\
+\end{pmatrix}$$
+
+Multipliziert man dies aus und beschränkt sich der Einfachheit halber auf den oberen linken Eintrag der Matrix, so findet man:
+$$F_{n+1} = \frac{\phi^{n+1} - \psi^{n+1}}{\sqrt{5}}$$
+
+An dieser Stelle lasse ich blutenden Herzens ein weiteres Thema aus.
+Man kann nämlich diese schöne Formel zur Bestimmung der Fibonacci-Zahlen auch mit einem geradezu magischen Werkzeug erlangen.
+Dies sind die <a href="https://de.wikipedia.org/wiki/Erzeugende_Funktion">erzeugenden Funktionen</a>.
+Ich lasse sie aus, weil ich einerseits schon
+<a href="https://mathcination.wordpress.com/2017/06/16/a-beautiful-analytic-combination/">an anderer Stelle</a>
+darüber geschrieben habe und weil andererseits einfach jeder an Kombinatorik Interessierte das großartige Buch
+generatingfunctionology <a href="#Wilf1994">[Wilf 1994]</a> lesen muss.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<toc>Bijektionen</toc>
+<title>Bijektionen</title>
+<content>
+Die folgende einfache Idee trägt überraschend weit.
+Wenn wir die Anzahl der Elemente einer bestimmten Menge herausfinden wollen, genügt es eine andere Menge zu finden,
+die genauso viele Elemente enthält, und für die wir die Antwort bereits kennen.
+
+Wir wollen uns zunächst mit einem einfachen Beispiel aufwärmen, ehe wir uns dann einer interessanteren Frage zuwenden.
+Wieviele unterschiedliche Teilmengen einer gegebenen endlichen Menge \(M\) kann man bilden?
+Um diese Frage zu beantworten geben wir zunächst jedem Element von \(M\) eine Nummer, d.h. wir wählen eine Abbildung
+\(f : M \rightarrow \{1, 2, \ldots, |M|\}\). Dabei ist \(|M|\) die Anzahl der Elemente von \(M\).
+Ist nun eine Teilmenge \(N \subseteq M\) gegeben, so gilt für jedes Element von \(M\), dass es entweder in \(N\) liegt oder nicht.
+Wir ordnen nun jedem Element \(m \in M\) im ersten Fall die Zahl 1, im zweiten Fall die Zahl 0 zu.
+Verbinden wir dies nun mit der Abbildung \(f\), so können wir auch der Zahl \(f(m)\) entsprechend 1 oder 0 zuordnen.
+Dies bedeutet, dass jeder Teilmenge von \(M\) eine Abbildung \(\{1, 2, \ldots, |M|\} \rightarrow \{0, 1\}\) zugeordnet wird.
+Offensichtlich sind diese Abbildungen für unterschiedliche Teilmengen unterschiedlich und jede solche Abbildung beschreibt
+eine Teilmenge. Also ist die Anzahl der Abbildungen gleich der Anzahl der Teilmengen.
+Die Anzahl der möglichen Abbildungen ist leicht zu bestimmen: Für jede der Zahlen \(1, \ldots, |M|\) gibt es
+unabhängig von allen anderen zwei Möglichkeiten.
+Das ergibt also insgesamt \(2^{|M|}\) Abbildungen und dieselbe Anzahl an Teilmengen.
+
+Eine Abbildung wie diejenige in unserem Beispiel nennt man eine <a href="https://de.wikipedia.org/wiki/Bijektive_Funktion">Bijektion</a>.
+Genauer gesagt sagen wir eine Abbildung \(f : M \rightarrow N\) zwischen zwei Mengen \(M\) und \(N\) ist bijektiv oder eine Bijektion, wenn
+zwei Bedingungen erfüllt sind.
+Erstens müssen die Bilder unterschiedlicher Elemente von \(M\) stets unterschiedlich sein.
+Zweitens muss jedes Element von \(N\) Bild eines Elements aus \(M\) sein, d.h. für jedes \(n \in N\) gibt es ein
+\(m \in M\) mit \(f(m) = n\).
+Für endliche Mengen bedeutet die Existenz einer Bijektion zwischen ihnen, dass sie die gleiche Anzahl an Elementen haben müssen.
+
+
+
+Angenommen, wir haben eine Folge von \(n\) Zeichen. Wieviele Möglichkeiten gibt es diese zu Klammern, d.h. Klammern so einzufügen,
+dass jede geöffnete Klammer auch wieder geschlossen wird, in jeder Klammer wenigsten zwei Zeichen stehen und keine Doppelklammerung
+der Art \(((xy))\) vorkommt? Für die Zeichenfolge \(123\) gibt es zum Beispiel drei Möglichkeiten:
+$$(123), ((12)3), (1(23))$$
+Da es für die Anzahl der Klammerungen irrelevant ist, welche Zeichen in der zu klammernden Folge stehen werden wir uns im Folgenden
+auf das Zeichen \(x\) beschränken und hätten uns in unserem Beispiel etwa die Klammerungen \((xxx)\), \(((xx)x)\) und \((x(xx))\) angeschaut.
+Die Anzahl solcher Klammerungen bei \(n\) Zeichen bezeichnen wir als die
+<a href="https://de.wikipedia.org/wiki/Schr%C3%B6der-Zahlen">Schröder-Zahl</a> \(s(n)\).
+
+Einen interessanten klassischen Kontext zu dieser Fragestellung findet man in <a href="#Stanley1997">[Stanley 1997]</a>.
+Der hier vorführte Ansatz zur Nutzung einer Bijektion stammt aus <a href="#Foata1997">[Foata 1997]</a>.
+
+Der erste Schritt auf dem Weg zu einer Bijektion, die uns beim Zählen helfen wird, ist es eine eins-zu-eins Abbildung
+zwischen Klammerungen und <a href="https://de.wikipedia.org/wiki/Baum_(Graphentheorie)">Bäumen</a> zu finden.
+
+Wir wollen dies schlicht an einem Beispiel veranschaulichen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Schröder-Baum zur Klammerung ((xx)((xxxx)x(xx))(xx(xx))).</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>350px</height>
+<width>750px</width>
+<code>
+line(350,20,150,120,#000,2);
+line(350,20,350,120,#000,2);
+line(350,20,550,120,#000,2);
+
+circle(350,20,10,#FDF283,#000);
+
+text(370,25,[[xx][[xxxx]x[xx]][xx[xx]]],#000,"");
+
+line(150,120,100,220,#000,2);
+line(150,120,200,220,#000,2);
+
+line(350,120,300,220,#000,2);
+line(350,120,350,220,#000,2);
+line(350,120,400,220,#000,2);
+
+line(550,120,500,220,#000,2);
+line(550,120,550,220,#000,2);
+line(550,120,600,220,#000,2);
+
+circle(150,120,10,#FDF283,#000);
+circle(350,120,10,#FDF283,#000);
+circle(550,120,10,#FDF283,#000);
+
+text(170,125,[xx],#000,"");
+text(370,125,[[xxxx]x[xx]],#000,"");
+text(570,125,[xx[xx]],#000,"");
+
+circle(100,220,10,#FDF283,#000);
+circle(200,220,10,#FDF283,#000);
+
+text(95,245,x,#000,"");
+text(195,245,x,#000,"");
+
+line(300,220,255,320,#000,2);
+line(300,220,285,320,#000,2);
+line(300,220,315,320,#000,2);
+line(300,220,345,320,#000,2);
+
+line(400,220,380,320,#000,2);
+line(400,220,420,320,#000,2);
+
+circle(300,220,10,#FDF283,#000);
+circle(350,220,10,#FDF283,#000);
+circle(400,220,10,#FDF283,#000);
+
+text(240,225,[xxxx],#000,"");
+text(345,245,x,#000,"");
+text(420,225,[xx],#000,"");
+
+line(600,220,580,320,#000,2);
+line(600,220,620,320,#000,2);
+
+circle(500,220,10,#FDF283,#000);
+circle(550,220,10,#FDF283,#000);
+circle(600,220,10,#FDF283,#000);
+
+text(495,245,x,#000,"");
+text(545,245,x,#000,"");
+text(620,225,[xx],#000,"");
+
+circle(255,320,10,#FDF283,#000);
+circle(285,320,10,#FDF283,#000);
+circle(315,320,10,#FDF283,#000);
+circle(345,320,10,#FDF283,#000);
+
+text(250,345,x,#000,"");
+text(280,345,x,#000,"");
+text(310,345,x,#000,"");
+text(340,345,x,#000,"");
+
+circle(380,320,10,#FDF283,#000);
+circle(420,320,10,#FDF283,#000);
+
+text(375,345,x,#000,"");
+text(415,345,x,#000,"");
+
+circle(580,320,10,#FDF283,#000);
+circle(620,320,10,#FDF283,#000);
+
+text(575,345,x,#000,"");
+text(615,345,x,#000,"");
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Gemeinhin bezeichnet man einen zusammenhängenden Graph ohne <a href="https://de.wikipedia.org/wiki/Zykel_(Graphentheorie)">Kreise</a> als Baum.
+Zur Repräsentation von Klammerungen müssen wir unseren Begriff von Baum noch etwas enger fassen.
+
+Als Erstes, wird ein Knoten ausgezeichnet und als die <a href="https://de.wikipedia.org/wiki/Wurzel_(Graphentheorie)">Wurzel</a> des Baums bezeichnet.
+In unserem Beispiel ist dies der oberste Knoten, der die gesamte Klammerung repräsentiert.
+Die Auszeichnung einer Wurzel induziert auf einem kreisfreien Graphen eine Richtung: von der Wurzel weg.
+Die Nachbarknoten eines Knotens, die in dieser Richtung liegen, nennt man seine Kinder.
+Einen Knoten, der keine Kinder hat, nennt man ein Blatt, alle anderen Knoten werden als innere Knoten bezeichnet.
+Bei der Repräsentation einer Klammerung gibt jeder Knoten an, dass all seine Kinder in einer Klammer zusammengefasst werden.
+
+Nun beobachten wir als Zweites, dass sich die Klammerung ändert, wenn wir die Reihenfolge der Kinder eines Knotens ändern.
+Deshalb legen wir für jeden Knoten die Reihenfolge seiner Kinder fest.
+Solche Bäume, mit ausgezeichneter Wurzel und fester Reihenfolge der Kinderknoten jedes Knotens, bezeichnen wir als Schröder-Bäume.
+
+Wir hatten bei den Fibonacci-Zahlen gesehen, dass eine Rekurrenz fast so gut ist wie eine Formel.
+Für die Anzahl \(s(n)\) der Klammerungen von \(n\) Termen und damit gleichzeitig für die Anzahl zugehöriger Bäume wollen
+wir die folgende Rekurrenz mit Hilfe einer Bijektion folgern.
+
+$$3(2n-1)s(n) = (n+1)s(n+1) + (n-2)s(n-1)$$
+
+Dies bedeutet, dass wir einerseits eine Menge finden, deren Mächtigkeit dem Ausdruck auf der linken Seite der Rekurrenz entspricht
+und andererseits zwei Mengen finden, deren Mächtigkeiten den Summanden auf der rechten Seite entsprechen.
+Dann müssen wir nur noch eine Bijektion zwischen diesen Mengen finden, um die Gleichheit der beiden Seiten folgern zu können.
+
+An dieser Stelle gehen wir zu einem leichter handhabbaren Modell der Schröder-Zahlen über.
+Dies sind die sogenannten wohlgewichteten Bäume. Wir beschreiben zunächst was ein wohlgewichteter Baum ist und dann, warum
+wir jeden Schröder-Baum durch einen wohlgewichteten Baum repräsentieren können.
+Zunächst einmal gehen wir zu <a href="https://de.wikipedia.org/wiki/Bin%C3%A4rbaum">Binärbäumen</a> über.
+Das sind Bäume, in denen jeder Knoten höchstens zwei Kinder hat.
+Von diesen gehen wir über zu gewichteten Bäumen, indem wir jedem inneren Knoten entweder das Gewicht 1 oder das Gewicht 2 geben.
+Einen so gewichteten Baum nennen wir wohlgewichtet, wenn das rechte Kind jedes Knotens mit dem Gewicht 2 kein Blatt ist.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Wohlgewichtet und nicht-wohlgewichtet.</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>280px</height>
+<width>750px</width>
+<code>
+line(170,20,120,120,#000,2);
+line(170,20,220,120,#000,2);
+
+circle(170,20,10,#FFFAFA,none);
+text(167,25,2,#000,"");
+
+line(220,120,270,220,#000,2);
+line(220,120,180,220,#000,2);
+
+circle(120,120,10,#FDF283,#000);
+
+circle(220,120,10,#FFFAFA,none);
+text(217,125,1,#000,"");
+
+text(120,250,wohlgewichtet,#000,"");
+
+
+line(570,20,520,120,#000,2);
+line(570,20,620,120,#000,2);
+
+circle(570,20,10,#FFFAFA,none);
+text(567,25,2,#000,"");
+
+line(520,120,570,220,#000,2);
+line(520,120,480,220,#000,2);
+
+circle(620,120,10,#FDF283,#000);
+
+circle(520,120,10,#FFFAFA,none);
+text(517,125,1,#000,"");
+
+text(520,250,nicht wohlgewichtet,#000,"");
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Um aus einem Schröder-Baum einen wohlgewichteten Baum zu machen gehen wir iterativ, etwa von der Wurzel startend vor, und ersetzen jeden inneren
+Knoten wie folgt, bis der Baum binär und gewichtet ist.
+Hat der Knoten genau zwei Kinder, dann wird er beibehalten und erhält das Gewicht 1.
+Hat er mehr als zwei Kinder, dann erhält er das Gewicht 2, das linkeste Kind wird beibehalten und die restlichen Kinder an einen neuen Knoten gehängt,
+der dann das neue rechte Kind des betrachteten Knotens wird.
+An dieser Stelle muss man sich klar machen, dass wir auf diesem Wege eine Bijektion zwischen Schröder-Bäumen
+und wohlgewichteten Bäumen mit \(n\) Blättern konstruiert haben.
+
+
+
+Der Faktor \(s(n)\) auf der linken Seite unserer Rekurrenz entspricht der Anzahl der wohlgewichteten bzw. der Schröder-Bäume.
+Wir wollen diese Bäume ein wenig annotieren, um auf die notwendige Anzahl an Objekten zu kommen.
+Dazu erlauben wir in einem wohlgewichteten Baum genau einen Knoten zu markieren.
+Unsere Bäume haben genau \(n\) Blätter.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>Ü</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Wie man sich leicht überlegt hat ein Binärbaum mit \(n\) Blättern stets \(2n-1\) Knoten.
+Es gibt also genau \(2n-1\) Möglichkeiten genau einen Knoten zu markieren.
+Um nun noch auf den Faktor drei zu kommen, erlauben wir schlicht jedem Baum noch die Zahl eins, zwei oder drei zuzuordnen.
+Wir bilden also Tripel \((B, k, i)\), wobei \(B\) ein wohlgewichteter Baum mit \(n\) Blättern ist, \(k\) ein Knoten in diesem Baum und
+\(i \in \{1, 2, 3\}\).
+Die Anzahl dieser Tripel entspricht genau der linken Seite unserer Rekurrenz.
+
+Für die rechte Seite verwenden wir nun ähnliche Konstruktionen.
+Der erste Summand, \((n+1)s(n+1)\), entspricht der Anzahl an wohlgewichteten Bäumen mit \(n+1\) Blättern, in denen genau eines der Blätter
+markiert wird.
+
+Der zweite Summand, \((n-2)s(n-1)\), entspricht der Anzahl wohlgewichteter Bäume mit \(n-1\) Blättern, in denen genau einer der inneren
+Knoten markiert wird.
+(Hier sollte man sich flugs überzeugen, dass genau \(n-2\) innere Knoten zum Markieren zur Verfügung stehen.)
+
+Damit haben wir alle Bausteine zusammen und müssen nur noch zeigen, dass es eine Bijektion gibt zwischen den Tripeln \((B, k, i)\) und
+der Menge, die aus den zwei Arten von markierten Bäumen, die wir zuletzt eingeführt haben, besteht.
+
+Wir konstruieren nun drei Abbildungen, je eine für \(i=1, 2, 3\), die einen wohlgewichteten Baum \(B\) mit Markierung \(k\) in einen neuen
+Baum verwandelt.
+
+Die ersten beiden, für \(i \in \{1, 2\}\), lassen sich schematisch wie folgt darstellen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Die Bijektion für \(i \in \{1, 2\}\).</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>350px</height>
+<width>750px</width>
+<code>
+line(160,10,60,110,#000,2);
+line(160,10,270,110,#000,2);
+
+line(60,110,10,210,#000,2);
+line(60,110,110,210,#000,2);
+line(10,210,110,210,#000,2);
+
+circle(60,110,10,#FDF283,#000);
+
+line(270,110,220,210,#000,2);
+line(270,110,320,210,#000,2);
+line(220,210,320,210,#000,2);
+
+
+line(560,10,460,110,#000,2);
+line(560,10,670,110,#000,2);
+
+line(460,110,410,210,#000,2);
+line(460,110,510,210,#000,2);
+line(510,210,460,310,#000,2);
+line(510,210,560,310,#000,2);
+line(460,310,560,310,#000,2);
+
+circle(410,210,10,#FDF283,#000);
+
+line(670,110,620,210,#000,2);
+line(670,110,720,210,#000,2);
+line(620,210,720,210,#000,2);
+
+circle(460,110,10,#FFFAFA,none);
+text(457,115,i,#000,"");
+
+text(55,180,s,#000,"");
+text(505,280,s,#000,"");
+
+arrow(330,110,400,110,#000,2);
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Im Schema ist auf der linken Seite der Baum skizziert, für den die Abbildung ausgeführt werden soll.
+Der gelbe Knoten steht für den markierten Knoten im Baum, die Dreiecke stehen für Teilbäume, die beliebig aussehen können.
+Insbesondere symbolisiert das mit \(s\) bezeichnete Dreieck den Teilbaum, der den markierten Knoten als Wurzel hat.
+Oberhalb des markierten Knotens fügen wir nun einen neuen Knoten ein, der das Gewicht \(i\) erhält.
+Als linkes Kind dieses neuen Knotens fügen wir ein neues, markiertes Blatt ein.
+Als rechtes Kind wird der vormals markierte Teilbaum \(s\) eingefügt, der jetzt seine Markierung einbüßt.
+Wir erhalten so einen neuen gewichteten Baum mit \(n+1\) Blättern, wovon eines markiert ist.
+
+Für \(i=3\) sieht die Abbildung ähnlich aus:
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Die Bijektion für \(i = 3\).</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>350px</height>
+<width>750px</width>
+<code>
+line(160,10,60,110,#000,2);
+line(160,10,270,110,#000,2);
+
+line(60,110,10,210,#000,2);
+line(60,110,110,210,#000,2);
+line(10,210,110,210,#000,2);
+
+circle(60,110,10,#FDF283,#000);
+
+line(270,110,220,210,#000,2);
+line(270,110,320,210,#000,2);
+line(220,210,320,210,#000,2);
+
+
+line(560,10,460,110,#000,2);
+line(560,10,670,110,#000,2);
+
+line(460,110,410,210,#000,2);
+line(460,110,510,210,#000,2);
+line(410,210,360,310,#000,2);
+line(410,210,460,310,#000,2);
+line(360,310,460,310,#000,2);
+
+circle(510,210,10,#FDF283,#000);
+
+line(670,110,620,210,#000,2);
+line(670,110,720,210,#000,2);
+line(620,210,720,210,#000,2);
+
+circle(460,110,10,#FFFAFA,none);
+text(457,115,1,#000,"");
+
+text(55,180,s,#000,"");
+text(405,280,s,#000,"");
+
+arrow(330,110,400,110,#000,2);
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Weil das Blatt nun in den rechten Teilbaum kommt, kommt für die Gewichtung nur noch die Eins in Frage.
+
+In den Fällen \(i=1\) und \(i=3\) erhalten wir mit diesen Abbildungen wohlgewichtete Bäume.
+Auch im Fall \(i=2\) ist dies der Fall, es sei denn \(s\) besteht nur aus einem einzelnen Knoten, d.h. der markierte Knoten \(k\)
+ist ein Blatt.
+In diesem Fall bauen wir unsere Abbildung um, damit wir wieder wohlgewichtete Bäume erhalten.
+Dazu sind drei Fälle zu unterscheiden.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Drei Sonderfälle für die Bijektion für \(i = 2\).</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>750px</height>
+<width>800px</width>
+<code>
+  Case 1
+line(110,10,60,110,#000,2);
+line(110,10,160,110,#000,2);
+
+circle(110,10,10,#FFFAFA,none);
+text(105,15,1,#000,"");
+
+line(60,110,35,160,#000,2);
+line(60,110,85,160,#000,2);
+line(35,160,85,160,#000,2);
+
+text(55,145,t,#000,"");
+
+circle(160,110,10,#FDF283,#000);
+text(155,115,s,#000,"");
+
+ Case 1 Row 2
+line(110,210,60,310,#000,2);
+line(110,210,160,310,#000,2);
+
+circle(110,210,10,#FFFAFA,none);
+text(105,215,1,#000,"");
+
+line(60,310,35,360,#000,2);
+line(60,310,85,360,#000,2);
+line(35,360,85,360,#000,2);
+
+text(57,345,t,#000,"");
+
+line(160,310,110,410,#000,2);
+line(160,310,210,410,#000,2);
+
+circle(160,310,10,#FFFAFA,none);
+text(155,315,2,#000,"");
+
+circle(110,410,10,#FDF283,#000);
+circle(210,410,10,#FFFAFA,none);
+text(205,415,s,#000,"");
+
+ Case 1 Row 3
+line(110,510,60,610,#000,2);
+line(110,510,160,610,#000,2);
+
+circle(110,510,10,#FFFAFA,none);
+text(105,515,2,#000,"");
+
+line(60,610,35,660,#000,2);
+line(60,610,85,660,#000,2);
+line(35,660,85,660,#000,2);
+
+text(57,645,t,#000,"");
+
+line(160,610,110,710,#000,2);
+line(160,610,210,710,#000,2);
+
+circle(160,610,10,#FFFAFA,none);
+text(155,615,1,#000,"");
+
+circle(110,710,10,#FDF283,#000);
+circle(210,710,10,#FFFAFA,none);
+text(205,715,s,#000,"");
+
+ Case 2
+line(410,10,360,110,#000,2);
+line(410,10,460,110,#000,2);
+
+circle(410,10,10,#FFFAFA,none);
+text(405,15,1,#000,"");
+
+circle(360,110,10,#FDF283,#000);
+text(355,115,s,#000,"");
+
+line(460,110,435,160,#000,2);
+line(460,110,485,160,#000,2);
+line(435,160,485,160,#000,2);
+
+text(457,145,t,#000,"");
+
+ Case 2 Row 2
+line(410,210,360,310,#000,2);
+line(410,210,460,310,#000,2);
+
+circle(410,210,10,#FFFAFA,none);
+text(405,215,1,#000,"");
+
+line(460,310,435,360,#000,2);
+line(460,310,485,360,#000,2);
+line(435,360,485,360,#000,2);
+
+text(457,345,t,#000,"");
+
+line(360,310,310,410,#000,2);
+line(360,310,410,410,#000,2);
+
+circle(310,410,10,#FDF283,#000);
+circle(410,410,10,#FFFAFA,none);
+text(405,415,s,#000,"");
+
+circle(360,310,10,#FFFAFA,none);
+text(355,315,2,#000,"");
+
+ Case 2 Row 3
+line(410,510,360,610,#000,2);
+line(410,510,460,610,#000,2);
+
+circle(410,510,10,#FFFAFA,none);
+text(405,515,2,#000,"");
+
+line(360,610,335,660,#000,2);
+line(360,610,385,660,#000,2);
+line(335,660,385,660,#000,2);
+
+text(357,645,t,#000,"");
+
+line(460,610,410,710,#000,2);
+line(460,610,510,710,#000,2);
+
+circle(460,610,10,#FFFAFA,none);
+text(455,615,1,#000,"");
+
+circle(510,710,10,#FDF283,#000);
+circle(410,710,10,#FFFAFA,none);
+text(405,715,s,#000,"");
+
+ Case 3
+line(710,10,660,110,#000,2);
+line(710,10,760,110,#000,2);
+
+circle(710,10,10,#FFFAFA,none);
+text(705,15,2,#000,"");
+
+circle(660,110,10,#FDF283,#000);
+text(655,115,s,#000,"");
+
+line(760,110,735,160,#000,2);
+line(760,110,785,160,#000,2);
+line(735,160,785,160,#000,2);
+
+text(757,145,t,#000,"");
+
+ Case 3 Row 2
+line(710,210,660,310,#000,2);
+line(710,210,760,310,#000,2);
+
+circle(710,210,10,#FFFAFA,none);
+text(705,215,2,#000,"");
+
+line(760,310,735,360,#000,2);
+line(760,310,785,360,#000,2);
+line(735,360,785,360,#000,2);
+
+text(757,345,t,#000,"");
+
+line(660,310,610,410,#000,2);
+line(660,310,710,410,#000,2);
+
+circle(610,410,10,#FDF283,#000);
+circle(710,410,10,#FFFAFA,none);
+text(705,415,s,#000,"");
+
+circle(660,310,10,#FFFAFA,none);
+text(655,315,2,#000,"");
+
+ Case 3 Row 3
+line(710,510,685,560,#000,2);
+line(710,510,735,560,#000,2);
+line(685,560,735,560,#000,2);
+
+circle(710,510,10,#FDF283,#000);
+text(707,545,t,#000,"");
+
+arrow(110,160,110,190,#000,2);
+arrow(410,160,410,190,#000,2);
+arrow(710,160,710,190,#000,2);
+
+arrow(110,460,110,490,#000,2);
+arrow(410,460,410,490,#000,2);
+arrow(710,460,710,490,#000,2);
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+In der Abbildung sind in der ersten Zeile drei Situationen dargestellt, die für \(i=2\) die möglichen Konfigurationen darstellen, wenn
+\(s\) ein Blatt ist.
+Die zweite Zeile stellt dar, welche Bäume gemäß unserer ursprünglichen Abbildung erzeugt werden.
+Diese sind alle nicht wohlgewichtet.
+In der dritten Reihe sind deshalb modifizierte Konstruktionen aufgeführt, die dann wohlgewichtet sind.
+
+In den ersten beiden Sonderfällen erhalten wir dann wohlgewichtete Bäume mit \(n+1\) Blättern, von denen eines markiert ist.
+Zusammen mit den Fällen \(i=1\) und \(i=3\) erhalten wir damit eine Bijektion zwischen allen mit diesen Fällen abgedeckten
+Bäumen und den wohlgewichteten Bäumen mit \(n+1\) Blättern, von denen eines markiert ist.
+
+Im dritten Sonderfall verliert der Baum zwei Blätter (\(s\) und das neue markierte Blatt).
+Die Markierung wandert dafür zur Wurzel des Teilbaums \(t\), so dass wir einen Baum mit \(n-1\) Blättern erhalten, bei dem
+ein innerer Knoten markiert ist.
+Man mache sich nun klar, dass tatsächlich alle solchen Bäume auf diesem Wege entstehen können und zwar jeweils genau einmal.
+Damit ist unsere Bijektion fertig gestellt und entsprechend kann man die Korrektheit der Rekurrenz folgern.
+
+Stellen wir zum Abschluss die Rekurrenz \(3(2n-1)s(n) = (n+1)s(n+1) + (n-2)s(n-1)\) so um, dass \(s(n+1)\) isoliert wird, so bekommen
+wir folgende iterative Rechenvorschrift zur Bestimmung der Schröder-Zahlen:
+$$s(n+1) = \frac{3(2n-1)s(n) - (n-2)s(n-1)}{n+1}.$$
+Es gibt jeweils eine Möglichkeit zur Klammerung von einem bzw. zwei Termen.
+Startet man die Rekurrenz entsprechend mit \(s(1) = 1\) und \(s(2) = 1\), so lassen sich alle weiteren Werte Schritt für Schritt berechnen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_js_box</cssclass>
+<css>width:50%;</css>
+<content>
+</content>
+<specialcontent>
+<contenttype>code_interaction</contenttype>
+<code>
+function schroeder_number(n)
+{
+  var s = [1n, 1n];
+  var result_str = "&lt;div class='algorithm_output'&gt;&lt;table class='table_design_algorithm'&gt;&lt;tr&gt;";
+
+  for (let ni = 2; ni &lt; n; ++ni)
+  {
+    ni_n = BigInt(ni);
+    s.push((3n*(2n*ni_n-1n) * s[ni-1] - (ni_n-2n) * s[ni-2]) / (ni_n+1n));
+  }
+
+  for (let ni = 0; ni &lt; n; ++ni)
+    result_str += "&lt;th&gt;s(" + (ni+1) +")&lt;/th&gt;"
+
+  result_str += "&lt;/tr&gt;";
+
+  for (let ni = 0; ni &lt; n; ++ni)
+    result_str += "&lt;td&gt;" + s[ni] +"&lt;/td&gt;"
+
+  result_str += "&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;";
+
+  return result_str;
+}
+</code>
+<display>
+Die ersten \(n\) = @input:0! Schröder-Zahlen sind:
+
+@output:!
+</display>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Zum Vergleich lässt sich die Folge in der OEIS als <a href="https://oeis.org/A001003">A001003</a> nachsehen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<toc>Gruppenoperationen</toc>
+<title>Gruppenoperationen</title>
+<content>
+Zum Abschluss dieses Kapitels schließen wir direkt an das
+<a onclick="deepLink('contents/reisebegleiter/graphen.xml', 'Graphen', '')">vorausgegangene Kapitel</a> an.
+Wir wollen die Anzahl von eulerschen Graphen mit vorgegebener Knotenzahl bestimmen.
+Das heißt, dass wir zählen wollen, wieviele Graphen es gibt, die \(n\) Knoten besitzen und in denen
+jeder Knoten geraden Grad hat.
+
+Wichtig ist dabei sich zunächst klar zu machen, wann zwei Graphen für uns gleich sind und deshalb nur einmal gezählt werden sollten.
+Nach eventueller Umbenennung können wir als Knotenmenge die Menge \(V = \{1, 2, \ldots, n\}\) annehmen, wir nummerieren also
+die Knoten mit den Zahlen eins bis \(n\) durch.
+Nun wäre es sicherlich zuviel gezählt, wenn wir zwei Graphen, die sich nur durch Umnummerieren der Knoten unterscheiden, wie in der folgenden
+Abbildung, als unterschiedliche Graphen ansehen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Isomorphe eulersche Graphen. Die beiden Graphen unterscheiden sich nur durch die in der Mitte der Abbildung
+aufgeführte Umnummerierung der Knoten.</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>250px</height>
+<width>750px</width>
+<code>
+line(220,110,170,196.602540,#000,2);
+line(170,196.602540,70,196.602540,#000,2);
+line(70,196.602540,20,110,#000,2);
+line(20,110,70,23.397460,#000,2);
+line(70,23.397460,170,23.397460,#000,2);
+line(170,23.397460,220,110,#000,2);
+
+line(170,196.602540,70,23.397460,#000,2);
+line(170,196.602540,170,23.397460,#000,2);
+line(70,196.602540,70,23.397460,#000,2);
+line(70,196.602540,170,23.397460,#000,2);
+
+circle(220,110,10,#FDF283,#000);
+circle(170,196.602540,10,#FDF283,#000);
+circle(70,196.602540,10,#FDF283,#000);
+circle(20,110,10,#FDF283,#000);
+circle(70,23.397460,10,#FDF283,#000);
+circle(170,23.397460,10,#FDF283,#000);
+
+text(215,114,1,#000,"");
+text(165,200.602540,2,#000,"");
+text(65,200.602540,3,#000,"");
+text(15,114,4,#000,"");
+text(65,27.397460,5,#000,"");
+text(165,27.397460,6,#000,"");
+
+line(720,110,670,196.602540,#000,2);
+line(670,196.602540,570,196.602540,#000,2);
+line(570,196.602540,520,110,#000,2);
+line(520,110,570,23.397460,#000,2);
+line(570,23.397460,670,23.397460,#000,2);
+line(670,23.397460,720,110,#000,2);
+
+line(520,110,670,23.397460,#000,2);
+line(720,110,570,196.602540,#000,2);
+line(720,110,520,110,#000,2);
+line(570,196.602540,670,23.397460,#000,2);
+
+circle(720,110,10,#FDF283,#000);
+circle(670,196.602540,10,#FDF283,#000);
+circle(570,196.602540,10,#FDF283,#000);
+circle(520,110,10,#FDF283,#000);
+circle(570,23.397460,10,#FDF283,#000);
+circle(670,23.397460,10,#FDF283,#000);
+
+text(715,114,1,#000,"");
+text(665,200.602540,2,#000,"");
+text(565,200.602540,3,#000,"");
+text(515,114,4,#000,"");
+text(565,27.397460,5,#000,"");
+text(665,27.397460,6,#000,"");
+
+text(365,54,1 &#x21A6; 2,#000,"");
+text(365,84,2 &#x21A6; 3,#000,"");
+text(365,114,3 &#x21A6; 4,#000,"");
+text(365,144,4 &#x21A6; 5,#000,"");
+text(365,174,5 &#x21A6; 6,#000,"");
+text(365,204,6 &#x21A6; 1,#000,"");
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Eine solche Umnummerierung nennt man auch eine <a href="https://de.wikipedia.org/wiki/Permutation">Permutation</a> der Zahlen von 1 bis \(n\).
+Die Gesamtheit aller solchen Permutationen bildet eine <a href="https://de.wikipedia.org/wiki/Gruppe_(Mathematik)">Gruppe</a>,
+die <a href="https://de.wikipedia.org/wiki/Symmetrische_Gruppe">symmetrische Gruppe</a> \(S_n\).
+
+Im Wesentlichen bedeutet dies, dass das hintereinander Ausführen zweier Permutationen wieder eine Permutation ergibt,
+es eine Permutation gibt, die keine Änderung der Reihenfolge herbeiführt (<a href="https://de.wikipedia.org/wiki/Neutrales_Element">Identität</a>),
+dass es zu jeder Permutation eine <a href="https://de.wikipedia.org/wiki/Inverses_Element">Inverse</a>
+gibt, die die Vertauschungen einer Permutation wieder rückgängig macht, so dass die Verknüpfung mit der Inversen die Identität ergibt,
+und dass die Verknüpfung von Permutationen <a href="https://de.wikipedia.org/wiki/Assoziativgesetz">assoziativ</a> ist.
+(Wir werden in einem späteren Kapitel über Abstraktion darauf eingehen, warum es sinnvoll ist die Betrachtung einer Struktur wie \(S_n\) auf deren
+wesentliche Spielregeln zu reduzieren, wie hier die Eigenschaften einer Gruppe.)
+
+Die Gruppe \(S_n\) <a href="https://de.wikipedia.org/wiki/Gruppenoperation">operiert</a> nun auf der Menge aller Graphen mit \(n\) Knoten
+zunächst durch Umnummerieren der Knoten.
+Weiterhin findet aber auch eine Operation durch Vertauschen der Kanten statt, denn durch das Umnummerieren der Knoten
+ändern sich natürlich auch die Kanten. So wird zum Beispiel in der obigen Abbildung durch die Abbildung der Knoten 6 und 2
+auf die Knoten 1 und 3 aus der Kante \((6, 2)\) die neue Kante \((1, 3)\).
+
+Eine Operation einer Gruppe \(\mathcal{G}\) auf einer Menge \(M\) bedeutet, dass jedes Element der Gruppe etwas mit den Elementen der Menge tut.
+Jedes Gruppenelement ordnet jedem Element der Menge ein anderes Element derselben Menge zu.
+Dies erfolgt auf eine Art und Weise, die mit der Struktur der Gruppe kompatibel ist.
+So ordnet die Identität der Gruppe jedem Element \(m \in M\) das Element \(m\) selbst zu, tut also im Prinzip nichts.
+Zudem ist es egal, ob ein Paar \(g_1, g_2 \in \mathcal{G}\) zunächst in der Gruppe verknüpft wird und dann das Ergebnis auf
+ein Element \(m \in M\) angewandt wird oder der Reihe nach \(g_2\) und \(g_1\) auf \(m\) angewandt werden: \((g_1g_2)m = g_1(g_2m)\).
+
+Wendet man auf ein Element \(m \in M\) der Reihe nach alle Gruppenelemente an, so erhält man die sogenannte Bahn von \(m\):
+$$\mathcal{G}m := \{gm \mid g \in \mathcal{G}\}$$
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>Ü</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Jedes Element von \(M\) ist offensichtlich in einer solchen Bahn enthalten.
+Man überlegt sich leicht, dass die Bahnen disjunkt sind, d.h. kein Element von \(M\) kommt in mehreren Bahnen vor.
+Die Menge dieser Bahnen kürzen wir als \(M/\mathcal{G}\) ab.
+
+Neben den Bahnen von Elementen sind für uns die Fixpunktmengen zu den Gruppenelementen interessant.
+Zu einem festen Gruppenelement \(g\) sind dies alle Elemente der Menge, die von diesem Gruppenelement auf sich selbst abgebildet werden.
+Der Graph in der letzten Abbildung ist zum Beispiel kein Fixpunkt des in der Abbildung angewendeten Gruppenelements.
+Behält man aber beispielsweise nur die Kanten \((1, 2), (2, 3), \ldots, (5, 6), (6, 1)\) des äußeren Kreises, so erhält man einen unter dieser Abbildung invarianten Graph.
+
+Die Bahnen von Graphen unter der Operation der symmetrischen Gruppe repräsentieren gerade die tatsächlich unterschiedlichen Graphen.
+Um nun die Anzahl solcher Bahnen zu bestimmen machen wir uns das folgende
+<a href="https://de.wikipedia.org/wiki/Lemma_von_Burnside">Lemma von Burnside</a> zunutze.
+Ist \(\mathcal{G}\) eine Gruppe, die auf einer Menge \(M\) operiert, so ergibt sich die Anzahl
+\(|M/\mathcal{G}|\) der \(\mathcal{G}\)-Bahnen von \(M\) durch
+
+$$|M/\mathcal{G}| = \frac{1}{|\mathcal{G}|}\sum_{g \in \mathcal{G}}|M^g|,$$
+aus den Größen \(|M^g|\) der Fixpunktmengen der Elemente der Gruppe und der Anzahl \(|\mathcal{G}|\) der Elemente der Gruppe.
+
+
+
+Wir schauen uns zunächst die Menge aller Graphen mit fester Knotenzahl an und bestimmen dort die Größen der Fixpunktmengen.
+Anschließend werden wir sehen, wie wir das Ergebnis modifizieren müssen, um uns auf die eulerschen Graphen einzuschränken.
+
+Sei zunächst ein Element \(g \in S_n\) gegeben.
+Dieses Element übernimmt, wie bereits beschrieben, eine Reihe unterschiedlicher Aufgaben.
+Zunächst stellt es eine Vertauschung (Permutation) der Zahlen \(1, 2, \ldots, n\) dar.
+Dann interpretieren wir diese Vertauschung als Umnummerierung der Knoten eines Graphen mit \(n\) Knoten.
+Schließlich vertauscht \(g\) auch noch die Kanten eines Graphen, indem es beide Endpunkte der Kanten der
+Umnummerierung unterzieht.
+
+Im ersten Fall schauen wir uns einmal an, was passiert, wenn wir mit einer Zahl \(z\) zwischen 1 und \(n\) beginnen und immer wieder
+dasselbe Element \(g\) darauf anwenden.
+Irgendwann muss eine Zahl in der so entstehenden Zahlenfolge doppelt vorkommen.
+Tatsächlich bildet sich so nicht etwa eine Schleife, sondern ein Kreis.
+(Taucht etwa dieselbe Zahl an den Stellen \(m\) und \(m+k\) der Folge auf, so ist \(g^m(z) = g^{m+k}(z)\).
+Da \(S_n\) eine Gruppe ist gibt es zu \(g^m\) ein Inverses \(g^{-m}\) und wendet man dies auf beide Seiten
+der Gleichung an, so findet man \(z = g^{k}(z)\).)
+Wir nennen die Folge \(\left(z, g(z), g(g(z)), \ldots\right)\) einen Zykel von \(g\).
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'>Ü</div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Tatsächlich zerlegt \(g\) die Menge \(\{1, 2, \ldots, n\}\) in disjunkte Zykel.
+(Hier sind die gleichen Kräfte am Werk wie bei der Zerlegung in \(\mathcal{G}\)-Bahnen.
+Man überlege sich, welche Untergruppe von \(S_n\) ihre Bahnen zieht.)
+
+
+
+Interpretiert man im zweiten Fall die Zahlen innerhalb eines solchen Zykels als Knoten eines Graphen,
+erhält man eine Folge von Knoten, die wieder zum ersten Knoten zurückführt, und die wir im Folgenden als
+Knotenzykel bezeichnen wollen.
+
+
+
+Im dritten Fall erhält man entsprechend eine Folge von Kanten, die wir dann als Kantenzykel bezeichnen.
+
+Für jeden von \(g\) induzierten Kantenzykel müssen entweder alle Kanten im Graphen vorhanden sein oder keine davon.
+Hat g die Zykelstruktur \(\sigma_1, \ldots, \sigma_n\), also \(\sigma_j\) Zykel der Länge \(j\), dann ist die Anzahl
+der Fixpunkte gegeben als \(2^{\nu(g)}\), wobei \(\nu(g) = \sum_{i=1}^n \sigma_i\) ist.
+
+
+
+Wir wollen jetzt \(\nu(g)\) bestimmen. Wir nehmen dazu einen Zykel der Länge \(i\) von \(g\) her und betrachten, wie dieser sich auf eine Kante auswirkt,
+wenn beide Endpunkte in diesem Zykel liegen.
+Wenden wir \(g\) wiederholt an, so wandern beide Endpunkte entlang des entsprechenden Knotenzykels und dann, und erst dann, wenn
+sie einmal um den Zykel gewandert sind ergibt sich wieder die gleiche Kante und der Kantenzykel schließt sich.
+So ergibt sich ein Kantenzykel der Länge \(i\).
+
+Wieviele solche Kantenzykel gibt es?
+Betrachten wir zunächst die Zykel ungerader Länge.
+Es gibt \(\sigma_{2i+1}\) Zykel der Länge \(2i+1\).
+
+Nennen wir die Knoten im Knotenzykel der Reihe nach \(1, 2, \ldots, 2i+1\).
+Die Kante \((1, 2)\) durchwandert bei wiederholter Anwendung von \(g\) nun die Kanten \((2, 3)\), \((3, 4)\) usw.
+Diese Kanten bilden dann zusammen einen unter \(g\) invarianten Kantenzykel.
+Genauso können wir mit \((1, 3), (1, 4)\) usf. beginnen und bekommen wiederum neue invariante Kantenzykel.
+Für jedes \(1 \leq k \leq 2i\) erhalten wir auf den ersten Blick jeweils einen Zykel, nämlich denjenigen, der
+mit der Kante \((1, 1+k)\) beginnt, und würden somit vermuten, dass wir genau \(2i\) Zykel bekommen.
+Auf den zweiten Blick stellen wir allerdings fest, dass wir dabei jeden Zykel doppelt zählen.
+Dies liegt daran, dass wir im Zykel auch in die Gegenrichtung laufen können und wir so dieselbe Spiegelsymmetrie
+erhalten wie im <a onclick="deepLink('contents/reisebegleiter/reste.xml', 'Reste', '')">Kapitel über Reste</a>.
+Es ist nämlich der Abstand von 1 zu \(i+j\) in die eine Richtung im Zykel derselbe wie zwischen 1 und \(2i+1-j\) in die andere Richtung.
+Folgende Abbildung verdeutlicht die Situation am Beispiel \(i=2\), also einem Zykel der Länge 5.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Zykel \((1, 2, 3, 4, 5)\) der Länge \(5 = 2 \cdot 2 + 1\).
+In schwarz ist der Kantenzykel, der von der Kante \((1, 2)\) erzeugt wird, dargestellt,
+in rot der Kantenzykel, der von der Kante \((1, 3)\) erzeugt wird.
+Man beachte, dass der von \((1, 4) = (1, 5-1)\) erzeugte Zykel mit dem von \((1, 3) = (1, 2+1)\) übereinstimmt und
+der von \((1, 5) = (1, 5-0)\) erzeugte Zykel mit dem von \((1, 2) = (1, 2+0)\):
+1 hat im Zykel den Abstand 1 von 2 und von 5, sowie den Abstand 2 von 3 und von 4.
+</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>250px</height>
+<width>750px</width>
+<code>
+line(220,110,150.901699,205.105652,#000,2);
+line(150.901699,205.105652,39.098301,168.778525,#000,2);
+line(39.098301,168.778525,39.098301,51.221475,#000,2);
+line(39.098301,51.221475,150.901699,14.894348,#000,2);
+line(150.901699,14.894348,220,110,#000,2);
+
+line(220,110,39.098301,168.778525,#F00,2);
+line(150.901699,205.105652,39.098301,51.221475,#F00,2);
+line(39.098301,168.778525,150.901699,14.894348,#F00,2);
+line(39.098301,51.221475,220,110,#F00,2);
+line(150.901699,14.894348,150.901699,205.105652,#F00,2);
+
+circle(220,110,10,#FDF283,#000);
+circle(150.901699,205.105652,10,#FDF283,#000);
+circle(39.098301,168.778525,10,#FDF283,#000);
+circle(39.098301,51.221475,10,#FDF283,#000);
+circle(150.901699,14.894348,10,#FDF283,#000);
+
+text(215.000000,114.000000,1,#000,"");
+text(145.901699,209.105652,2,#000,"");
+text(34.098301,172.778525,3,#000,"");
+text(34.098301,55.221475,4,#000,"");
+text(145.901699,18.894348,5,#000,"");
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Wir bekommen also für jeden Zykel der Länge \(2i+1\) genau \(i\) invariante Kantenzykel.
+Da es \(\sigma_{2i+1}\) solche Zykel \(g\) gibt, kommen wir so auf den Beitrag \(i \cdot \sigma_{2i+1}\) zu \(\nu(g)\).
+
+Für Zykel der geraden Länge \(2i\) funktioniert dies ähnlich.
+Allerdings können die \(2i-1\) Kantenzykel in diesem Fall nicht paarweise zusammenfallen, es bleibt ein Zykel übrig,
+der sozusagen mit sich selbst zusammenfällt.
+Dabei geschieht das gleiche wie in der großen Abbildung
+im <a onclick="deepLink('contents/reisebegleiter/reste.xml', 'Reste', '')">Kapitel über Reste</a>
+wenn der Kreis in \(2i\) Teile unterteilt wird und jeweils \(i\) Schritte weitergegangen wird.
+Wir zeigen dies hier noch einmal für den Fall \(i=3\), also einen Zykel der Länge 6.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Zykel \((1, 2, 3, 4, 5, 6)\) der Länge \(6 = 2 \cdot 3\).
+In schwarz ist der Kantenzykel, der von der Kante \((1, 2)\) erzeugt wird, dargestellt,
+in rot der Kantenzykel, der von der Kante \((1, 3)\) erzeugt wird
+und in blau der Kantenzykel, der von der Kante \((1, 4)\) erzeugt wird.
+Man beachte, dass der von \((1, 5)\) erzeugte Zykel mit dem von \((1, 3)\) übereinstimmt und
+der von \((1, 6)\) erzeugte Zykel mit dem von \((1, 2)\):
+Der von \((1, 4\)) erzeugte Zykel bleibt ohne Partner und bildet die Diagonale.
+</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<height>250px</height>
+<width>750px</width>
+<code>
+line(220,110,170,196.602540,#000,2);
+line(170,196.602540,70,196.602540,#000,2);
+line(70,196.602540,20,110,#000,2);
+line(20,110,70,23.397460,#000,2);
+line(70,23.397460,170,23.397460,#000,2);
+line(170,23.397460,220,110,#000,2);
+
+line(220,110,70,196.602540,#F00,2);
+line(170,196.602540,20,110,#F00,2);
+line(70,196.602540,70,23.397460,#F00,2);
+line(20,110,170,23.397460,#F00,2);
+line(70,23.397460,220,110,#F00,2);
+line(170,23.397460,170,196.602540,#F00,2);
+
+line(220,110,20,110,#00F,2);
+line(170,196.602540,70,23.397460,#00F,2);
+line(70,196.602540,170,23.397460,#00F,2);
+
+circle(220,110,10,#FDF283,#000);
+circle(170,196.602540,10,#FDF283,#000);
+circle(70,196.602540,10,#FDF283,#000);
+circle(20,110,10,#FDF283,#000);
+circle(70,23.397460,10,#FDF283,#000);
+circle(170,23.397460,10,#FDF283,#000);
+
+text(215,114,1,#000,"");
+text(165,200.602540,2,#000,"");
+text(65,200.602540,3,#000,"");
+text(15,114,4,#000,"");
+text(65,27.397460,5,#000,"");
+text(165,27.397460,6,#000,"");
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Damit erhalten wir \(i-1\) Zykel der Länge \(2i\), sowie die Diagonale, insgesamt also wieder \(i\) Kantenzykel
+und den Beitrag \(i\cdot\sigma_{2i}\) zu \(\nu(g)\).
+
+Was passiert nun mit Kanten, deren Endpunkte in unterschiedlichen Zykeln liegen?
+Nehmen wir an, der eine Endpunkt liegt in einem Zykel der Länge \(i\) und der andere in einem Zykel der Länge \(j\).
+Wenden wir \(g\) wiederholt auf eine Kante an, so kommen wir dann wieder bei dieser Kante an, wenn beide Endpunkte gleichzeitig in ihrem
+jeweiligen Knotenzykel am Anfang ankommen. Man überlegt sich leicht, dass dies nach \(\mathrm{kgV}(i,j)\) Schritten der Fall ist.
+
+Es bleibt die Frage wieviele solche Zykel es gibt.
+Da es \(i \cdot j\) Kanten zwischen den beiden Zykeln gibt und diese jeweils in Kantenzykeln der Länge \(\mathrm{kgV}(i,j)\) zusammenkommen
+erhalten wir \(\frac{i \cdot j}{\mathrm{kgV}(i,j)} = \mathrm{ggT}(i,j)\) Zykel.
+Da es \(\sigma_i\sigma_j\) Paare solcher Zykel gibt kommt somit schließlich noch der Beitrag \(\sigma_i \sigma_j \cdot \mathrm{ggT}(i,j)\)
+zu \(\nu(g)\) hinzu.
+
+Zusammen erhält man
+$$\nu(g) = \sum_{i &lt; j} \sigma_i \sigma_j \cdot \mathrm{ggT}(i,j) + \sum_i i \left(\sigma_{2i} + \sigma_{2i+1} + {\sigma_i \choose 2}\right).$$
+Dabei haben wir den Fall, in dem zwei Zykel gleicher Länge \(i\) verbunden werden in die zweite Summe geschummelt,
+denn \(\mathrm{ggT}(i,i) = i\) und es gibt genau \({\sigma_i \choose 2}\) Paare solcher Zykel.
+
+
+
+Jetzt untersuchen wir, wie die Zahlen \(\nu(g)\) zu korrigieren sind, damit nur eulersche Graphen gezählt werden.
+
+Alle Knoten in einem durch g induzierten Knotenzykel in einem unter \(g\) invarianten Graphen müssen denselben Grad haben.
+Entweder haben alle Knoten ungeraden Grad, dann ist der Graph nicht eulersch, oder alle haben geraden Grad.
+
+Ist der Zykel von gerader Länge, so werden je zwei Knoten durch eine Diagonalkante verbunden (siehe letzte Abbildung).
+Dadurch, dass man diese Kante hinzunimmt oder weglässt kann man zwischen geradem und ungeradem Knotengrad wechseln
+und es wird klar, dass zu jedem Zykel mit geradem Grad ein Zykel mit ungeradem Grad gehört und umgekehrt.
+In diesem Fall verlieren wir also durch die Bedingung für einen Eulergraphen die Hälfte der möglichen Zykel, d.h. der Exponent
+\(\nu(g)\) sinkt für jeden der \(\sigma_{2i}\) Zykel der Länge \(2i\) um eins.
+
+Sei nun \(m = \sum_i \sigma_{2i+1}\) die Anzahl der ungeraden Zykel.
+Wir picken uns einen solchen Zykel \(z_1\) heraus.
+Zu jedem anderen ungeraden Zykel \(z_j\), halten wir die Auswahl eines Kantenzykels, der \(z_1\) und \(z_j\) verbindet, unbestimmt,
+die anderen dürfen beliebig sein.
+Schauen wir uns nun einen der anderen Zykel \(z_2\) an.
+Das Hinzufügen oder Weglassen des unbestimmten Kantenzykels ändert bei jedem beteiligten Knoten den Grad um eine ungerade Zahl.
+Dies hat also das Potential Zykel mit ungeraden Knotengraden in solche mit geraden Graden zu verwandeln.
+Die Tatsache, ob die Grade in \(z_2\) ungerade sind oder nicht erzwingt die Wahl der Kanten des unbestimmten Zykels.
+Dies trifft auf alle \(m-1\) Paare \((z_1, z_j)\) zu, so dass wir insgesamt \(m-1 = \sum_i \sigma_{2i+1} - 1\)
+Wahlmöglichkeiten verlieren.
+
+Allerdings gilt es noch sicherzustellen, dass bei diesem Vorgehen auch die Knoten in \(z_1\) geraden Grad erhalten.
+Dazu nutzen wir das sogenannte <a href="https://de.wikipedia.org/wiki/Handschlaglemma">Handschlaglemma</a>, aus dem folgt
+dass die Anzahl der Knoten von ungeradem Grad gerade sein muss.
+Dies ist so, weil die Summe aller Knotengrade gerade zweimal die Anzahl der
+Kanten in einem Graph ist (jede Kante wird in der Summe der Knotengrade zweimal gezählt) und somit gerade sein muss.
+
+Damit erhalten wir schließlich eine korrigierte Anzahl \(\mu(g)\) für die Exponenten im Ausdruck für die Anzahl der Fixpunkte als
+$$\mu(g) = \nu(g) - \sum_i \sigma_i + \mathrm{sg} (\sum_i \sigma_{2i+1}).$$
+Dabei ist
+$$\mathrm{sg}(m) := \begin{cases}
+1 &amp; \text{falls } m>0,\\
+0 &amp; \text{sonst.}
+\end{cases}$$
+(Die Funktion \(\mathrm{sg}\) erlaubt die beiden Fälle, die entstehen, jenachdem ob es Zykel von ungerader Länge gibt oder nicht,
+kompakt zusammenzufassen. Im ersten Fall ist nämlich \(\sum_i \sigma_i = \sum_i \sigma_{2i} + \sum_i \sigma_{2i+1}\), wobei die
+zweite Summe in diesem Fall dazu führen würde, dass ein Freiheitsgrad zuviel abgezogen würde, was durch sg korrigiert wird.
+Im zweiten Fall sind sowohl die Summe als auch sg null.)
+
+Nun gibt es \(\frac{n!}{\prod_i i^{\sigma_i}\sigma_i!}\) Permutationen zu gegebenem Zykeltyp \(\sigma_1, \ldots, \sigma_n\).
+Die Gruppe \(S_n\) hat zudem \(n!\) Elemente.
+Setzen wir all dies in die Gleichung des Burnside Lemmas ein, so erhalten wir für die Anzahl \(E_n\)
+von Eulergraphen mit \(n\) Knoten:
+$$E_n = \sum \frac{2^{\mu(\sigma_1, \ldots, \sigma_n)}}{\prod_i i^{\sigma_i}\sigma_i!}$$
+Die Summe läuft dabei über alle möglichen Zykeltypen.
+
+
+
+Wir wollen als Beispiel die Anzahl der Eulergraphen mit sechs Knoten bestimmen.
+Offensichtlich muss für jede Permutation aus \(S_6\) die Gesamtsumme \(1\sigma_1 + 2\sigma_2 + \ldots + 6\sigma_6\) der Zykellängen
+gerade sechs ergeben, da jeder der sechs Knoten in genau einem Zykel vorkommt.
+Die Summe für \(E_6\) läuft also über alle <a href="https://de.wikipedia.org/wiki/Partitionsfunktion">Partitionen</a> von sechs.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_formula_box</cssclass>
+<css>width:50%;</css>
+<content>
+<figcaption>Die Summanden zur Berechnung der Anzahl der Eulergraphen mit sechs Knoten.</figcaption>
+</content>
+<specialcontent>
+<contenttype>datatable</contenttype>
+  <cssclass>table_design_math</cssclass>
+  <databody>
+    \(\sigma_1, \sigma_2, \sigma_3, \sigma_4, \sigma_5, \sigma_6\); \(\mu\); \(\nu\); \(\prod_{i=1}^6\sigma_i!i^{\sigma_i}\)
+    0, 0, 0, 0, 0, 1;3;2;6
+    1, 0, 0, 0, 1, 0;3;2;5
+    0, 1, 0, 1, 0, 0;5;3;8
+    2, 0, 0, 1, 0, 0;5;3;8
+    0, 0, 2, 0, 0, 0;5;4;18
+    1, 1, 1, 0, 0, 0;5;3;6
+    3, 0, 1, 0, 0, 0;7;4;18
+    0, 3, 0, 0, 0, 0;9;6;48
+    2, 2, 0, 0, 0, 0;9;6;16
+    4, 1, 0, 0, 0, 0;11;7;48
+    6, 0, 0, 0, 0, 0;15;10;720
+  </databody>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Damit erhalten wir
+$$E_6 = \frac{2^2}{6}+ \frac{2^2}{5}+ \frac{2^3}{8}+ \frac{2^3}{8}+ \frac{2^4}{18}
++ \frac{2^3}{6}+ \frac{2^4}{18}+ \frac{2^6}{48}+ \frac{2^6}{16}+ \frac{2^7}{48}+ \frac{2^{10}}{720} = 16.$$
+Folgende Abbildung zeigt die 16 Eulergraphen mit 6 Knoten.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+<figcaption>Die 16 Eulergraphen mit 6 Knoten.</figcaption>
+</content>
+<specialcontent>
+<contenttype>drawing</contenttype>
+<viewbox>0 0 1140 1140</viewbox>
+<code>
+  R1 C1
+circle(220,110,10,#FDF283,#000);
+circle(170,196.602540,10,#FDF283,#000);
+circle(70,196.602540,10,#FDF283,#000);
+circle(20,110,10,#FDF283,#000);
+circle(70,23.397460,10,#FDF283,#000);
+circle(170,23.397460,10,#FDF283,#000);
+
+ R1 C2
+line(520,110,470,196.602540,#000,2);
+line(470,196.602540,370,196.602540,#000,2);
+line(370,196.602540,320,110,#000,2);
+line(320,110,370,23.397460,#000,2);
+line(370,23.397460,470,23.397460,#000,2);
+line(470,23.397460,520,110,#000,2);
+
+circle(520,110,10,#FDF283,#000);
+circle(470,196.602540,10,#FDF283,#000);
+circle(370,196.602540,10,#FDF283,#000);
+circle(320,110,10,#FDF283,#000);
+circle(370,23.397460,10,#FDF283,#000);
+circle(470,23.397460,10,#FDF283,#000);
+
+ R1 C3
+line(820,110,770,196.602540,#000,2);
+line(770,196.602540,670,196.602540,#000,2);
+line(670,196.602540,620,110,#000,2);
+line(620,110,670,23.397460,#000,2);
+line(670,23.397460,770,23.397460,#000,2);
+line(770,23.397460,820,110,#000,2);
+
+line(820,110,670,196.602540,#000,2);
+line(820,110,670,23.397460,#000,2);
+line(670,196.602540,670,23.397460,#000,2);
+
+circle(820,110,10,#FDF283,#000);
+circle(770,196.602540,10,#FDF283,#000);
+circle(670,196.602540,10,#FDF283,#000);
+circle(620,110,10,#FDF283,#000);
+circle(670,23.397460,10,#FDF283,#000);
+circle(770,23.397460,10,#FDF283,#000);
+
+R1 C4
+line(1120,110,1070,196.602540,#000,2);
+line(1070,196.602540,970,196.602540,#000,2);
+line(970,196.602540,920,110,#000,2);
+line(920,110,970,23.397460,#000,2);
+line(970,23.397460,1070,23.397460,#000,2);
+line(1070,23.397460,1120,110,#000,2);
+
+line(1120,110,970,196.602540,#000,2);
+line(1120,110,970,23.397460,#000,2);
+line(970,196.602540,970,23.397460,#000,2);
+
+line(1070,196.602540,920,110,#000,2);
+line(920,110,1070,23.397460,#000,2);
+line(1070,196.602540,1070,23.397460,#000,2);
+
+circle(1120,110,10,#FDF283,#000);
+circle(1070,196.602540,10,#FDF283,#000);
+circle(970,196.602540,10,#FDF283,#000);
+circle(920,110,10,#FDF283,#000);
+circle(970,23.397460,10,#FDF283,#000);
+circle(1070,23.397460,10,#FDF283,#000);
+
+R2 C1
+line(220,410,170,496.602540,#000,2);
+line(170,496.602540,70,496.602540,#000,2);
+line(70,496.602540,20,410,#000,2);
+line(20,410,70,323.397460,#000,2);
+line(70,323.397460,170,323.397460,#000,2);
+line(170,323.397460,220,410,#000,2);
+
+line(170,496.602540,70,323.397460,#000,2);
+line(170,496.602540,170,323.397460,#000,2);
+line(70,496.602540,70,323.397460,#000,2);
+line(70,496.602540,170,323.397460,#000,2);
+
+circle(220,410,10,#FDF283,#000);
+circle(170,496.602540,10,#FDF283,#000);
+circle(70,496.602540,10,#FDF283,#000);
+circle(20,410,10,#FDF283,#000);
+circle(70,323.397460,10,#FDF283,#000);
+circle(170,323.397460,10,#FDF283,#000);
+
+ R2 C2
+line(520,410,370,496.602540,#000,2);
+line(370,496.602540,370,323.397460,#000,2);
+line(370,323.397460,520,410,#000,2);
+
+circle(520,410,10,#FDF283,#000);
+circle(470,496.602540,10,#FDF283,#000);
+circle(370,496.602540,10,#FDF283,#000);
+circle(320,410,10,#FDF283,#000);
+circle(370,323.397460,10,#FDF283,#000);
+circle(470,323.397460,10,#FDF283,#000);
+
+ R2 C3
+line(820,410,770,496.602540,#000,2);
+line(770,496.602540,770,323.397460,#000,2);
+line(770,323.397460,820,410,#000,2);
+
+line(670,496.602540,620,410,#000,2);
+line(620,410,670,323.397460,#000,2);
+line(670,323.397460,670,496.602540,#000,2);
+
+circle(820,410,10,#FDF283,#000);
+circle(770,496.602540,10,#FDF283,#000);
+circle(670,496.602540,10,#FDF283,#000);
+circle(620,410,10,#FDF283,#000);
+circle(670,323.397460,10,#FDF283,#000);
+circle(770,323.397460,10,#FDF283,#000);
+
+ R2 C4
+line(1120,410,1070,496.602540,#000,2);
+line(1070,496.602540,970,496.602540,#000,2);
+line(970,496.602540,920,410,#000,2);
+line(920,410,970,323.397460,#000,2);
+line(970,323.397460,1120,410,#000,2);
+
+circle(1120,410,10,#FDF283,#000);
+circle(1070,496.602540,10,#FDF283,#000);
+circle(970,496.602540,10,#FDF283,#000);
+circle(920,410,10,#FDF283,#000);
+circle(970,323.397460,10,#FDF283,#000);
+circle(1070,323.397460,10,#FDF283,#000);
+
+ R3 C1
+line(220,710,170,796.602540,#000,2);
+line(170,796.602540,70,796.602540,#000,2);
+line(70,796.602540,220,710,#000,2);
+
+line(220,710,70,623.397460,#000,2);
+line(70,623.397460,170,623.397460,#000,2);
+line(170,623.397460,220,710,#000,2);
+
+circle(220,710,10,#FDF283,#000);
+circle(170,796.602540,10,#FDF283,#000);
+circle(70,796.602540,10,#FDF283,#000);
+circle(20,710,10,#FDF283,#000);
+circle(70,623.397460,10,#FDF283,#000);
+circle(170,623.397460,10,#FDF283,#000);
+
+ R3 C2
+line(520,710,470,796.602540,#000,2);
+line(470,796.602540,370,796.602540,#000,2);
+line(370,796.602540,520,710,#000,2);
+
+line(520,710,470,623.397460,#000,2);
+line(470,623.397460,370,623.397460,#000,2);
+line(370,623.397460,320,710,#000,2);
+line(320,710,520,710,#000,2);
+
+circle(520,710,10,#FDF283,#000);
+circle(470,796.602540,10,#FDF283,#000);
+circle(370,796.602540,10,#FDF283,#000);
+circle(320,710,10,#FDF283,#000);
+circle(370,623.397460,10,#FDF283,#000);
+circle(470,623.397460,10,#FDF283,#000);
+
+ R3 C3
+line(820,710,770,796.602540,#000,2);
+line(770,796.602540,670,796.602540,#000,2);
+line(670,796.602540,620,710,#000,2);
+line(620,710,670,623.397460,#000,2);
+line(670,623.397460,820,710,#000,2);
+
+line(820,710,670,796.602540,#000,2);
+line(670,796.602540,670,623.397460,#000,2);
+line(670,623.397460,770,796.602540,#000,2);
+line(770,796.602540,620,710,#000,2);
+line(620,710,820,710,#000,2);
+
+circle(820,710,10,#FDF283,#000);
+circle(770,796.602540,10,#FDF283,#000);
+circle(670,796.602540,10,#FDF283,#000);
+circle(620,710,10,#FDF283,#000);
+circle(670,623.397460,10,#FDF283,#000);
+circle(770,623.397460,10,#FDF283,#000);
+
+ R3 C4
+line(1120,710,1070,796.602540,#000,2);
+line(1070,796.602540,970,796.602540,#000,2);
+line(970,796.602540,920,710,#000,2);
+line(920,710,970,623.397460,#000,2);
+line(970,623.397460,1070,623.397460,#000,2);
+line(1070,623.397460,1120,710,#000,2);
+
+line(1120,710,970,796.602540,#000,2);
+line(970,796.602540,970,623.397460,#000,2);
+line(970,623.397460,1070,796.602540,#000,2);
+line(1070,796.602540,920,710,#000,2);
+line(920,710,1120,710,#000,2);
+
+circle(1120,710,10,#FDF283,#000);
+circle(1070,796.602540,10,#FDF283,#000);
+circle(970,796.602540,10,#FDF283,#000);
+circle(920,710,10,#FDF283,#000);
+circle(970,623.397460,10,#FDF283,#000);
+circle(1070,623.397460,10,#FDF283,#000);
+
+ R4 C1
+line(220,1010,170,1096.602540,#000,2);
+line(170,1096.602540,70,1096.602540,#000,2);
+line(70,1096.602540,20,1010,#000,2);
+line(20,1010,70,923.397460,#000,2);
+line(70,923.397460,170,923.397460,#000,2);
+line(170,923.397460,220,1010,#000,2);
+
+line(170,1096.602540,170,923.397460,#000,2);
+line(70,1096.602540,70,923.397460,#000,2);
+
+circle(220,1010,10,#FDF283,#000);
+circle(170,1096.602540,10,#FDF283,#000);
+circle(70,1096.602540,10,#FDF283,#000);
+circle(20,1010,10,#FDF283,#000);
+circle(70,923.397460,10,#FDF283,#000);
+circle(170,923.397460,10,#FDF283,#000);
+
+ R4 C2
+line(520,1010,470,1096.602540,#000,2);
+line(470,1096.602540,370,923.397460,#000,2);
+line(370,923.397460,520,1010,#000,2);
+
+line(470,1096.602540,370,1096.602540,#000,2);
+line(370,1096.602540,370,923.397460,#000,2);
+line(370,923.397460,470,923.397460,#000,2);
+line(470,923.397460,470,1096.602540,#000,2);
+
+circle(520,1010,10,#FDF283,#000);
+circle(470,1096.602540,10,#FDF283,#000);
+circle(370,1096.602540,10,#FDF283,#000);
+circle(320,1010,10,#FDF283,#000);
+circle(370,923.397460,10,#FDF283,#000);
+circle(470,923.397460,10,#FDF283,#000);
+
+ R4 C3
+line(820,1010,770,1096.602540,#000,2);
+line(770,1096.602540,670,1096.602540,#000,2);
+line(670,1096.602540,620,1010,#000,2);
+line(620,1010,670,923.397460,#000,2);
+line(670,923.397460,820,1010,#000,2);
+
+line(770,923.397460,770,1096.602540,#000,2);
+line(770,1096.602540,620,1010,#000,2);
+line(620,1010,770,923.397460,#000,2);
+
+circle(820,1010,10,#FDF283,#000);
+circle(770,1096.602540,10,#FDF283,#000);
+circle(670,1096.602540,10,#FDF283,#000);
+circle(620,1010,10,#FDF283,#000);
+circle(670,923.397460,10,#FDF283,#000);
+circle(770,923.397460,10,#FDF283,#000);
+
+ R4 C4
+line(1070,1096.602540,970,1096.602540,#000,2);
+line(970,1096.602540,970,923.397460,#000,2);
+line(970,923.397460,1070,923.397460,#000,2);
+line(1070,923.397460,1070,1096.602540,#000,2);
+
+circle(1120,1010,10,#FDF283,#000);
+circle(1070,1096.602540,10,#FDF283,#000);
+circle(970,1096.602540,10,#FDF283,#000);
+circle(920,1010,10,#FDF283,#000);
+circle(970,923.397460,10,#FDF283,#000);
+circle(1070,923.397460,10,#FDF283,#000);
+</code>
+</specialcontent>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<content>
+Eventuell mag man es als Makel empfinden, dass wir alle eulerschen Graphen gezählt haben, also auch
+solche, die nicht zusammenhängend sind, denn wir hatten uns ja im Kapitel über Graphen daran erfreut,
+dass man etwa das Haus vom Nikolaus in einem Zug zeichnen kann, ohne den Stift absetzen zu müssen.
+Um diesen Makel zu beseitigen können ebenfalls erzeugende Funktionen zur Hilfe genommen werden.
+Dies kann man in <a href="#Robinson1969">[Robinson 1969]</a> nachschlagen.
+
+Wie auch schon zuvor, kann man mehr über die Anzahl der eulerschen Graphen bzw. der verbundenen eulerschen Graphen
+in den Folgen <a href="https://oeis.org/A002854">A002854</a> bzw. <a href="https://oeis.org/A004049">A003049</a> der
+OEIS lernen.
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph</cssclass>
+<css>text-align:left;</css>
+<title>Referenzen</title>
+<toc>Referenzen</toc>
+<content>
+<ul class="book_references">
+<li id='Sigler2002'>
+[Sigler 2002] Laurence Sigler:
+ <a href="https://link.springer.com/book/10.1007/978-1-4613-0079-3">Fibonacci's Liber Abaci</a>
+</li>
+<li id='Wilf1994'>
+[Wilf 1994] Herbert Wilf:
+ <a href="https://www2.math.upenn.edu/~wilf/DownldGF.html">generatingfunctionology</a>
+</li>
+<li id='Stanley1997'>
+[Stanley 1997] Richard P. Stanley:
+ <a href="https://math.mit.edu/~rstan/papers/hip.pdf">Hipparchus, Plutarch, Schröder, and Hough</a>
+</li>
+<li id='Foata1997'>
+[Foata 1997] Dominique Foata, Doron Zeilberger:
+ <a href="https://arxiv.org/pdf/math/9805015">A Classic Proof of a Recurrence for a Very Classical Sequence</a>
+</li>
+<li id='Robinson1969'>
+[Robinson 1969] Robert W. Robinson:
+ <a href="https://oeis.org/A003049/a003049.pdf">Enumeration of Euler graphs</a>
+</li>
+</ul>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_margin_paragraph</cssclass>
+<content>
+<div class='book_circle_marker'><a onclick="deepLink('contents/reisebegleiter/kruemmung.xml', 'Krümmung', '')">&#8680;</a></div>
+</content>
+</paragraph>
+
+<paragraph>
+<cssclass>book_paragraph_center</cssclass>
+<content>
+Bisher haben wir ein uraltes zentrales Thema der Mathematik sträflich vernachlässigt: Die Geometrie.
+Im nächsten Kapitel wird sie mit einem Blick auf das Phänomen der Krümmung ihren ersten großen Auftritt haben.
+
+
+&#65374;
 </content>
 </paragraph>
 
