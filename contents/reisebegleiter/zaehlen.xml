@@ -252,13 +252,13 @@ box(563,383,14,14,#D1D2FB,#000);
 <cssclass>book_paragraph</cssclass>
 <content>
 Fragt man allgemeiner nach der Anzahl der möglichen Parkettierungen von \(n\) Feldern in einer Reihe mit Teilen der Breite eins oder zwei
-so erhält man genau die \(n\)-te Fibonacci-Zahl.
+so erhält man genau die Fibonacci-Zahl \(F_{n+1}\).
 
 Das ist überraschend leicht einzusehen.
 Zunächst betrachten wir die zwei einfachsten Fälle: Ein bzw. zwei Kästchen in einer Reihe.
-Im ersten Fall gibt es genau eine Möglichkeit und das passt zu \(F_1 = 1\).
+Im ersten Fall gibt es genau eine Möglichkeit und das passt zu \(F_2 = 1\).
 Im zweiten Fall können wir entweder ein Teil der Breite zwei oder zwei Teile der Breite eins verwenden.
-Die passt wiederum zu \(F_2 = 2\).
+Die passt wiederum zu \(F_3 = 2\).
 Im allgemeinen Fall können wir vorgehen wie in der Abbildung. Wenn wir beginnen die Reihe von links mit Teilen zu belegen,
 so können wir entweder mit einem Teil der Breite zwei oder mit einem Teil der Breite eins beginnen.
 Nennen wir die Anzahl der möglichen Parkettierungen für eine Reihe der Länge \(n\) nun \(P_n\), so ergibt sich,
