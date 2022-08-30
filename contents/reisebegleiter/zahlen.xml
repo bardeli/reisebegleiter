@@ -1279,7 +1279,9 @@ Ein kurzer Beweis findet sich in <a href="#Edwards1977">[Edwards 1977]</a>.
 
 Einen Spezialfall können wir uns aber nicht verkneifen.
 Für \(m=3\) ist dies als <a href="https://de.wikipedia.org/wiki/Dreieckszahl#Summe_dreier_Dreieckszahlen">Heureka-Satz</a> bekannt.
-Man entnimmt dem Tagebuch von Gauss: \(\mathrm{E\Upsilon PEKA!}\,\mathrm{num} = \Delta + \Delta + \Delta\)
+Man entnimmt dem
+<a href="https://gdz.sub.uni-goettingen.de/id/DE-611-HS-3382323?tify=%7B%22pages%22%3A%5B4%5D%2C%22view%22%3A%22info%22%7D">Tagebuch von Gauß</a>:
+\(\mathrm{E\Upsilon PEKA!}\,\mathrm{num} = \Delta + \Delta + \Delta\)
 
 Sei nun \(N\) die Zahl, die als Summe dreier Dreieckzahlen der Form \(n(n+1)/2\) dargestellt werden soll.
 Entscheidend ist, dass sich die Zahl \(8N+3\) stets als Summe dreier ungerader Quadrate darstellen lässt.
