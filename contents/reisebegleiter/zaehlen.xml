@@ -60,7 +60,7 @@ Dies ist <a href="https://oeis.org/?language=german">Die Online-Enzyklopädie de
 <a href="https://en.wikipedia.org/wiki/Neil_Sloane">Neil Sloane</a>.
 
 Die Fibonacci-Folge findet sich hier als Folge <a href="https://oeis.org/A000045">A000045</a>.
-Man kann beginnen dieses Werkzeug schätzen zu lernen, wenn sich im Vergleich dazu noch die
+Man kann beginnen dieses Werkzeug schätzen zu lernen, wenn man sich im Vergleich dazu noch die
 Folge <a href="https://oeis.org/A324969">A324969</a> anschaut.
 
 
@@ -1535,7 +1535,7 @@ Dies trifft auf alle \(m-1\) Paare \((z_1, z_j)\) zu, so dass wir insgesamt \(m-
 Wahlmöglichkeiten verlieren.
 
 Allerdings gilt es noch sicherzustellen, dass bei diesem Vorgehen auch die Knoten in \(z_1\) geraden Grad erhalten.
-Dazu nutzen wir das sogenannte <a href="https://de.wikipedia.org/wiki/Handschlaglemma">Handschlaglemma</a>, aus dem folgt
+Dazu nutzen wir das sogenannte <a href="https://de.wikipedia.org/wiki/Handschlaglemma">Handschlaglemma</a>, aus dem folgt,
 dass die Anzahl der Knoten von ungeradem Grad gerade sein muss.
 Dies ist so, weil die Summe aller Knotengrade gerade zweimal die Anzahl der
 Kanten in einem Graph ist (jede Kante wird in der Summe der Knotengrade zweimal gezählt) und somit gerade sein muss.
