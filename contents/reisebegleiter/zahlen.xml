@@ -1439,7 +1439,7 @@ der durch die Gleichung beschriebenen <a href="https://de.wikipedia.org/wiki/Alg
 Ihr <a href="https://de.wikipedia.org/wiki/Geschlecht_(Fl%C3%A4che)">Geschlecht</a> ist eins, während das Geschlecht der durch die Gleichung
 im vorausgehenden Fall beschriebenen Kurve null ist.
 
-Tatsächlich lassen sich in diesem Fall alle Lösungen bestimmen, wenn die rechte Seite der Gleichung faktorisiert.
+Tatsächlich lassen sich in diesem Fall alle Lösungen bestimmen, wenn man die rechte Seite der Gleichung faktorisiert.
 Ist \(\theta\) eine Nullstelle der Gleichung \(X^3 - 4X + 1\), so gilt über dem Körper \(\mathbb{Q}[\theta]\):
 $$Y^2 = (X-\theta)(X^2+\theta X+\theta^2-4)$$
 Nun kann man untersuchen, welche gemeinsamen Teiler die Faktoren auf der rechten Seite haben, denn diese Seite muss ja \(Y^2\) entsprechen,
